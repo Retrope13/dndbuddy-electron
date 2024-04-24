@@ -1,4 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import CustomTabs from "./components/CustomTabs"; // Import your custom component
+import "bootstrap/dist/css/bootstrap.min.css";
 
-ReactDOM.render(<h2>Hello from React in Electron</h2>, document.body);
+function App() {
+  return (
+    <div>
+      <h1>Example heading</h1>
+      <CustomTabs />
+    </div>
+  );
+}
+
+// Render the dynamic component
+ReactDOM.render(<App />, document.body);
