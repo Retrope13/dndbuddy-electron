@@ -115,14 +115,18 @@ How I built it was by using
   npm start
   ```
 
-  if you want to run it in a dev mode you do
+  if you want to run the Jest tests that can be found in [src/Classes/\_\_tests\_\_](src/Classes/__tests__)
+  `npm test`
+  <br>
+  if you want to run it in a dev mode you do:
   `cd dnd`
   `npm start`
-
-  if you want to run it in build mode you do
+  <br>
+  if you want to run it in build mode you do:
   `cd dnd`
   `npm run make`
   then go to dnd/out/make and select the dnd-1.0.0 Setup.exe
+  <br>
 
 When I have an MVP I am going to use Docker to create a container so it's easy to port across platforms
 
