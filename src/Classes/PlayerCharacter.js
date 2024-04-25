@@ -1,4 +1,4 @@
-class PlayerCharacter {
+export class PlayerCharacter {
   constructor(
     name = "",
     race = "",
