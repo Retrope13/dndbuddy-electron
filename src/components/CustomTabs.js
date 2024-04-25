@@ -15,13 +15,13 @@ function CustomTabs() {
         className="mb-3"
       >
         <Tab id="home-tab" eventKey="home" title="Home">
-          <div id="home-content">fjdksalfjdklafjsdkl</div>
+          <div className="tabContent">fjdksalfjdklafjsdkl</div>
         </Tab>
         <Tab id="profile-tab" eventKey="profile" title="Profile">
-          Tab content for Profile
+          <div className="tabContent">Tab content for Profile</div>
         </Tab>
         <Tab id="contact-tab" eventKey="contact" title="Contact">
-          Tab content for Contact
+          <div className="tabContent">Tab content for Contact</div>
         </Tab>
       </Tabs>
     </div>

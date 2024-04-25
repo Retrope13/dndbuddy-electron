@@ -116,9 +116,15 @@ How I built it was by using
   ```
 
   if you want to run it in a dev mode you do
+  `cd dnd`
   `npm start`
 
-When I have an MVP I am going to use Docker to create a container so it's very easy to port across platforms
+  if you want to run it in build mode you do
+  `cd dnd`
+  `npm run make`
+  then go to dnd/out/make and select the dnd-1.0.0 Setup.exe
+
+When I have an MVP I am going to use Docker to create a container so it's easy to port across platforms
 
 <!-- USAGE EXAMPLES -->
 

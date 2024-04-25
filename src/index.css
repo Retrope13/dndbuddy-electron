@@ -7,13 +7,23 @@ body {
 }
 
 #controlled-tab-example {
-  color: white;
-  background-color: gray;
+  background-color: #415a77;
   border-radius: 7px;
 }
 
-#home-content {
-  color: white;
+#home-tab {
+  color: #415a77;
+  background-color: #415a77;
+}
+
+li {
+  color: #415a77;
+  background-color: #415a77;
+}
+
+/* You use . for className and # for id */
+.tabContent {
+  color: black;
   background-color: aqua;
   border-width: 2px;
   border-style: solid;
