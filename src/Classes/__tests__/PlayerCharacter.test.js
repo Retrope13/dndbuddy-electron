@@ -2,7 +2,7 @@ import { PlayerCharacter } from "../PlayerCharacter";
 
 // Create const which contains expected values for PlayerCharacter attributes
 const expectedPlayerVals = [
-  "name",
+  "player name",
   "race",
   "class",
   5,
@@ -17,7 +17,7 @@ const expectedPlayerVals = [
 describe("1: [PlayerCharacter]", () => {
   it("should create an instance of PlayerCharacter", () => {
     const player = new PlayerCharacter(
-      "name",
+      "player name",
       "race",
       "class",
       5,
@@ -35,7 +35,7 @@ describe("1: [PlayerCharacter]", () => {
   describe("2: [PlayerCharacter]", () => {
     it("should create and instance of PlayerCharacter and check the name is correct", () => {
       const player = new PlayerCharacter(
-        "name",
+        "player name",
         "race",
         "class",
         5,
@@ -47,7 +47,7 @@ describe("1: [PlayerCharacter]", () => {
         1000
       );
 
-      expect(player.name).toBe("name");
+      expect(player.name).toBe("player name");
     });
   });
 });
