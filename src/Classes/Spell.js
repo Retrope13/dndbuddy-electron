@@ -1,6 +1,4 @@
-export class Weapon {
-  // damage is a string because of the syntax 1d6, 1d4, 2d8, etc.
-  //   you don't need to add toHit because you should take care of that... Unless you're creating a Weapon obj for every one in the list then don't bother
+export class Spell {
   constructor(name = "", damage = "", damageType = "", notes = "") {
     this._name = name;
     this._damage = damage;
@@ -36,16 +34,7 @@ export class Weapon {
     return (this._price = newDamageType);
   }
 
-  //   Price getter and setter
-  get price() {
-    return this._price;
-  }
-
-  set price(newPrice) {
-    return (this._price = newPrice);
-  }
-
-  //   Notes getter and setter
+  //   notes getter and setter
   get notes() {
     return this._notes;
   }
