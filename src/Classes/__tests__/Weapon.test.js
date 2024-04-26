@@ -14,7 +14,7 @@ describe("1: [Weapon]", () => {
       "weapon name",
       "damage",
       "damage type",
-      "weapon ntoes"
+      "weapon notes"
     );
 
     expect(playerWeapon).toBeInstanceOf(Weapon);
@@ -26,7 +26,7 @@ describe("1: [Weapon]", () => {
         "weapon name",
         "damage",
         "damage type",
-        "weapon ntoes"
+        "weapon notes"
       );
 
       expect(playerWeapon.name).toBe("weapon name");
