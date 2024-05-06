@@ -27,15 +27,25 @@ li {
   background-color: aqua;
   border-width: 2px;
   border-style: solid;
-  border-color: #333; /* You can use color names, hex values, or RGB values */
+  border-color: #333;
   border-radius: 5px;
 }
 
 #flexContainer {
   display: flex;
-  background-color: blue;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #333;
+  border: 5px solid #333;
+  border-radius: 10px;
 }
 
 .input-group-a1 {
   display: flex;
+  align-items: center;
+  flex-basis: calc(50% - 5px);
+}
+
+input {
+  flex: 1;
 }
