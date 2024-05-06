@@ -7,9 +7,10 @@ import { PlayerCharacter } from "./Classes/PlayerCharacter";
 
 function App() {
   return (
-    <div>
+    <div id="wrapperDiv">
       <h1>Example heading</h1>
       <CharacterContainer />
+      <br></br>
       <CustomTabs />
     </div>
   );
