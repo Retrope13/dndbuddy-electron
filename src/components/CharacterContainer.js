@@ -1,62 +1,84 @@
 // FlexContainer.js
-import React, { useState } from "react";
+import React from "react";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function CharacterContainer() {
   return (
-    <div id="flexContainer">
-      <div class="input-group-a1">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Player Name"
-          aria-label="Player Name"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <div class="input-group-a1">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Character Name"
-          aria-label="character Name"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <div class="input-group-a1">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Class & level"
-          aria-label="Class and level"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <div class="input-group-a1">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Character Race"
-          aria-label="Character Race"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <div class="input-group-a1">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Alignment"
-          aria-label="Alignment"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <div class="input-group-a1">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="EXP"
-          aria-label="Class and level"
-          aria-describedby="basic-addon1"
-        />
+    <div id="wrapperDiv">
+      <div id="flexContainer">
+        {/* These floating labels are what allow the input fields to shrink the placeholder text */}
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Player Name"
+          className="mb-3"
+        >
+          {/* This is what allows the form to be submitted */}
+          <Form.Control
+            className="controlForms"
+            type="text"
+            placeholder="Player Name"
+          />
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="floating Character Name"
+          label="Character Name"
+        >
+          <Form.Control
+            className="controlForms"
+            type="CharName"
+            placeholder="CharacterName"
+          />
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Character Race"
+          className="mb-3"
+        >
+          <Form.Control
+            className="controlForms"
+            type="text"
+            placeholder="Character Race"
+          />
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Character Class"
+          className="mb-3"
+        >
+          <Form.Control
+            className="controlForms"
+            type="text"
+            placeholder="Character Class"
+          />
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Alignment"
+          className="mb-3"
+        >
+          <Form.Control
+            className="controlForms"
+            type="text"
+            placeholder="Alignment"
+          />
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Experience Points"
+          className="mb-3"
+        >
+          <Form.Control
+            className="controlForms"
+            type="text"
+            placeholder="Experience Points"
+          />
+        </FloatingLabel>
+        <div id="buttonDiv">
+          <button className="CharBtn">Save</button>
+          <button className="CharBtn">Import</button>
+        </div>
       </div>
     </div>
   );
