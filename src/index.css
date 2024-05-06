@@ -30,3 +30,12 @@ li {
   border-color: #333; /* You can use color names, hex values, or RGB values */
   border-radius: 5px;
 }
+
+#flexContainer {
+  display: flex;
+  background-color: blue;
+}
+
+.input-group-a1 {
+  display: flex;
+}
