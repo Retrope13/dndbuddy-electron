@@ -29,102 +29,125 @@ export class PlayerCharacter {
     this._gold = gold;
   }
 
-  //   Name getter and setter
-  get name() {
-    return this._name;
+  //  Player Name getter and setter
+  get getPlayerName() {
+    return this._player_name;
   }
 
-  set name(newName) {
-    this._name = newName;
+  get getPlayerNameString() {
+    return `${this._player_name}`;
+  }
+
+  set setPlayerName(newPlayerName) {
+    this._player_name = newPlayerName;
+  }
+
+  // Character name getter and setter
+  get getCharName() {
+    return this._char_name;
+  }
+
+  set setCharName(newCharName) {
+    this._char_name = newCharName;
   }
 
   //   Race getter and setter
-  get race() {
-    return this._race;
+  get getCharRace() {
+    return this._char_race;
   }
 
-  set race(newRace) {
-    return (this._race = newRace);
+  set setCharRace(newCharRace) {
+    return (this._char_race = newCharRace);
   }
 
   // character class getter and setter
-  get char_class() {
+  get getCharClass() {
     return this._char_class;
   }
 
-  set char_class(newClass) {
+  set setCharClass(newClass) {
     return (this._char_class = newClass);
   }
 
+  get getCharAlignment() {
+    return this._char_alignment;
+  }
+
+  set setCharAlignment(newCharAlignment) {
+    return (this._char_alignment = newCharAlignment);
+  }
+
   // level getter and setter
-  get level() {
+  get getLevel() {
     return this._level;
   }
 
-  set level(newLevel) {
+  set setLevel(newLevel) {
     return (this._level = newLevel);
   }
 
   // stats getter and setter
-  get stats() {
+  get getStats() {
     return this._stats;
   }
 
-  set stats(newStats) {
+  set setStats(newStats) {
     return (this._stats = newStats);
   }
 
   // ac getter and setter
-  get ac() {
+  get getAc() {
     return this._ac;
   }
 
-  set ac(newAc) {
+  set setAc(newAc) {
     return (this._ac = newAc);
   }
 
   // weapons getter and setter
-  get weapons() {
+  get getWeapons() {
     return this._weapons;
   }
 
-  set weapons(newWeapons) {
+  set setWeapons(newWeapons) {
     return (this._weapons = newWeapons);
   }
 
   // Armors getter and setter
-  get armors() {
+  get getArmors() {
     return this.armors;
   }
 
-  set armors(newArmors) {
+  set setArmors(newArmors) {
     return (this._armors = newArmors);
   }
 
   // Spells getter and setter;
-  get spells() {
+  get getSpells() {
     return this._spells;
   }
 
-  set spells(newSpells) {
+  set setSpells(newSpells) {
     return (this._spells = newSpells);
   }
 
   // gold getter and setter
-  get gold() {
+  get getGold() {
     return this._gold;
   }
 
-  set gold(newGold) {
+  set setGold(newGold) {
     return (this._gold = newGold);
   }
 
   // PC printer
   get PC() {
     return {
-      name: this._name,
-      race: this._race,
+      player_name: this.player_name,
+      char_name: this._char_name,
+      char_race: this._char_race,
       char_class: this._char_class,
+      char_alignment: this._char_alignment,
       level: this._level,
       stats: this._stats,
       ac: this._ac,
