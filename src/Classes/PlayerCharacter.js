@@ -1,8 +1,11 @@
 export class PlayerCharacter {
   constructor(
-    name = "",
-    race = "",
+    player_name = "",
+    char_name = "",
+    char_race = "",
     char_class = "",
+    char_alignment = "",
+    char_exp = 0,
     level = 1,
     stats = [],
     ac = 0,
@@ -11,9 +14,12 @@ export class PlayerCharacter {
     spells = [],
     gold = 0
   ) {
-    this._name = name;
-    this._race = race;
+    this._player_name = player_name;
+    this._char_name = char_name;
+    this._char_race = char_race;
     this._char_class = char_class;
+    this._char_alignment = char_alignment;
+    this._char_exp = char_exp;
     this._level = level;
     this._stats = stats;
     this._ac = ac;
@@ -129,3 +135,5 @@ export class PlayerCharacter {
     };
   }
 }
+
+export default PlayerCharacter;
