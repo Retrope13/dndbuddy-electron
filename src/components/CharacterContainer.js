@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import PlayerCharacter from "../Classes/PlayerCharacter";
 
 function CharacterContainer() {
   const [formData, setFormData] = useState({
@@ -14,7 +14,8 @@ function CharacterContainer() {
     ExperiencePoints: "",
   });
 
-  function handleSubmit(event) {
+  //Handle change when modifying any of the text boxes for character info.
+  function handleChange(event) {
     event.preventDefault();
     const placeholder = event.target.placeholder;
     const value = event.target.value;
@@ -23,6 +24,20 @@ function CharacterContainer() {
       [placeholder]: value,
     }));
     console.log(formData);
+  }
+
+  //Handle creating the JSON file and the creation of the character.
+  //There is a lot more to do here
+  function handleSave(event) {
+    event.preventDefault();
+    PlayerCharacter(
+      (player_name = formData.PlayerName),
+      (char_name = formData.CharacterName),
+      (char_race = formData.CharacterRace),
+      (char_class = formData.CharacterClass),
+      (char_alignment = formData.Alignment),
+      (char_exp = formData.ExperiencePoints)
+    );
   }
 
   return (
@@ -39,7 +54,7 @@ function CharacterContainer() {
             className="controlForms"
             type="text"
             placeholder="PlayerName"
-            onChange={handleSubmit}
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel controlId="CharacterName" label="Character Name">
@@ -47,7 +62,7 @@ function CharacterContainer() {
             className="controlForms"
             type="CharName"
             placeholder="CharacterName"
-            onChange={handleSubmit}
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -59,7 +74,7 @@ function CharacterContainer() {
             className="controlForms"
             type="text"
             placeholder="CharacterRace"
-            onChange={handleSubmit}
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -71,7 +86,7 @@ function CharacterContainer() {
             className="controlForms"
             type="text"
             placeholder="CharacterClass"
-            onChange={handleSubmit}
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -83,7 +98,7 @@ function CharacterContainer() {
             className="controlForms"
             type="text"
             placeholder="Alignment"
-            onChange={handleSubmit}
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -95,11 +110,11 @@ function CharacterContainer() {
             className="controlForms"
             type="text"
             placeholder="ExperiencePoints"
-            onChange={handleSubmit}
+            onChange={handleChange}
           />
         </FloatingLabel>
         <div id="buttonDiv">
-          <button type="submit" className="CharBtn" onClick={handleSubmit}>
+          <button type="submit" className="CharBtn" onClick={handleSave}>
             Save
           </button>
           <button type="submit" className="CharBtn">
