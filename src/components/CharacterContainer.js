@@ -30,14 +30,30 @@ function CharacterContainer() {
   //There is a lot more to do here
   function handleSave(event) {
     event.preventDefault();
-    PlayerCharacter(
-      (player_name = formData.PlayerName),
-      (char_name = formData.CharacterName),
-      (char_race = formData.CharacterRace),
-      (char_class = formData.CharacterClass),
-      (char_alignment = formData.Alignment),
-      (char_exp = formData.ExperiencePoints)
-    );
+    const playerCharacter = new PlayerCharacter({
+      player_name: formData.PlayerName,
+      char_name: formData.CharacterName,
+      char_race: formData.CharacterRace,
+      char_class: formData.CharacterClass,
+      char_alignment: formData.Alignment,
+      char_exp: formData.ExperiencePoints,
+    });
+    console.log(playerCharacter);
+    createJSON(playerCharacter);
+  }
+
+  function createJSON(newCharacter) {
+    const jsonData = JSON.stringify(newCharacter);
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = formData.PlayerName + "-" + formData.CharacterNamef + ".json";
+    a.click();
+
+    // Clean up by revoking the URL object
+    URL.revokeObjectURL(url);
   }
 
   return (
