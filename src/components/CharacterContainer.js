@@ -1,10 +1,61 @@
 // FlexContainer.js
-import React from "react";
+import React, { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import PlayerCharacter from "../Classes/PlayerCharacter";
 
 function CharacterContainer() {
+  const [formData, setFormData] = useState({
+    PlayerName: "",
+    CharacterName: "",
+    CharacterRace: "",
+    CharacterClass: "",
+    Alignment: "",
+    ExperiencePoints: "",
+  });
+
+  //Handle change when modifying any of the text boxes for character info.
+  function handleChange(event) {
+    event.preventDefault();
+    const placeholder = event.target.placeholder;
+    const value = event.target.value;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [placeholder]: value,
+    }));
+    console.log(formData);
+  }
+
+  //Handle creating the JSON file and the creation of the character.
+  //There is a lot more to do here
+  function handleSave(event) {
+    event.preventDefault();
+    const playerCharacter = new PlayerCharacter({
+      player_name: formData.PlayerName,
+      char_name: formData.CharacterName,
+      char_race: formData.CharacterRace,
+      char_class: formData.CharacterClass,
+      char_alignment: formData.Alignment,
+      char_exp: formData.ExperiencePoints,
+    });
+    console.log(playerCharacter);
+    createJSON(playerCharacter);
+  }
+
+  function createJSON(newCharacter) {
+    const jsonData = JSON.stringify(newCharacter);
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = formData.PlayerName + "-" + formData.CharacterNamef + ".json";
+    a.click();
+
+    // Clean up by revoking the URL object
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <div id="wrapperDiv">
       <div id="flexContainer">
@@ -18,17 +69,16 @@ function CharacterContainer() {
           <Form.Control
             className="controlForms"
             type="text"
-            placeholder="Player Name"
+            placeholder="PlayerName"
+            onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floating Character Name"
-          label="Character Name"
-        >
+        <FloatingLabel controlId="CharacterName" label="Character Name">
           <Form.Control
             className="controlForms"
             type="CharName"
             placeholder="CharacterName"
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -39,7 +89,8 @@ function CharacterContainer() {
           <Form.Control
             className="controlForms"
             type="text"
-            placeholder="Character Race"
+            placeholder="CharacterRace"
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -50,7 +101,8 @@ function CharacterContainer() {
           <Form.Control
             className="controlForms"
             type="text"
-            placeholder="Character Class"
+            placeholder="CharacterClass"
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -62,6 +114,7 @@ function CharacterContainer() {
             className="controlForms"
             type="text"
             placeholder="Alignment"
+            onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
@@ -72,12 +125,17 @@ function CharacterContainer() {
           <Form.Control
             className="controlForms"
             type="text"
-            placeholder="Experience Points"
+            placeholder="ExperiencePoints"
+            onChange={handleChange}
           />
         </FloatingLabel>
         <div id="buttonDiv">
-          <button className="CharBtn">Save</button>
-          <button className="CharBtn">Import</button>
+          <button type="submit" className="CharBtn" onClick={handleSave}>
+            Save
+          </button>
+          <button type="submit" className="CharBtn">
+            Import
+          </button>
         </div>
       </div>
     </div>
