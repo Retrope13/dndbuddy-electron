@@ -5,51 +5,40 @@ import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 
 function CharacterContainer() {
-  const [formData, setFormData] = useState({
-    PlayerName: "",
-    CharacterName: "",
-    CharacterRace: "",
-    CharacterClass: "",
-    Alignment: "",
-    ExperiencePoints: "",
-  });
+  const playerCharacterInstance = new PlayerCharacter();
 
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
     const placeholder = event.target.placeholder;
     const value = event.target.value;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [placeholder]: value,
-    }));
-    console.log(formData);
+    playerCharacterInstance[`_${placeholder}`] = value;
+    console.log(playerCharacterInstance);
   }
 
   //Handle creating the JSON file and the creation of the character.
   //There is a lot more to do here
+
+  //There are several more character attributes to set here
   function handleSave(event) {
     event.preventDefault();
-    const playerCharacter = new PlayerCharacter({
-      player_name: formData.PlayerName,
-      char_name: formData.CharacterName,
-      char_race: formData.CharacterRace,
-      char_class: formData.CharacterClass,
-      char_alignment: formData.Alignment,
-      char_exp: formData.ExperiencePoints,
-    });
-    console.log(playerCharacter);
-    createJSON(playerCharacter);
+
+    console.log(playerCharacterInstance);
+    createJSON();
   }
 
-  function createJSON(newCharacter) {
-    const jsonData = JSON.stringify(newCharacter);
+  function createJSON() {
+    const jsonData = JSON.stringify(playerCharacterInstance);
     const blob = new Blob([jsonData], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = formData.PlayerName + "-" + formData.CharacterNamef + ".json";
+    a.download =
+      playerCharacterInstance.getPlayerNameString +
+      "-" +
+      playerCharacterInstance.getCharNameString +
+      ".json";
     a.click();
 
     // Clean up by revoking the URL object
