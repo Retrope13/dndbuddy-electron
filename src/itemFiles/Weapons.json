@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Club",
+    "damage": "1d4",
+    "damageType": "Bludgeoning",
+    "price": 1
+  },
+  {
+    "name": "Dagger",
+    "damage": "1d4",
+    "damageType": "Piercing",
+    "price": 2
+  },
+  {
+    "name": "Greatclub",
+    "damage": "1d8",
+    "damageType": "Bludgeoning",
+    "price": 5
+  },
+  {
+    "name": "Quarterstaff",
+    "damage": "1d6",
+    "damageType": "Bludgeoning",
+    "price": 2
+  },
+  {
+    "name": "Sickle",
+    "damage": "1d4",
+    "damageType": "Slashing",
+    "price": 5
+  },
+  {
+    "name": "Spear",
+    "damage": "1d6",
+    "damageType": "Piercing",
+    "price": 2
+  },
+  {
+    "name": "Crossbow",
+    "damage": "1d8",
+    "damageType": "Piercing",
+    "price": 5
+  },
+  {
+    "name": "Dart",
+    "damage": "1d4",
+    "damageType": "Piercing",
+    "price": 1
+  },
+  {
+    "name": "Shortbow",
+    "damage": "1d6",
+    "damageType": "Piercing",
+    "price": 25
+  },
+  {
+    "name": "Sling",
+    "damage": "1d4",
+    "damageType": "Bludgeoning",
+    "price": 1
+  },
+  {
+    "name": "Battleaxe",
+    "damage": "1d8",
+    "damageType": "Slashing",
+    "price": 10
+  },
+  {
+    "name": "Flail",
+    "damage": "1d8",
+    "damageType": "Bludgeoning",
+    "price": 10
+  },
+  {
+    "name": "Glaive",
+    "damage": "1d10",
+    "damageType": "Slashing",
+    "price": 20
+  },
+  {
+    "name": "Greataxe",
+    "damage": "1d12",
+    "damageType": "Slashing",
+    "price": 30
+  },
+  {
+    "name": "Greatsword",
+    "damage": "2d6",
+    "damageType": "Slashing",
+    "price": 50
+  },
+  {
+    "name": "Halberd",
+    "damage": "1d10",
+    "damageType": "Slashing",
+    "price": 20
+  },
+  {
+    "name": "Lance",
+    "damage": "1d12",
+    "damageType": "Piercing",
+    "price": 10
+  },
+  {
+    "name": "Longsword",
+    "damage": "1d8",
+    "damageType": "Slashing",
+    "price": 15
+  },
+  {
+    "name": "Maul",
+    "damage": "2d6",
+    "damageType": "Bludgeoning",
+    "price": 10
+  },
+  {
+    "name": "Morningstar",
+    "damage": "1d8",
+    "damageType": "Piercing",
+    "price": 15
+  },
+  {
+    "name": "Pike",
+    "damage": "1d10",
+    "damageType": "Piercing",
+    "price": 5
+  },
+  {
+    "name": "Rapier",
+    "damage": "1d8",
+    "damageType": "Piercing",
+    "price": 25
+  },
+  {
+    "name": "Scimitar",
+    "damage": "1d6",
+    "damageType": "Slashing",
+    "price": 25
+  },
+  {
+    "name": "Shortsword",
+    "damage": "1d6",
+    "damageType": "Slashing",
+    "price": 10
+  },
+  {
+    "name": "Trident",
+    "damage": "1d6",
+    "damageType": "Piercing",
+    "price": 5
+  },
+  {
+    "name": "Warpick",
+    "damage": "1d8",
+    "damageType": "Piercing",
+    "price": 5
+  },
+  {
+    "name": "Warhammer",
+    "damage": "1d8",
+    "damageType": "Bludgeoning",
+    "price": 15
+  },
+  {
+    "name": "Whip",
+    "damage": "1d4",
+    "damageType": "Slashing",
+    "price": 2
+  },
+  {
+    "name": "Blowgun",
+    "damage": "1",
+    "damageType": "Piercing",
+    "price": 10
+  },
+  {
+    "name": "Crowssbow",
+    "damage": "1d6",
+    "damageType": "Piercing",
+    "price": 3
+  },
+  {
+    "name": "Crossbow",
+    "damage": "1d10",
+    "damageType": "Piercing",
+    "price": 8
+  },
+  {
+    "name": "Longbow",
+    "damage": "1d8",
+    "damageType": "Piercing",
+    "price": 10
+  }
+]
