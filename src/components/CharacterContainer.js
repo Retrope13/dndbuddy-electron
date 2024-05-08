@@ -12,26 +12,19 @@ function CharacterContainer() {
     event.preventDefault();
     const placeholder = event.target.placeholder;
     const value = event.target.value;
+    //Uses the placeholder variable to call setter functions to change the value of the member variable
     playerCharacterInstance[`_${placeholder}`] = value;
     console.log(playerCharacterInstance);
   }
 
-  //Handle creating the JSON file and the creation of the character.
-  //There is a lot more to do here
-
-  //There are several more character attributes to set here
-  function handleSave(event) {
-    event.preventDefault();
-
-    console.log(playerCharacterInstance);
-    createJSON();
-  }
-
   function createJSON() {
+    //Turn the playercharacter instance to a JSON string
     const jsonData = JSON.stringify(playerCharacterInstance);
     const blob = new Blob([jsonData], { type: "application/json" });
+    //URL can be created using the JSON data
     const url = URL.createObjectURL(blob);
 
+    //Create a link element, turn the href into a download link, name the file
     const a = document.createElement("a");
     a.href = url;
     a.download =
@@ -39,6 +32,7 @@ function CharacterContainer() {
       "-" +
       playerCharacterInstance.getCharNameString +
       ".json";
+    //then click the download link
     a.click();
 
     // Clean up by revoking the URL object
@@ -119,7 +113,7 @@ function CharacterContainer() {
           />
         </FloatingLabel>
         <div id="buttonDiv">
-          <button type="submit" className="CharBtn" onClick={handleSave}>
+          <button type="submit" className="CharBtn" onClick={createJSON}>
             Save
           </button>
           <button type="submit" className="CharBtn">
