@@ -5,51 +5,34 @@ import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 
 function CharacterContainer() {
-  const [formData, setFormData] = useState({
-    PlayerName: "",
-    CharacterName: "",
-    CharacterRace: "",
-    CharacterClass: "",
-    Alignment: "",
-    ExperiencePoints: "",
-  });
+  const playerCharacterInstance = new PlayerCharacter();
 
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
     const placeholder = event.target.placeholder;
     const value = event.target.value;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [placeholder]: value,
-    }));
-    console.log(formData);
+    //Uses the placeholder variable to call setter functions to change the value of the member variable
+    playerCharacterInstance[`_${placeholder}`] = value;
+    console.log(playerCharacterInstance);
   }
 
-  //Handle creating the JSON file and the creation of the character.
-  //There is a lot more to do here
-  function handleSave(event) {
-    event.preventDefault();
-    const playerCharacter = new PlayerCharacter({
-      player_name: formData.PlayerName,
-      char_name: formData.CharacterName,
-      char_race: formData.CharacterRace,
-      char_class: formData.CharacterClass,
-      char_alignment: formData.Alignment,
-      char_exp: formData.ExperiencePoints,
-    });
-    console.log(playerCharacter);
-    createJSON(playerCharacter);
-  }
-
-  function createJSON(newCharacter) {
-    const jsonData = JSON.stringify(newCharacter);
+  function createJSON() {
+    //Turn the playercharacter instance to a JSON string
+    const jsonData = JSON.stringify(playerCharacterInstance);
     const blob = new Blob([jsonData], { type: "application/json" });
+    //URL can be created using the JSON data
     const url = URL.createObjectURL(blob);
 
+    //Create a link element, turn the href into a download link, name the file
     const a = document.createElement("a");
     a.href = url;
-    a.download = formData.PlayerName + "-" + formData.CharacterNamef + ".json";
+    a.download =
+      playerCharacterInstance.getPlayerNameString +
+      "-" +
+      playerCharacterInstance.getCharNameString +
+      ".json";
+    //then click the download link
     a.click();
 
     // Clean up by revoking the URL object
@@ -130,7 +113,7 @@ function CharacterContainer() {
           />
         </FloatingLabel>
         <div id="buttonDiv">
-          <button type="submit" className="CharBtn" onClick={handleSave}>
+          <button type="submit" className="CharBtn" onClick={createJSON}>
             Save
           </button>
           <button type="submit" className="CharBtn">
