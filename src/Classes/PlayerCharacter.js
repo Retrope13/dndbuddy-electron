@@ -1,11 +1,11 @@
 export class PlayerCharacter {
   constructor(
-    player_name = "",
-    char_name = "",
-    char_race = "",
-    char_class = "",
-    char_alignment = "",
-    char_exp = 0,
+    PlayerName = "",
+    CharacterName = "",
+    CharacterRace = "",
+    CharacterClass = "",
+    Alignment = "",
+    ExperiencePoints = 0,
     level = 1,
     stats = [],
     ac = 0,
@@ -14,12 +14,12 @@ export class PlayerCharacter {
     spells = [],
     gold = 0
   ) {
-    this._player_name = player_name;
-    this._char_name = char_name;
-    this._char_race = char_race;
-    this._char_class = char_class;
-    this._char_alignment = char_alignment;
-    this._char_exp = char_exp;
+    this._PlayerName = PlayerName;
+    this._CharacterName = CharacterName;
+    this._CharacterRace = CharacterRace;
+    this._CharacterClass = CharacterClass;
+    this._Alignment = Alignment;
+    this._ExperiencePoints = ExperiencePoints;
     this._level = level;
     this._stats = stats;
     this._ac = ac;
@@ -31,50 +31,54 @@ export class PlayerCharacter {
 
   //  Player Name getter and setter
   get getPlayerName() {
-    return this._player_name;
+    return this._PlayerName;
   }
 
   get getPlayerNameString() {
-    return `${this._player_name}`;
+    return `${this._PlayerName}`;
   }
 
   set setPlayerName(newPlayerName) {
-    this._player_name = newPlayerName;
+    this._PlayerName = newPlayerName;
   }
 
   // Character name getter and setter
   get getCharName() {
-    return this._char_name;
+    return this._CharacterName;
+  }
+
+  get getCharNameString() {
+    return `${this._CharacterName}`;
   }
 
   set setCharName(newCharName) {
-    this._char_name = newCharName;
+    this._CharacterName = newCharName;
   }
 
   //   Race getter and setter
   get getCharRace() {
-    return this._char_race;
+    return this._CharacterRace;
   }
 
   set setCharRace(newCharRace) {
-    return (this._char_race = newCharRace);
+    return (this._CharacterRace = newCharRace);
   }
 
   // character class getter and setter
   get getCharClass() {
-    return this._char_class;
+    return this._CharacterClass;
   }
 
   set setCharClass(newClass) {
-    return (this._char_class = newClass);
+    return (this._CharacterClass = newClass);
   }
 
   get getCharAlignment() {
-    return this._char_alignment;
+    return this._Alignment;
   }
 
   set setCharAlignment(newCharAlignment) {
-    return (this._char_alignment = newCharAlignment);
+    return (this._Alignment = newCharAlignment);
   }
 
   // level getter and setter
@@ -143,11 +147,11 @@ export class PlayerCharacter {
   // PC printer
   get PC() {
     return {
-      player_name: this.player_name,
-      char_name: this._char_name,
-      char_race: this._char_race,
-      char_class: this._char_class,
-      char_alignment: this._char_alignment,
+      PlayerName: this.PlayerName,
+      CharacterName: this._CharacterName,
+      CharacterRace: this._CharacterRace,
+      CharacterClass: this._CharacterClass,
+      Alignment: this._Alignment,
       level: this._level,
       stats: this._stats,
       ac: this._ac,
