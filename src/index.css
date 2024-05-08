@@ -93,3 +93,26 @@ li {
     background-color: #dbdada;
   }
 }
+
+/* This is for the Store and Inv now */
+
+label {
+  margin-right: 310px;
+}
+
+#CustomTabsDiv {
+  display: flex;
+  gap: 20px;
+}
+
+.tabContent {
+  display: flex;
+  text-wrap: wrap;
+  white-space: pre-wrap;
+  max-height: 600px;
+  overflow: scroll;
+}
+
+.WeaponItem {
+  display: inline-block;
+}
