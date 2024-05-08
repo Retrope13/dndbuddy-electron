@@ -10,7 +10,7 @@ function App() {
       <h1>Example heading</h1>
       <CharacterContainer />
       <br></br>
-      <CustomTabs />
+      <CustomTabs weapons={"mace"} armor={"leather"} spells={"magic missle"} />
     </div>
   );
 }
