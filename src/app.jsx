@@ -10,14 +10,31 @@ function App() {
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
   function readWeapons(WeaponFile) {
-    WeaponFile.forEach((element) =>
+    //find the longest name for spacing reasons below
+    let longestNameLength = 0;
+    WeaponFile.forEach((element) => {
+      if (longestNameLength < element.name.length) {
+        longestNameLength = element.name.length;
+        console.log(element);
+      }
+    });
+    WeaponFile.forEach((element) => {
+      const spacesNeeded = 20 - element.name.length; //I really don't understand why this doesn't look right
+      const spaces = "  ".repeat(spacesNeeded);
+      console.log(spaces.length);
       WeaponStoreList.push(
-        <div className="WeaponItem" key={element.name}>
-          {element.name} {element.damage} {element.damageType} {element.price}
-          <button onClick={() => handleButtonClick(element)}>Buy</button>
+        <div className="WeaponItem" key={element.name + element.price}>
+          {element.name} {spaces} {element.damage} {element.damageType + " "}
+          {element.price}
+          <button
+            className="WeaponStoreButtons"
+            onClick={() => handleButtonClick(element)}
+          >
+            Buy
+          </button>
         </div>
-      )
-    );
+      );
+    });
     console.log(WeaponStoreList);
   }
 
