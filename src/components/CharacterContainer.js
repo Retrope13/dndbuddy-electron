@@ -4,9 +4,19 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 
-function CharacterContainer() {
-  const playerCharacterInstance = new PlayerCharacter();
+const playerCharacterInstance = new PlayerCharacter();
 
+export function getGold() {
+  return playerCharacterInstance._Gold;
+}
+
+export function setGold(newGold) {
+  let goldInput = document.getElementById("goldInput");
+  goldInput.value = newGold;
+  playerCharacterInstance._Gold = newGold;
+}
+
+export function CharacterContainer() {
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
@@ -100,15 +110,20 @@ function CharacterContainer() {
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingInput"
-          label="Experience Points"
-          className="mb-3"
-        >
+        <FloatingLabel controlId="floatingInput" label="Level" className="mb-3">
           <Form.Control
             className="controlForms"
             type="text"
-            placeholder="ExperiencePoints"
+            placeholder="Level"
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+        <FloatingLabel controlId="floatingInput" label="Gold" className="mb-3">
+          <Form.Control
+            className="controlForms"
+            type="number"
+            placeholder="Gold"
+            id="goldInput"
             onChange={handleChange}
           />
         </FloatingLabel>
@@ -124,5 +139,3 @@ function CharacterContainer() {
     </div>
   );
 }
-
-export default CharacterContainer;
