@@ -11,17 +11,49 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [show, setShow] = useState(false);
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
+  let i = 0;
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
+  function addWeaponToInv(weapon) {
+    //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
+    setInventoryWeapons((inventoryWeapons) => [
+      ...inventoryWeapons,
+      <div id={inventoryWeapons.length}>
+        {weapon.name}
+        {weapon.damage} {weapon.damageType} {weapon.price}
+        <button
+          className="WeaponInvButtons"
+          id={weapon.name}
+          onClick={() => handleSellClick(weapon)}
+        >
+          Sell
+        </button>
+      </div>,
+    ]);
+  }
+
+  const deleteByIndex = (index) => {
+    setInventoryWeapons((oldValues) => {
+      return oldValues.filter((_, i) => i !== index);
+    });
+  };
+
+  function handleSellClick(weapon) {
+    const PlayerGold = getGold();
+    setGold(PlayerGold + Number(weapon.price));
+    console.log(weapon.id);
+    console.log(deleteByIndex(0)); //obviously only selling thigns at [0] but it's a much better start than what I had
+  }
 
   function handleBuyClick(element) {
-    console.log(element);
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
       setGold(PlayerGold - Number(element.price));
+      addWeaponToInv(element);
     } else if (PlayerGold < Number(element.price)) {
       handleShow();
     }
@@ -39,24 +71,26 @@ function App() {
       }
     });
     let i = 0;
-    WeaponFile.forEach((element) => {
-      const spacesNeeded = 20 - element.name.length; //I really don't understand why this doesn't look right
-      const spaces = "  ".repeat(spacesNeeded);
-      WeaponStoreList.push(
-        <div className="WeaponItem" key={element.name + i}>
-          {element.name} {spaces} {element.damage} {element.damageType + " "}
-          {element.price}
-          <button
-            className="WeaponStoreButtons"
-            id={element.name}
-            onClick={() => handleBuyClick(element)}
-          >
-            Buy
-          </button>
-        </div>
-      );
-      i++;
-    });
+    if (WeaponStoreList.length == 0) {
+      WeaponFile.forEach((element) => {
+        const spacesNeeded = 20 - element.name.length; //I really don't understand why this doesn't look right
+        const spaces = "  ".repeat(spacesNeeded);
+        WeaponStoreList.push(
+          <div className="WeaponItem" key={element.name + i}>
+            {element.name} {spaces} {element.damage} {element.damageType + " "}
+            {element.price}
+            <button
+              className="WeaponStoreButtons"
+              id={element.name}
+              onClick={() => handleBuyClick(element)}
+            >
+              Buy
+            </button>
+          </div>
+        );
+        i++;
+      });
+    }
   }
 
   function readArmor() {
@@ -79,7 +113,7 @@ function App() {
       <div id="CustomTabsDiv">
         <CustomTabs
           id="invTabs"
-          weapons={"mace"}
+          weapons={inventoryWeapons}
           armor={"leather"}
           spells={"magic missle"}
         />
