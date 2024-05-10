@@ -100,15 +100,19 @@ function CharacterContainer() {
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingInput"
-          label="Experience Points"
-          className="mb-3"
-        >
+        <FloatingLabel controlId="floatingInput" label="Level" className="mb-3">
           <Form.Control
             className="controlForms"
             type="text"
-            placeholder="ExperiencePoints"
+            placeholder="Level"
+            onChange={handleChange}
+          />
+        </FloatingLabel>
+        <FloatingLabel controlId="floatingInput" label="Gold" className="mb-3">
+          <Form.Control
+            className="controlForms"
+            type="text"
+            placeholder="Gold"
             onChange={handleChange}
           />
         </FloatingLabel>
