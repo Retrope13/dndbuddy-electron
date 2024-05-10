@@ -5,28 +5,26 @@ export class PlayerCharacter {
     CharacterRace = "",
     CharacterClass = "",
     Alignment = "",
-    ExperiencePoints = 0,
-    level = 1,
+    level = "1",
     stats = [],
-    ac = 0,
+    ac = "0",
     weapons = [],
     armors = [],
     spells = [],
-    gold = 0
+    gold = "0"
   ) {
     this._PlayerName = PlayerName;
     this._CharacterName = CharacterName;
     this._CharacterRace = CharacterRace;
     this._CharacterClass = CharacterClass;
     this._Alignment = Alignment;
-    this._ExperiencePoints = ExperiencePoints;
-    this._level = level;
-    this._stats = stats;
-    this._ac = ac;
-    this._weapons = weapons;
-    this._armors = armors;
-    this._spells = spells;
-    this._gold = gold;
+    this._Level = level;
+    this._Stats = stats;
+    this._Ac = ac;
+    this._Weapons = weapons;
+    this._Armors = armors;
+    this._Spells = spells;
+    this._Gold = gold;
   }
 
   //  Player Name getter and setter
@@ -83,65 +81,65 @@ export class PlayerCharacter {
 
   // level getter and setter
   get getLevel() {
-    return this._level;
+    return this._Level;
   }
 
   set setLevel(newLevel) {
-    return (this._level = newLevel);
+    return (this._Level = newLevel);
   }
 
   // stats getter and setter
   get getStats() {
-    return this._stats;
+    return this._Stats;
   }
 
   set setStats(newStats) {
-    return (this._stats = newStats);
+    return (this._Stats = newStats);
   }
 
   // ac getter and setter
   get getAc() {
-    return this._ac;
+    return this._Ac;
   }
 
   set setAc(newAc) {
-    return (this._ac = newAc);
+    return (this._Ac = newAc);
   }
 
   // weapons getter and setter
   get getWeapons() {
-    return this._weapons;
+    return this._Weapons;
   }
 
   set setWeapons(newWeapons) {
-    return (this._weapons = newWeapons);
+    return (this._Weapons = newWeapons);
   }
 
   // Armors getter and setter
   get getArmors() {
-    return this.armors;
+    return this._Armors;
   }
 
   set setArmors(newArmors) {
-    return (this._armors = newArmors);
+    return (this._Armors = newArmors);
   }
 
   // Spells getter and setter;
   get getSpells() {
-    return this._spells;
+    return this._Spells;
   }
 
   set setSpells(newSpells) {
-    return (this._spells = newSpells);
+    return (this._Spells = newSpells);
   }
 
   // gold getter and setter
   get getGold() {
-    return this._gold;
+    return this._Gold;
   }
 
   set setGold(newGold) {
-    return (this._gold = newGold);
+    return (this._Gold = newGold);
   }
 
   // PC printer
@@ -152,13 +150,13 @@ export class PlayerCharacter {
       CharacterRace: this._CharacterRace,
       CharacterClass: this._CharacterClass,
       Alignment: this._Alignment,
-      level: this._level,
-      stats: this._stats,
+      level: this._Level,
+      stats: this._Stats,
       ac: this._ac,
-      weapons: this._weapons,
-      armors: this._armors,
-      spells: this._spells,
-      gold: this._gold,
+      weapons: this._Weapons,
+      armors: this._Armors,
+      spells: this._Spells,
+      gold: this._Gold,
     };
   }
 }
