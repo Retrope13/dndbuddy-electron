@@ -1,41 +1,62 @@
 import React, { Fragment, useState } from "react";
 import ReactDOM from "react-dom";
 import CustomTabs from "./components/CustomTabs"; // Import your custom component
-import CharacterContainer from "./components/CharacterContainer";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import {
+  CharacterContainer,
+  getGold,
+  setGold,
+} from "./components/CharacterContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const [show, setShow] = useState(false);
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
+
+  function handleBuyClick(element) {
+    console.log(element);
+    const PlayerGold = getGold();
+    if (PlayerGold >= Number(element.price)) {
+      setGold(PlayerGold - Number(element.price));
+    } else if (PlayerGold < Number(element.price)) {
+      handleShow();
+    }
+  }
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function readWeapons(WeaponFile) {
     //find the longest name for spacing reasons below
     let longestNameLength = 0;
     WeaponFile.forEach((element) => {
       if (longestNameLength < element.name.length) {
         longestNameLength = element.name.length;
-        console.log(element);
       }
     });
+    let i = 0;
     WeaponFile.forEach((element) => {
       const spacesNeeded = 20 - element.name.length; //I really don't understand why this doesn't look right
       const spaces = "  ".repeat(spacesNeeded);
-      console.log(spaces.length);
       WeaponStoreList.push(
-        <div className="WeaponItem" key={element.name + element.price}>
+        <div className="WeaponItem" key={element.name + i}>
           {element.name} {spaces} {element.damage} {element.damageType + " "}
           {element.price}
           <button
             className="WeaponStoreButtons"
-            onClick={() => handleButtonClick(element)}
+            id={element.name}
+            onClick={() => handleBuyClick(element)}
           >
             Buy
           </button>
         </div>
       );
+      i++;
     });
-    console.log(WeaponStoreList);
   }
 
   function readArmor() {
@@ -69,6 +90,19 @@ function App() {
           spells={"magic missle"}
         />
       </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Oopsies!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>You don't have enough gold to buy this item!</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
