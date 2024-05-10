@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
-function CustomTabs() {
+function CustomTabs({ weapons, armor, spells }) {
   const [key, setKey] = useState("home");
 
   return (
@@ -14,14 +14,14 @@ function CustomTabs() {
         onSelect={(k) => setKey(k)}
         className="mb-3"
       >
-        <Tab id="home-tab" eventKey="home" title="Home">
-          <div className="tabContent">fjdksalfjdklafjsdkl</div>
+        <Tab id="weapons-tab" eventKey="home" title="Weapons">
+          <div className="tabContent">{weapons}</div>
         </Tab>
-        <Tab id="profile-tab" eventKey="profile" title="Profile">
-          <div className="tabContent">Tab content for Profile</div>
+        <Tab id="armor-tab" eventKey="armor" title="Armor">
+          <div className="tabContent">{armor}</div>
         </Tab>
-        <Tab id="contact-tab" eventKey="contact" title="Contact">
-          <div className="tabContent">Tab content for Contact</div>
+        <Tab id="spells-tab" eventKey="spells" title="Spells">
+          <div className="tabContent">{spells}</div>
         </Tab>
       </Tabs>
     </div>
