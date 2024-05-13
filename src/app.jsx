@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import CustomTabs from "./components/CustomTabs"; // Import your custom component
 import Button from "react-bootstrap/Button";
@@ -20,33 +20,29 @@ function App() {
   let CharJSON;
   function addWeaponToInv(weapon) {
     //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
-    setInventoryWeapons((inventoryWeapons) => [
-      ...inventoryWeapons,
-      <div id={inventoryWeapons.length}>
-        {weapon.name}
-        {weapon.damage} {weapon.damageType} {weapon.price}
-        <button
-          className="WeaponInvButtons"
-          id={weapon.name}
-          onClick={() => handleSellClick(weapon)}
-        >
-          Sell
-        </button>
-      </div>,
-    ]);
+    setInventoryWeapons((prevInventoryWeapons) => {
+      const updatedInventoryWeapons = [
+        ...prevInventoryWeapons,
+        <div key={weapon.id}>
+          {weapon.name}
+          {weapon.damage} {weapon.damageType} {weapon.price}
+          <button
+            className="WeaponInvButtons"
+            onClick={(event) => handleSellClick(event, weapon)}
+          >
+            Sell
+          </button>
+        </div>,
+      ];
+    });
   }
 
-  const deleteByIndex = (index) => {
-    setInventoryWeapons((oldValues) => {
-      return oldValues.filter((_, i) => i !== index);
-    });
-  };
-
-  function handleSellClick(weapon) {
+  function handleSellClick(event, weapon) {
+    const button = event.target;
+    const parentDiv = button.parentElement;
     const PlayerGold = getGold();
     setGold(PlayerGold + Number(weapon.price));
-    console.log(weapon.id);
-    console.log(deleteByIndex(0)); //obviously only selling thigns at [0] but it's a much better start than what I had
+    parentDiv.remove();
   }
 
   function handleBuyClick(element) {
@@ -81,7 +77,6 @@ function App() {
             {element.price}
             <button
               className="WeaponStoreButtons"
-              id={element.name}
               onClick={() => handleBuyClick(element)}
             >
               Buy
