@@ -7,7 +7,6 @@ export class Spell {
     } catch {
       this._modifier = 0;
     }
-    this._notes = notes;
   }
 
   //   name getter and setter
@@ -19,31 +18,22 @@ export class Spell {
     return (this._name = newName);
   }
 
-  //   damage getter and setter
+  //   score and setter
 
-  get damage() {
-    return this._damage;
+  get getScore() {
+    return this._score;
   }
 
-  set damage(newDamage) {
-    return (this._damage = newDamage);
+  set setScore(newScore) {
+    return (this._score = newScore);
   }
 
-  //   damageType getter and setter
-  get damageType() {
-    return this._damageType;
+  //   modifier getter and setter
+  get getModifier() {
+    return this._modifier;
   }
 
-  set damageType(newDamageType) {
-    return (this._price = newDamageType);
-  }
-
-  //   notes getter and setter
-  get notes() {
-    return this._notes;
-  }
-
-  set notes(newNotes) {
-    return (this._notes = newNotes);
+  set setModifier(newModifier) {
+    return (this.__modifier = newModifier);
   }
 }
