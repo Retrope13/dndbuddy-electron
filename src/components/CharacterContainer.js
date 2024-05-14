@@ -4,7 +4,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 
-const playerCharacterInstance = new PlayerCharacter();
+export const playerCharacterInstance = new PlayerCharacter();
 
 export function getGold() {
   return playerCharacterInstance._Gold;
@@ -69,7 +69,7 @@ export function CharacterContainer() {
         <FloatingLabel controlId="CharacterName" label="Character Name">
           <Form.Control
             className="controlForms"
-            type="CharName"
+            type="text"
             placeholder="CharacterName"
             onChange={handleChange}
           />
