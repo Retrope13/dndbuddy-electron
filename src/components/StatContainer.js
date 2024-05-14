@@ -4,12 +4,13 @@ import Form from "react-bootstrap/Form";
 import { playerCharacterInstance } from "./CharacterContainer";
 
 export function StatContainer() {
+  const [stats, setStats] = useState([]);
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
     const placeholder = event.target.placeholder;
     const value = event.target.value;
-    //Uses the placeholder variable to call setter functions to change the value of the member variable
+    //^I need to figure out how to make this work for an array of stats
     playerCharacterInstance[`_${placeholder}`] = value;
     console.log(playerCharacterInstance);
   }
