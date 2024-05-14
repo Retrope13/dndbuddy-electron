@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import CustomTabs from "./components/CustomTabs"; // Import your custom component
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { StatContainer } from "./components/StatContainer";
 import {
   CharacterContainer,
   getGold,
@@ -102,6 +103,7 @@ function App() {
     <div id="wrapperDiv">
       <h1>Example heading</h1>
       <CharacterContainer />
+      <StatContainer />
       <br></br>
       <label>Inventory</label>
       <label>Store</label>
