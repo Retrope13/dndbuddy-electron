@@ -15,91 +15,78 @@ export function StatContainer() {
   }
 
   return (
-    <div id="wrapperDiv">
+    <div id="statWrapperDiv">
       <div id="flexContainer">
         {/* These floating labels are what allow the input fields to shrink the placeholder text */}
         <FloatingLabel
           controlId="floatingInput"
-          label="Player Name"
+          label="Strength"
           className="mb-3"
         >
           {/* This is what allows the form to be submitted */}
           <Form.Control
             className="controlForms"
             type="number"
-            placeholder="PlayerName"
+            placeholder="Strength"
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel controlId="CharacterName" label="Character Name">
+        <FloatingLabel controlId="CharacterName" label="Dexterity">
           <Form.Control
             className="controlForms"
             type="number"
-            placeholder="CharacterName"
+            placeholder="Dexterity"
             onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="Character Race"
+          label="Constitution"
           className="mb-3"
         >
           <Form.Control
             className="controlForms"
             type="number"
-            placeholder="CharacterRace"
+            placeholder="Constiturion"
             onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="Character Class"
+          label="Intelligence"
           className="mb-3"
         >
           <Form.Control
             className="controlForms"
             type="number"
-            placeholder="CharacterClass"
+            placeholder="Intelligence"
             onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="Alignment"
+          label="Wisdom"
           className="mb-3"
         >
           <Form.Control
             className="controlForms"
             type="number"
-            placeholder="Alignment"
+            placeholder="Wisdom"
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingInput" label="Level" className="mb-3">
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Charisma"
+          className="mb-3"
+        >
           <Form.Control
             className="controlForms"
             type="number"
-            placeholder="Level"
+            placeholder="Charisma"
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingInput" label="Gold" className="mb-3">
-          <Form.Control
-            className="controlForms"
-            type="number"
-            placeholder="Gold"
-            id="goldInput"
-            onChange={handleChange}
-          />
-        </FloatingLabel>
-        <div id="buttonDiv">
-          <button type="submit" className="CharBtn">
-            Save
-          </button>
-          <button type="submit" className="CharBtn">
-            Import
-          </button>
-        </div>
       </div>
     </div>
   );
