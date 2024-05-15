@@ -105,6 +105,7 @@ function App() {
       <div id="containerContainer">
         <CharacterContainer />
         <StatContainer />
+        {/* ^^ I will add another container kind of like this so I can have the modifiers easily visible */}
       </div>
       <br></br>
       <label>Inventory</label>

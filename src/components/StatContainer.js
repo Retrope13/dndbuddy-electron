@@ -27,6 +27,7 @@ export function StatContainer() {
 
   return (
     <div id="statsWrapperDiv">
+      <label>Scores:</label>
       <div id="statsFlexContainer">
         {/* These floating labels are what allow the input fields to shrink the placeholder text */}
         <FloatingLabel
