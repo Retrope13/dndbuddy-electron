@@ -18,32 +18,33 @@ export function StatContainer() {
     event.preventDefault();
     const placeholder = event.target.placeholder;
     const value = event.target.value;
-    //^I need to figure out how to make this work for an array of stats
+    //Uses the placeholder value to change the dict key pair with the same name
     statsDict[placeholder] = value;
+    //then changes the stats using the stats setter
     playerCharacterInstance.setStats = statsDict;
     console.log(playerCharacterInstance);
   }
 
   return (
-    <div id="statWrapperDiv">
-      <div id="flexContainer">
+    <div id="statsWrapperDiv">
+      <div id="statsFlexContainer">
         {/* These floating labels are what allow the input fields to shrink the placeholder text */}
         <FloatingLabel
           controlId="floatingInput"
-          label="Strength"
-          className="mb-3"
+          label="Str"
+          className="statLabel"
         >
           {/* This is what allows the form to be submitted */}
           <Form.Control
-            className="controlForms"
+            className="statInput"
             type="number"
             placeholder="Strength"
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel controlId="CharacterName" label="Dexterity">
+        <FloatingLabel controlId="CharacterName" label="Dex">
           <Form.Control
-            className="controlForms"
+            className="statInput"
             type="number"
             placeholder="Dexterity"
             onChange={handleChange}
@@ -51,23 +52,23 @@ export function StatContainer() {
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="Constitution"
-          className="mb-3"
+          label="Con"
+          className="statLabel"
         >
           <Form.Control
-            className="controlForms"
+            className="statInput"
             type="number"
-            placeholder="Constiturion"
+            placeholder="Constitution"
             onChange={handleChange}
           />
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="Intelligence"
-          className="mb-3"
+          label="Int"
+          className="statLabel"
         >
           <Form.Control
-            className="controlForms"
+            className="statInput"
             type="number"
             placeholder="Intelligence"
             onChange={handleChange}
@@ -75,11 +76,11 @@ export function StatContainer() {
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="Wisdom"
-          className="mb-3"
+          label="Wis"
+          className="statLabel"
         >
           <Form.Control
-            className="controlForms"
+            className="statInput"
             type="number"
             placeholder="Wisdom"
             onChange={handleChange}
@@ -87,11 +88,11 @@ export function StatContainer() {
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput"
-          label="Charisma"
-          className="mb-3"
+          label="Char"
+          className="statLabel"
         >
           <Form.Control
-            className="controlForms"
+            className="statInput"
             type="number"
             placeholder="Charisma"
             onChange={handleChange}
