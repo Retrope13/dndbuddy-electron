@@ -2,13 +2,13 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
-  max-width: 70rem;
+  max-width: 90rem;
   padding: 2rem;
   background-color: #f7f9fb;
 }
 
 #wrapperDiv {
-  width: 700px;
+  width: 1000px;
 }
 
 #tabs-container {
@@ -49,14 +49,35 @@ li {
   border-radius: 5px;
 }
 
+#containerContainer {
+  display: flex;
+  gap: 10px;
+  width: auto;
+}
+
 #flexContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   background-color: #5085a5;
   border: 5px solid #5085a5;
-  border-radius: 10px;
-  min-width: 445px;
+  border-radius: 5px;
+  width: 700px;
+  margin-bottom: 10px;
+}
+
+#statsFlexContainer {
+  display: flex;
+  gap: 10px;
+  background-color: #5085a5;
+  border: 5px solid #5085a5;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.statInput {
+  width: 70px;
+  align-items: center;
 }
 
 .controlForms {
