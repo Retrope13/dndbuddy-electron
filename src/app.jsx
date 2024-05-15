@@ -117,6 +117,7 @@ function App() {
           armor={"leather"}
           spells={"magic missle"}
         />
+        {/* There's an issue with the buy logic for some reason now. */}
         <CustomTabs
           id="storeTabs"
           weapons={WeaponStoreList}
