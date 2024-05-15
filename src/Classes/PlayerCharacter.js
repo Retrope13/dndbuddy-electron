@@ -6,7 +6,7 @@ export class PlayerCharacter {
     CharacterClass = "",
     Alignment = "",
     level = "1",
-    stats = [],
+    stats = {},
     ac = "0",
     weapons = [],
     armors = [],
