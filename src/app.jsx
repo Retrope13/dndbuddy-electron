@@ -102,8 +102,10 @@ function App() {
   return (
     <div id="wrapperDiv">
       <h1>Example heading</h1>
-      <CharacterContainer />
-      <StatContainer />
+      <div id="containerContainer">
+        <CharacterContainer />
+        <StatContainer />
+      </div>
       <br></br>
       <label>Inventory</label>
       <label>Store</label>
