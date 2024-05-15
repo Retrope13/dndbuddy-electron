@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
+import { statsDict } from "./StatContainer"; //*Come back to this so that you can save the stats dict
 
 export const playerCharacterInstance = new PlayerCharacter();
 

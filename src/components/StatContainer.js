@@ -3,15 +3,24 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { playerCharacterInstance } from "./CharacterContainer";
 
+export const statsDict = {
+  Strength: 0,
+  Dexterity: 0,
+  Constitution: 0,
+  Intelligence: 0,
+  Wisdom: 0,
+  Charisma: 0,
+};
+
 export function StatContainer() {
-  const [stats, setStats] = useState([]);
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
     const placeholder = event.target.placeholder;
     const value = event.target.value;
     //^I need to figure out how to make this work for an array of stats
-    playerCharacterInstance[`_${placeholder}`] = value;
+    statsDict[placeholder] = value;
+    playerCharacterInstance.setStats = statsDict;
     console.log(playerCharacterInstance);
   }
 
