@@ -14,7 +14,9 @@ function App() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [show, setShow] = useState(false);
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
+  const [ArmorStoreList, setArmorStoreList] = useState([]);
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
+  let ArmorStoreJSON = require("./itemFiles/Armor.json");
   let i = 0;
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
@@ -61,16 +63,9 @@ function App() {
   function readWeapons(WeaponFile) {
     //find the longest name for spacing reasons below
     let longestNameLength = 0;
-    WeaponFile.forEach((element) => {
-      if (longestNameLength < element.name.length) {
-        longestNameLength = element.name.length;
-      }
-    });
     let i = 0;
     if (WeaponStoreList.length == 0) {
       WeaponFile.forEach((element) => {
-        const spacesNeeded = 20 - element.name.length; //I really don't understand why this doesn't look right
-        const spaces = "  ".repeat(spacesNeeded);
         WeaponStoreList.push(
           <div className="WeaponItem" key={element.name + i}>
             {element.name} {spaces} {element.damage} {element.damageType + " "}
@@ -89,7 +84,25 @@ function App() {
   }
 
   function readArmor() {
-    //var ArmorJSON = require("./itemFiles/Armor.json");
+    //find the longest name for spacing reasons below
+    let i = 0;
+    if (ArmorStoreList.length == 0) {
+      WeaponFile.forEach((element) => {
+        WeaponStoreList.push(
+          <div className="WeaponItem" key={element.name + i}>
+            {element.name} {spaces} {element.damage} {element.damageType + " "}
+            {element.price}
+            <button
+              className="WeaponStoreButtons"
+              onClick={() => handleBuyClick(element)}
+            >
+              Buy
+            </button>
+          </div>
+        );
+        i++;
+      });
+    }
   }
 
   function readSpells() {
