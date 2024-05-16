@@ -47,6 +47,7 @@ function App() {
     parentDiv.remove();
   }
 
+  //I might be able to make this useful for all items
   function handleBuyClick(element) {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
@@ -68,7 +69,7 @@ function App() {
       WeaponFile.forEach((element) => {
         WeaponStoreList.push(
           <div className="WeaponItem" key={element.name + i}>
-            {element.name} {spaces} {element.damage} {element.damageType + " "}
+            {element.name} {element.damage} {element.damageType + " "}
             {element.price}
             <button
               className="WeaponStoreButtons"
@@ -83,17 +84,17 @@ function App() {
     }
   }
 
-  function readArmor() {
+  function readArmor(ArmorFile) {
     //find the longest name for spacing reasons below
     let i = 0;
     if (ArmorStoreList.length == 0) {
-      WeaponFile.forEach((element) => {
-        WeaponStoreList.push(
-          <div className="WeaponItem" key={element.name + i}>
-            {element.name} {spaces} {element.damage} {element.damageType + " "}
+      ArmorFile.forEach((element) => {
+        ArmorStoreList.push(
+          <div className="ArmorItem" key={element.name + i}>
+            {element.name} {element.damage} {element.damageType + " "}
             {element.price}
             <button
-              className="WeaponStoreButtons"
+              className="ArmorStoreButtons"
               onClick={() => handleBuyClick(element)}
             >
               Buy
@@ -111,6 +112,7 @@ function App() {
 
   //T
   readWeapons(WeaponStoreJSON);
+  readArmor(ArmorStoreJSON);
   return (
     <div id="wrapperDiv">
       <h1>Example heading</h1>
@@ -128,7 +130,7 @@ function App() {
         <CustomTabs
           id="storeTabs"
           weapons={WeaponStoreList}
-          armor={"leather"}
+          armor={ArmorStoreList}
           spells={"magic missle"}
         />
       </div>
