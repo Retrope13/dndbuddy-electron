@@ -1,0 +1,54 @@
+{
+  "Padded": {
+    "Armor_Class": "11+D",
+    "Cost": 10
+  },
+  "Leather": {
+    "Armor_Class": "11+D",
+    "Cost": 20
+  },
+  "Studded_Leather": {
+    "Armor_Class": "12+D",
+    "Cost": 25
+  },
+  "Hide": {
+    "Armor_Class": "12+D",
+    "Cost": 20
+  },
+  "Chain_Shirt": {
+    "Armor_Class": "13+D",
+    "Cost": 30
+  },
+  "Scale_Mail": {
+    "Armor_Class": "14+D",
+    "Cost": 35
+  },
+  "Breastplate": {
+    "Armor_Class": "14+D",
+    "Cost": 30
+  },
+  "Half_Plate": {
+    "Armor_Class": "15+D",
+    "Cost": 40
+  },
+  "Ring_Mail": {
+    "Armor_Class": 14,
+    "Cost": 30
+  },
+  "Chain_Mail": {
+    "Armor_Class": 16,
+    "Cost": 40
+  },
+  "Splint": {
+    "Armor_Class": 17,
+    "Cost": 45
+  },
+  "Plate": {
+    "Armor_Class": 18,
+    "Cost": 50
+  },
+  "Shield": {
+    "Armor_Class": "+2",
+    "Cost": 35
+  }
+}
