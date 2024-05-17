@@ -16,6 +16,15 @@ export function setGold(newGold) {
   playerCharacterInstance._Gold = newGold;
 }
 
+export function setItems(itemType, items) {
+  console.log(itemType);
+  if (itemType == "weapon") {
+    playerCharacterInstance._Weapons.push(items);
+  } else if (itemType == "armor") {
+    playerCharacterInstance._Armors.push(items);
+  }
+}
+
 export function CharacterContainer() {
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {

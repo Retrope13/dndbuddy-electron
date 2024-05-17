@@ -7,6 +7,7 @@ import {
   CharacterContainer,
   getGold,
   setGold,
+  setItems,
 } from "./components/CharacterContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -54,13 +55,15 @@ function App() {
         </button>
       </div>,
     ]);
+    setItems(itemType, item);
   }
 
-  function handleSellClick(event, weapon) {
+  function handleSellClick(event, item) {
     const button = event.target;
     const parentDiv = button.parentElement;
     const PlayerGold = getGold();
-    setGold(PlayerGold + Number(weapon.price));
+    setGold(PlayerGold + Number(item.price));
+    //I don't think that this is removing the item from the actual inventory, just from the viewport
     parentDiv.remove();
   }
 
