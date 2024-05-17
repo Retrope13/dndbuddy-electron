@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
+  const tempWeaponsInv = [];
   const [show, setShow] = useState(false);
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
   const [ArmorStoreList, setArmorStoreList] = useState([]);
@@ -20,23 +21,27 @@ function App() {
   let i = 0;
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
-  function addWeaponToInv(weapon) {
+  function addItemToInv(item) {
+    if (item.damage) {
+    }
     //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
-    setInventoryWeapons((prevInventoryWeapons) => {
-      const updatedInventoryWeapons = [
-        ...prevInventoryWeapons,
-        <div key={weapon.id}>
-          {weapon.name}
-          {weapon.damage} {weapon.damageType} {weapon.price}
-          <button
-            className="WeaponInvButtons"
-            onClick={(event) => handleSellClick(event, weapon)}
-          >
-            Sell
-          </button>
-        </div>,
-      ];
-    });
+    setInventoryWeapons(
+      <div key={item.id}>
+        {item.name}
+        {item.damage && (
+          <>
+            {" "}
+            {item.damage} {item.damageType && item.damageType}
+          </>
+        )}
+        <button
+          className="InvSellButtons"
+          onClick={(event) => handleSellClick(event, item)}
+        >
+          Sell
+        </button>
+      </div>
+    );
   }
 
   function handleSellClick(event, weapon) {
@@ -52,7 +57,7 @@ function App() {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
       setGold(PlayerGold - Number(element.price));
-      addWeaponToInv(element);
+      addItemToInv(element);
     } else if (PlayerGold < Number(element.price)) {
       handleShow();
     }
@@ -62,47 +67,37 @@ function App() {
   const handleShow = () => setShow(true);
 
   function readWeapons(WeaponFile) {
-    //find the longest name for spacing reasons below
-    let longestNameLength = 0;
-    let i = 0;
-    if (WeaponStoreList.length == 0) {
-      WeaponFile.forEach((element) => {
-        WeaponStoreList.push(
-          <div className="WeaponItem" key={element.name + i}>
-            {element.name} {element.damage} {element.damageType + " "}
-            {element.price}
-            <button
-              className="WeaponStoreButtons"
-              onClick={() => handleBuyClick(element)}
-            >
-              Buy
-            </button>
-          </div>
-        );
-        i++;
-      });
+    if (WeaponStoreList.length === 0) {
+      const newWeaponStoreList = WeaponFile.map((element, i) => (
+        <div className="Item" key={element.name + i}>
+          {element.name} {element.damage} {element.damageType + " "}
+          {element.price}
+          <button
+            className="StoreButtons"
+            onClick={() => handleBuyClick(element)}
+          >
+            Buy
+          </button>
+        </div>
+      ));
+      setWeaponStoreList(newWeaponStoreList);
     }
   }
 
   function readArmor(ArmorFile) {
-    //find the longest name for spacing reasons below
-    let i = 0;
-    if (ArmorStoreList.length == 0) {
-      ArmorFile.forEach((element) => {
-        ArmorStoreList.push(
-          <div className="ArmorItem" key={element.name + i}>
-            {element.name} {element.damage} {element.damageType + " "}
-            {element.price}
-            <button
-              className="ArmorStoreButtons"
-              onClick={() => handleBuyClick(element)}
-            >
-              Buy
-            </button>
-          </div>
-        );
-        i++;
-      });
+    if (ArmorStoreList.length === 0) {
+      const newArmorStoreList = ArmorFile.map((element, i) => (
+        <div className="Item" key={element.name + i}>
+          {element.name} {element.AC} {element.price}
+          <button
+            className="StoreButtons"
+            onClick={() => handleBuyClick(element)}
+          >
+            Buy
+          </button>
+        </div>
+      ));
+      setArmorStoreList(newArmorStoreList);
     }
   }
 
