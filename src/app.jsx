@@ -12,20 +12,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
-  const tempWeaponsInv = [];
+  const [inventoryArmor, setInventoryArmor] = useState([]);
   const [show, setShow] = useState(false);
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
   const [ArmorStoreList, setArmorStoreList] = useState([]);
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
   let ArmorStoreJSON = require("./itemFiles/Armor.json");
-  let i = 0;
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
+
+  const itemStates = {
+    weapon: [inventoryWeapons, setInventoryWeapons],
+    armor: [inventoryArmor, setInventoryArmor],
+  };
+
   function addItemToInv(item) {
-    if (item.damage) {
-    }
+    const itemType = item.damage ? "weapon" : "armor";
+    const [inventory, setInventory] = itemStates[itemType];
     //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
-    setInventoryWeapons(
+    setInventory((prevInventory) => [
+      ...prevInventory,
       <div key={item.id}>
         {item.name}
         {item.damage && (
@@ -34,14 +40,20 @@ function App() {
             {item.damage} {item.damageType && item.damageType}
           </>
         )}
+        {item.price && (
+          <>
+            {" "}
+            {item.AC && item.AC} {item.price}
+          </>
+        )}
         <button
           className="InvSellButtons"
           onClick={(event) => handleSellClick(event, item)}
         >
           Sell
         </button>
-      </div>
-    );
+      </div>,
+    ]);
   }
 
   function handleSellClick(event, weapon) {
@@ -119,7 +131,7 @@ function App() {
         <CustomTabs
           id="invTabs"
           weapons={inventoryWeapons}
-          armor={"leather"}
+          armor={inventoryArmor}
           spells={"magic missle"}
         />
         <CustomTabs
