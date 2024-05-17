@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Padded",
+    "AC": "11+D",
+    "price": 10
+  },
+  {
+    "name": "Leather",
+    "AC": "11+D",
+    "price": 20
+  },
+  {
+    "name": "Studded_Leather",
+    "AC": "12+D",
+    "price": 25
+  },
+  {
+    "name": "Hide",
+    "AC": "12+D",
+    "price": 20
+  },
+  {
+    "name": "Chain_Shirt",
+    "AC": "13+D",
+    "price": 30
+  },
+  {
+    "name": "Scale_Mail",
+    "AC": "14+D",
+    "price": 35
+  },
+  {
+    "name": "Breastplate",
+    "AC": "14+D",
+    "price": 30
+  },
+  {
+    "name": "Half_Plate",
+    "AC": "15+D",
+    "price": 40
+  },
+  {
+    "name": "Ring_Mail",
+    "AC": 14,
+    "price": 30
+  },
+  {
+    "name": "Chain_Mail",
+    "AC": 16,
+    "price": 40
+  },
+  {
+    "name": "Splint",
+    "AC": 17,
+    "price": 45
+  },
+  {
+    "name": "Plate",
+    "AC": 18,
+    "price": 50
+  },
+  {
+    "name": "Shield",
+    "AC": "+2",
+    "price": 35
+  }
+]

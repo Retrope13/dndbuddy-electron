@@ -116,7 +116,7 @@ label {
   overflow: scroll;
 }
 
-.WeaponItem {
+.Item {
   display: flex;
   justify-content: space-between;
   width: 400px;
@@ -124,6 +124,6 @@ label {
   margin-bottom: 10px;
 }
 
-.WeaponStoreButtons {
+.StoreButtons {
   margin-right: 0px;
 }

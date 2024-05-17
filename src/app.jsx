@@ -7,49 +7,72 @@ import {
   CharacterContainer,
   getGold,
   setGold,
+  setItems,
 } from "./components/CharacterContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
+  const [inventoryArmor, setInventoryArmor] = useState([]);
   const [show, setShow] = useState(false);
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
+  const [ArmorStoreList, setArmorStoreList] = useState([]);
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
-  let i = 0;
+  let ArmorStoreJSON = require("./itemFiles/Armor.json");
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
-  function addWeaponToInv(weapon) {
+
+  const itemStates = {
+    weapon: [inventoryWeapons, setInventoryWeapons],
+    armor: [inventoryArmor, setInventoryArmor],
+  };
+
+  function addItemToInv(item) {
+    const itemType = item.damage ? "weapon" : "armor";
+    const [inventory, setInventory] = itemStates[itemType];
     //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
-    setInventoryWeapons((prevInventoryWeapons) => {
-      const updatedInventoryWeapons = [
-        ...prevInventoryWeapons,
-        <div key={weapon.id}>
-          {weapon.name}
-          {weapon.damage} {weapon.damageType} {weapon.price}
-          <button
-            className="WeaponInvButtons"
-            onClick={(event) => handleSellClick(event, weapon)}
-          >
-            Sell
-          </button>
-        </div>,
-      ];
-    });
+    setInventory((prevInventory) => [
+      ...prevInventory,
+      <div key={item.id}>
+        {item.name}
+        {item.damage && (
+          <>
+            {" "}
+            {item.damage} {item.damageType && item.damageType}
+          </>
+        )}
+        {item.price && (
+          <>
+            {" "}
+            {item.AC && item.AC} {item.price}
+          </>
+        )}
+        <button
+          className="InvSellButtons"
+          onClick={(event) => handleSellClick(event, item)}
+        >
+          Sell
+        </button>
+      </div>,
+    ]);
+    setItems(itemType, item);
   }
 
-  function handleSellClick(event, weapon) {
+  function handleSellClick(event, item) {
     const button = event.target;
     const parentDiv = button.parentElement;
     const PlayerGold = getGold();
-    setGold(PlayerGold + Number(weapon.price));
+    setGold(PlayerGold + Number(item.price));
+    //I don't think that this is removing the item from the actual inventory, just from the viewport
     parentDiv.remove();
   }
 
+  //I might be able to make this useful for all items
   function handleBuyClick(element) {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
       setGold(PlayerGold - Number(element.price));
-      addWeaponToInv(element);
+      addItemToInv(element);
     } else if (PlayerGold < Number(element.price)) {
       handleShow();
     }
@@ -59,37 +82,38 @@ function App() {
   const handleShow = () => setShow(true);
 
   function readWeapons(WeaponFile) {
-    //find the longest name for spacing reasons below
-    let longestNameLength = 0;
-    WeaponFile.forEach((element) => {
-      if (longestNameLength < element.name.length) {
-        longestNameLength = element.name.length;
-      }
-    });
-    let i = 0;
-    if (WeaponStoreList.length == 0) {
-      WeaponFile.forEach((element) => {
-        const spacesNeeded = 20 - element.name.length; //I really don't understand why this doesn't look right
-        const spaces = "  ".repeat(spacesNeeded);
-        WeaponStoreList.push(
-          <div className="WeaponItem" key={element.name + i}>
-            {element.name} {spaces} {element.damage} {element.damageType + " "}
-            {element.price}
-            <button
-              className="WeaponStoreButtons"
-              onClick={() => handleBuyClick(element)}
-            >
-              Buy
-            </button>
-          </div>
-        );
-        i++;
-      });
+    if (WeaponStoreList.length === 0) {
+      const newWeaponStoreList = WeaponFile.map((element, i) => (
+        <div className="Item" key={element.name + i}>
+          {element.name} {element.damage} {element.damageType + " "}
+          {element.price}
+          <button
+            className="StoreButtons"
+            onClick={() => handleBuyClick(element)}
+          >
+            Buy
+          </button>
+        </div>
+      ));
+      setWeaponStoreList(newWeaponStoreList);
     }
   }
 
-  function readArmor() {
-    //var ArmorJSON = require("./itemFiles/Armor.json");
+  function readArmor(ArmorFile) {
+    if (ArmorStoreList.length === 0) {
+      const newArmorStoreList = ArmorFile.map((element, i) => (
+        <div className="Item" key={element.name + i}>
+          {element.name} {element.AC} {element.price}
+          <button
+            className="StoreButtons"
+            onClick={() => handleBuyClick(element)}
+          >
+            Buy
+          </button>
+        </div>
+      ));
+      setArmorStoreList(newArmorStoreList);
+    }
   }
 
   function readSpells() {
@@ -98,6 +122,7 @@ function App() {
 
   //T
   readWeapons(WeaponStoreJSON);
+  readArmor(ArmorStoreJSON);
   return (
     <div id="wrapperDiv">
       <h1>Example heading</h1>
@@ -109,13 +134,13 @@ function App() {
         <CustomTabs
           id="invTabs"
           weapons={inventoryWeapons}
-          armor={"leather"}
+          armor={inventoryArmor}
           spells={"magic missle"}
         />
         <CustomTabs
           id="storeTabs"
           weapons={WeaponStoreList}
-          armor={"leather"}
+          armor={ArmorStoreList}
           spells={"magic missle"}
         />
       </div>
