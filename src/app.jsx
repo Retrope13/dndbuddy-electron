@@ -14,21 +14,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
+  const [inventorySpell, setInventorySpell] = useState([]);
   const [show, setShow] = useState(false);
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
   const [ArmorStoreList, setArmorStoreList] = useState([]);
+  const [SpellStoreList, setSpellStoreList] = useState([]);
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
   let ArmorStoreJSON = require("./itemFiles/Armor.json");
+  let SpellStoreJSON = require("./itemFiles/Spells.json");
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
 
   const itemStates = {
     weapon: [inventoryWeapons, setInventoryWeapons],
     armor: [inventoryArmor, setInventoryArmor],
+    spell: [inventorySpell, setInventorySpell],
   };
 
   function addItemToInv(item) {
-    const itemType = item.damage ? "weapon" : "armor";
+    itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
+    const itemType = item.school ? "spell" : "armor"; // if it has a school then it's a spell
     const [inventory, setInventory] = itemStates[itemType];
     //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
     setInventory((prevInventory) => [
@@ -116,13 +121,28 @@ function App() {
     }
   }
 
-  function readSpells() {
+  function readSpells(SpellFile) {
+    if (SpellStoreList.length === 0) {
+      const newSpellStoreList = SpellFile.map((element, i) => (
+        <div className="Item" key={element.name + i}>
+          {element.name} {element.AC} {element.price}
+          <button
+            className="SpellButtons"
+            onClick={() => handleBuyClick(element)}
+          >
+            Buy
+          </button>
+        </div>
+      ));
+      setSpellStoreList(newSpellStoreList);
+    }
     //var SpellsJSON = require("./itemFiles/Spells.json");
   }
 
   //T
   readWeapons(WeaponStoreJSON);
   readArmor(ArmorStoreJSON);
+  readSpells(SpellStoreJSON);
   return (
     <div id="wrapperDiv">
       <h1>Example heading</h1>
@@ -135,13 +155,13 @@ function App() {
           id="invTabs"
           weapons={inventoryWeapons}
           armor={inventoryArmor}
-          spells={"magic missle"}
+          spells={inventorySpell}
         />
         <CustomTabs
           id="storeTabs"
           weapons={WeaponStoreList}
           armor={ArmorStoreList}
-          spells={"magic missle"}
+          spells={SpellStoreList}
         />
       </div>
       <Modal show={show} onHide={handleClose}>
