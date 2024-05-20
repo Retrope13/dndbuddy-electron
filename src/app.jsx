@@ -74,7 +74,7 @@ function App() {
     setGold(PlayerGold + Number(item.price));
     //I don't think that this is removing the item from the actual inventory, just from the viewport
     parentDiv.remove();
-    removeItem(itemType, item);
+    removeItem(itemType, item); //^ I don't know how to make this work at the moment
   }
 
   //I might be able to make this useful for all items
