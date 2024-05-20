@@ -1,6 +1,7 @@
 [
   {
     "name": "Acid Splash",
+    "price": "",
     "level": 0,
     "school": "Conjuration",
     "casting_time": "1 action",
@@ -11,6 +12,7 @@
   },
   {
     "name": "Aid",
+    "price": "",
     "level": 2,
     "school": "Abjuration",
     "casting_time": "1 action",
@@ -22,6 +24,7 @@
   },
   {
     "name": "Alarm",
+    "price": "",
     "level": 1,
     "school": "Abjuration",
     "casting_time": "1 minute",
@@ -33,6 +36,7 @@
   },
   {
     "name": "Animal Friendship",
+    "price": "",
     "level": 1,
     "school": "Enchantment",
     "casting_time": "1 action",
@@ -44,6 +48,7 @@
   },
   {
     "name": "Animate Dead",
+    "price": "",
     "level": 3,
     "school": "Necromancy",
     "casting_time": "1 minute",
