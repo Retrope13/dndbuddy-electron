@@ -32,8 +32,8 @@ function App() {
   };
 
   function addItemToInv(item) {
-    itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
-    const itemType = item.school ? "spell" : "armor"; // if it has a school then it's a spell
+    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
+    itemType = item.school ? "spell" : "armor"; // if it has a school then it's a spell
     const [inventory, setInventory] = itemStates[itemType];
     //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
     setInventory((prevInventory) => [
