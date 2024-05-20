@@ -16,12 +16,27 @@ export function setGold(newGold) {
   playerCharacterInstance._Gold = newGold;
 }
 
-export function setItems(itemType, items) {
-  console.log(itemType);
+//& This is the function that it meant to add items to the player's inventory on the backend.
+export function setItems(itemType, item) {
+  console.log(item);
   if (itemType == "weapon") {
-    playerCharacterInstance._Weapons.push(items);
+    playerCharacterInstance._Weapons.push(item);
   } else if (itemType == "armor") {
-    playerCharacterInstance._Armors.push(items);
+    playerCharacterInstance._Armors.push(item);
+  } else if (itemType == "spell") {
+    playerCharacterInstance._Spells.push(item);
+  }
+}
+
+//^ I want this to be the function that removes an item from the player's inventory on the backend
+//^I don't know the best way to remove an element from an array without iterating over it
+export function removeItem(itemType, item) {
+  if (itemType == "weapon") {
+    console.log(playerCharacterInstance._Weapons.indexOf(item));
+  } else if (itemType == "armor") {
+    console.log(playerCharacterInstance._Armors.indexOf(item));
+  } else if (itemType == "spell") {
+    console.log(playerCharacterInstance._Spells.indexOf(item));
   }
 }
 
