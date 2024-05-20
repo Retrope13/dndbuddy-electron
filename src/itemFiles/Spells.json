@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Acid Splash",
+    "level": 0,
+    "school": "Conjuration",
+    "casting_time": "1 action",
+    "range": "60 feet",
+    "components": ["V", "S"],
+    "duration": "Instantaneous",
+    "description": "You hurl a bubble of acid. Choose one creature within range, or choose two creatures within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage. This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
+  },
+  {
+    "name": "Aid",
+    "level": 2,
+    "school": "Abjuration",
+    "casting_time": "1 action",
+    "range": "30 feet",
+    "components": ["V", "S", "M"],
+    "material": "A tiny strip of white cloth",
+    "duration": "8 hours",
+    "description": "Your spell bolsters your allies with toughness and resolve. Choose up to three creatures within range. Each target’s hit point maximum and current hit points increase by 5 for the duration."
+  },
+  {
+    "name": "Alarm",
+    "level": 1,
+    "school": "Abjuration",
+    "casting_time": "1 minute",
+    "range": "30 feet",
+    "components": ["V", "S", "M"],
+    "material": "A tiny bell and a piece of fine silver wire",
+    "duration": "8 hours",
+    "description": "You set an alarm against unwanted intrusion. Choose a door, a window, or an area within range that is no larger than a 20-foot cube. Until the spell ends, an alarm alerts you whenever a Tiny or larger creature touches or enters the warded area. When you cast the spell, you can designate creatures that won't set off the alarm. You also choose whether the alarm is mental or audible. A mental alarm alerts you with a ping in your mind if you are within 1 mile of the warded area. This ping awakens you if you are sleeping. An audible alarm produces the sound of a hand bell for 10 seconds within 60 feet."
+  },
+  {
+    "name": "Animal Friendship",
+    "level": 1,
+    "school": "Enchantment",
+    "casting_time": "1 action",
+    "range": "30 feet",
+    "components": ["V", "S", "M"],
+    "material": "A morsel of food",
+    "duration": "24 hours",
+    "description": "This spell lets you convince a beast that you mean it no harm. Choose a beast that you can see within range. It must see and hear you. If the beast's Intelligence is 4 or higher, the spell fails. Otherwise, the beast must succeed on a Wisdom saving throw or be charmed by you for the spell's duration. If you or one of your companions harms the target, the spell ends."
+  },
+  {
+    "name": "Animate Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "casting_time": "1 minute",
+    "range": "10 feet",
+    "components": ["V", "S", "M"],
+    "material": "A drop of blood, a piece of flesh, and a pinch of bone dust",
+    "duration": "Instantaneous",
+    "description": "This spell creates an undead servant. Choose a pile of bones or a corpse of a Medium or Small humanoid within range. Your spell imbues the target with a foul mimicry of life, raising it as an undead creature. The target becomes a skeleton if you chose bones or a zombie if you chose a corpse."
+  }
+]
