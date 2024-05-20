@@ -86,6 +86,8 @@ function App() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  //I might be able to make all of the read functions into one dynamic one
+
   function readWeapons(WeaponFile) {
     if (WeaponStoreList.length === 0) {
       const newWeaponStoreList = WeaponFile.map((element, i) => (
@@ -127,7 +129,7 @@ function App() {
         <div className="Item" key={element.name + i}>
           {element.name} {element.AC} {element.price}
           <button
-            className="SpellButtons"
+            className="StoreButtons"
             onClick={() => handleBuyClick(element)}
           >
             Buy
@@ -136,10 +138,8 @@ function App() {
       ));
       setSpellStoreList(newSpellStoreList);
     }
-    //var SpellsJSON = require("./itemFiles/Spells.json");
   }
 
-  //T
   readWeapons(WeaponStoreJSON);
   readArmor(ArmorStoreJSON);
   readSpells(SpellStoreJSON);
