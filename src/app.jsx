@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import {
   CharacterContainer,
   getGold,
+  removeItem,
   setGold,
   setItems,
 } from "./components/CharacterContainer";
@@ -60,16 +61,20 @@ function App() {
         </button>
       </div>,
     ]);
-    setItems(itemType, item);
+    setItems(itemType, item); //&I'm really trying to get the player's inventory to be updated when they buy a new weapon.
+    //&I'm not sure whether to have a function that takes the entire set of weapons and adds it to the player or a single weapon and just pushes it.
   }
 
   function handleSellClick(event, item) {
+    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
+    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const button = event.target;
     const parentDiv = button.parentElement;
     const PlayerGold = getGold();
     setGold(PlayerGold + Number(item.price));
     //I don't think that this is removing the item from the actual inventory, just from the viewport
     parentDiv.remove();
+    removeItem(itemType, item);
   }
 
   //I might be able to make this useful for all items
