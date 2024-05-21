@@ -77,10 +77,9 @@ function App() {
     removeItem(itemType, item); //^ I don't know how to make this work at the moment
   }
 
-  //I might be able to make this useful for all items
   function handleBuyClick(element) {
     const PlayerGold = getGold();
-    if (PlayerGold >= Number(element.price)) {
+    if (PlayerGold >= Number(element.price) || element.price === undefined) {
       setGold(PlayerGold - Number(element.price));
       addItemToInv(element);
     } else if (PlayerGold < Number(element.price)) {
@@ -133,6 +132,7 @@ function App() {
       const newSpellStoreList = SpellFile.map((element, i) => (
         <div className="Item" key={element.name + i}>
           {element.name} {element.AC} {element.price}
+          <img src="infoIcon.png" alt="info icon" />
           <button
             className="StoreButtons"
             onClick={() => handleBuyClick(element)}
