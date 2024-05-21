@@ -124,6 +124,11 @@ label {
   margin-bottom: 10px;
 }
 
+.infoIcons {
+  color: #31708e;
+  width: 2em;
+}
+
 .StoreButtons {
   margin-right: 0px;
 }
