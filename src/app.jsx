@@ -11,12 +11,26 @@ import {
   setItems,
 } from "./components/CharacterContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { InfoCircleFill } from "react-bootstrap-icons";
 
 function App() {
+  //&These are the state variables for inventories
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
   const [inventorySpell, setInventorySpell] = useState([]);
-  const [show, setShow] = useState(false);
+  //&These are the state variables for modal visibility
+  const [showGoldModal, setShowGoldModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false);
+  //&These are the state variables for the information modal details
+  const [elementName, setElementName] = useState("");
+  const [elementDescription, setElementDescription] = useState("");
+  const [elementLevel, setElementLevel] = useState("");
+  const [elementSchool, setElementSchool] = useState("");
+  const [elementDamage, setElementDamage] = useState("");
+  const [elementDamageType, setElementDamageType] = useState("");
+  const [elementPrice, setElementPrice] = useState("");
+  const [elementAC, setElementAC] = useState("");
+  //&These are the state variables for the store items
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
   const [ArmorStoreList, setArmorStoreList] = useState([]);
   const [SpellStoreList, setSpellStoreList] = useState([]);
@@ -83,12 +97,27 @@ function App() {
       setGold(PlayerGold - Number(element.price));
       addItemToInv(element);
     } else if (PlayerGold < Number(element.price)) {
-      handleShow();
+      handleShowGoldModal();
     }
   }
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  function handleInfoClick(element) {
+    setElementName(element.name);
+    setElementDescription(element.description);
+    setElementLevel(element.level);
+    setElementSchool(element.school);
+    setElementDamage(element.damage);
+    setElementDamageType(element.damageType);
+    setElementPrice(element.price);
+    setElementAC(element.AC);
+    handleShowInfoModal();
+  }
+
+  const handleCloseGoldModal = () => setShowGoldModal(false);
+  const handleShowGoldModal = () => setShowGoldModal(true);
+
+  const handleCloseInfoModal = () => setShowInfoModal(false);
+  const handleShowInfoModal = () => setShowInfoModal(true);
 
   //I might be able to make all of the read functions into one dynamic one
 
@@ -98,6 +127,12 @@ function App() {
         <div className="Item" key={element.name + i}>
           {element.name} {element.damage} {element.damageType + " "}
           {element.price}
+          <button
+            className="StoreButtons"
+            onClick={() => handleInfoClick(element)}
+          >
+            <InfoCircleFill className="infoIcons" />
+          </button>
           <button
             className="StoreButtons"
             onClick={() => handleBuyClick(element)}
@@ -117,6 +152,12 @@ function App() {
           {element.name} {element.AC} {element.price}
           <button
             className="StoreButtons"
+            onClick={() => handleInfoClick(element)}
+          >
+            <InfoCircleFill className="infoIcons" />
+          </button>
+          <button
+            className="StoreButtons"
             onClick={() => handleBuyClick(element)}
           >
             Buy
@@ -132,7 +173,12 @@ function App() {
       const newSpellStoreList = SpellFile.map((element, i) => (
         <div className="Item" key={element.name + i}>
           {element.name} {element.AC} {element.price}
-          <img src="infoIcon.png" alt="info icon" />
+          <button
+            className="StoreButtons"
+            onClick={() => handleInfoClick(element)}
+          >
+            <InfoCircleFill className="infoIcons" />
+          </button>
           <button
             className="StoreButtons"
             onClick={() => handleBuyClick(element)}
@@ -150,18 +196,21 @@ function App() {
   readSpells(SpellStoreJSON);
   return (
     <div id="wrapperDiv">
-      <h1>Example heading</h1>
+      <h1>Welcome to the DNDBuddy!</h1>
       <CharacterContainer />
       <br></br>
       <label>Inventory</label>
       <label>Store</label>
       <div id="CustomTabsDiv">
+        {/* Inventory */}
         <CustomTabs
           id="invTabs"
           weapons={inventoryWeapons}
           armor={inventoryArmor}
           spells={inventorySpell}
         />
+
+        {/* Store */}
         <CustomTabs
           id="storeTabs"
           weapons={WeaponStoreList}
@@ -169,7 +218,9 @@ function App() {
           spells={SpellStoreList}
         />
       </div>
-      <Modal show={show} onHide={handleClose}>
+
+      {/* Gold modal */}
+      <Modal show={showGoldModal} onHide={handleCloseGoldModal}>
         <Modal.Header closeButton>
           <Modal.Title>Oopsies!</Modal.Title>
         </Modal.Header>
@@ -177,7 +228,30 @@ function App() {
           <p>You don't have enough gold to buy this item!</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleCloseGoldModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/*Information modal */}
+      <Modal show={showInfoModal} onHide={handleCloseInfoModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Information:</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Name: {elementName}</p>
+          <p>Description: {elementDescription}</p>
+          <p>Level: {elementLevel}</p>
+          <p>School: {elementSchool}</p>
+          <p>Damage: {elementDamage}</p>
+          <p>Damage Type: {elementDamageType}</p>
+          <p>Price: {elementPrice}</p>
+          <p>AC: {elementAC}</p>
+          {/* Make these conditionally render^^ */}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseInfoModal}>
             Close
           </Button>
         </Modal.Footer>
