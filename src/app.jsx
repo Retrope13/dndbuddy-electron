@@ -121,7 +121,7 @@ function App() {
 
   //I might be able to make all of the read functions into one dynamic one
 
-  const itemStoreFiles = {
+  const itemStoreStates = {
     WeaponStoreJSON: [inventoryWeapons, setInventoryWeapons],
     ArmorStoreJSON: [inventoryArmor, setInventoryArmor],
     SpellStoreJSON: [inventorySpell, setInventorySpell],
@@ -129,9 +129,9 @@ function App() {
 
   function readItemFile(itemFile) {
     //The below is the approach I want to have but instead of changing it so it matches the inventory tab it matches the store tab
-    // let itemType = item.damage ? "weapon" : "armor";
-    // itemType = item.school ? "spell" : itemType;
-    // const [inventory, setInventory] = itemStates[itemType];
+    // let fileType = itemFile == WepaonStoreJSON ? "weapon" : "armor";
+    // fileType = itemFile == SpellStoreJSON ? "spell" : itemType;
+    // const [store, setStore] = itemStoreStates[fileType];
     //I'm going to check which file it is, then change the storeList that is being modified.
   }
 
