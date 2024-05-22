@@ -128,7 +128,11 @@ function App() {
   };
 
   function readItemFile(itemFile) {
-    //
+    //The below is the approach I want to have but instead of changing it so it matches the inventory tab it matches the store tab
+    // let itemType = item.damage ? "weapon" : "armor";
+    // itemType = item.school ? "spell" : itemType;
+    // const [inventory, setInventory] = itemStates[itemType];
+    //I'm going to check which file it is, then change the storeList that is being modified.
   }
 
   function readWeapons(WeaponFile) {
