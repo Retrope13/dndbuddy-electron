@@ -121,6 +121,16 @@ function App() {
 
   //I might be able to make all of the read functions into one dynamic one
 
+  const itemStoreFiles = {
+    WeaponStoreJSON: [inventoryWeapons, setInventoryWeapons],
+    ArmorStoreJSON: [inventoryArmor, setInventoryArmor],
+    SpellStoreJSON: [inventorySpell, setInventorySpell],
+  };
+
+  function readItemFile(itemFile) {
+    //
+  }
+
   function readWeapons(WeaponFile) {
     if (WeaponStoreList.length === 0) {
       const newWeaponStoreList = WeaponFile.map((element, i) => (
