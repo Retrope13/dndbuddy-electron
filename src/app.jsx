@@ -241,13 +241,42 @@ function App() {
         </Modal.Header>
         <Modal.Body>
           <p>Name: {elementName}</p>
-          <p>Description: {elementDescription}</p>
-          <p>Level: {elementLevel}</p>
-          <p>School: {elementSchool}</p>
-          <p>Damage: {elementDamage}</p>
-          <p>Damage Type: {elementDamageType}</p>
-          <p>Price: {elementPrice}</p>
-          <p>AC: {elementAC}</p>
+          {/* Below are the conditions for rendering the infromation text */}
+          {elementDescription && (
+            <>
+              <p>Description: {elementDescription}</p>
+            </>
+          )}
+          {elementLevel && (
+            <>
+              <p>Level: {elementLevel}</p>
+            </>
+          )}
+          {elementSchool && (
+            <>
+              <p>School: {elementSchool}</p>
+            </>
+          )}
+          {elementDamage && (
+            <>
+              <p>Damage: {elementDamage}</p>
+            </>
+          )}
+          {elementDamageType && (
+            <>
+              <p>Damage Type: {elementDamageType}</p>
+            </>
+          )}
+          {elementPrice && (
+            <>
+              <p>Price: {elementPrice}</p>
+            </>
+          )}
+          {elementAC && (
+            <>
+              <p>AC: {elementAC}</p>
+            </>
+          )}
           {/* Make these conditionally render^^ */}
         </Modal.Body>
         <Modal.Footer>
