@@ -69,6 +69,7 @@ function App() {
       </div>,
     ]);
     setItems(itemType, item);
+    console.log(itemType);
   }
 
   function handleSellClick(event, item) {
