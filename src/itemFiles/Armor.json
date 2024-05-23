@@ -10,7 +10,7 @@
     "price": 20
   },
   {
-    "name": "Studded_Leather",
+    "name": "Studded Leather",
     "AC": "12+D",
     "price": 25
   },
@@ -20,12 +20,12 @@
     "price": 20
   },
   {
-    "name": "Chain_Shirt",
+    "name": "Chain Shirt",
     "AC": "13+D",
     "price": 30
   },
   {
-    "name": "Scale_Mail",
+    "name": "Scale Mail",
     "AC": "14+D",
     "price": 35
   },
@@ -35,17 +35,17 @@
     "price": 30
   },
   {
-    "name": "Half_Plate",
+    "name": "Half Plate",
     "AC": "15+D",
     "price": 40
   },
   {
-    "name": "Ring_Mail",
+    "name": "Ring Mail",
     "AC": 14,
     "price": 30
   },
   {
-    "name": "Chain_Mail",
+    "name": "Chain Mail",
     "AC": 16,
     "price": 40
   },
