@@ -124,6 +124,56 @@ label {
   margin-bottom: 10px;
 }
 
-.StoreButtons {
-  margin-right: 0px;
+.infoIcons {
+  color: #31708e;
+  width: 2em;
+}
+
+.StoreButtons,
+.infoButtons {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f7f9fb;
+  border-radius: 5px;
+  line-height: 1px;
+  width: 60px;
+  height: 38px;
+  font-size: 15px;
+  background-color: #f7f9fb;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  &:hover {
+    background-color: #dbdada;
+  }
+}
+
+.infoButtons {
+  border-radius: 100%;
+  width: 10%;
+}
+
+.InvSellButtons {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f7f9fb;
+  border-radius: 5px;
+  line-height: 1px;
+  width: 60px;
+  height: 38px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  background-color: #f7f9fb;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+  &:hover {
+    background-color: #dbdada;
+  }
 }

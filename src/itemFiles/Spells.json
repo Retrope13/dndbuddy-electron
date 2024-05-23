@@ -1,0 +1,1184 @@
+[
+  {
+    "name": "Abbathor's Greed",
+    "description": "Invoke Abbathor’s avarice to compel a creature to steal or acquire something valuable.",
+    "level": 3,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Abi-Dalzim's Horrid Wilting",
+    "description": "Drain moisture from creatures, causing severe dehydration and damage.",
+    "level": 8,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Acererak's Blackstone",
+    "description": "Conjure a blackstone that can unleash necrotic energy on contact.",
+    "level": 5,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Agannazar's Scorcher",
+    "description": "A line of roaring flame blasts out, damaging all in its path.",
+    "level": 2,
+    "school": "Evocation"
+  },
+  {
+    "name": "Alahandra's Questing Call",
+    "description": "Compel a creature to undertake a specific quest or task.",
+    "level": 4,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Alamanther's Return",
+    "description": "Return to a location you have previously visited within a specific timeframe.",
+    "level": 3,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Alaunghaer's Enchanted Triptych",
+    "description": "Create three magical images that can interact and communicate.",
+    "level": 5,
+    "school": "Illusion"
+  },
+  {
+    "name": "Alcimer's Flying Fist",
+    "description": "Conjure a spectral fist that can strike and grapple enemies.",
+    "level": 3,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Alimar's Fundamental Breakdown",
+    "description": "Cause a mechanical or magical device to malfunction or break.",
+    "level": 3,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Alvira's Stasis Shell",
+    "description": "Encapsulate a creature in a stasis field, halting all actions and effects.",
+    "level": 6,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Amgig's Rowers",
+    "description": "Summon spectral rowers to propel a boat or ship.",
+    "level": 2,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Amvid's Unseen Limb",
+    "description": "Create an invisible limb that can manipulate objects and perform tasks.",
+    "level": 2,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Archveult's Skybolt",
+    "description": "Call down a powerful bolt of lightning from the sky.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Argaster's Cloak of Shadows",
+    "description": "Shroud yourself in shadows, granting increased stealth and protection from light-based attacks.",
+    "level": 4,
+    "school": "Illusion"
+  },
+  {
+    "name": "Auril's Flowers",
+    "description": "Summon icy flowers that can entangle and freeze enemies.",
+    "level": 3,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Avissar's Flaming Weapon",
+    "description": "Imbue a weapon with fire, causing additional fire damage on hit.",
+    "level": 3,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Azuth's Exalted Triad",
+    "description": "Create three duplicates of yourself to aid in spellcasting and combat.",
+    "level": 7,
+    "school": "Illusion"
+  },
+  {
+    "name": "Azuth's Fendsor",
+    "description": "Create a magical shield that can deflect spells and projectiles.",
+    "level": 4,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Azuth's Spellshield",
+    "description": "Create a protective barrier that can absorb and reflect magical attacks.",
+    "level": 5,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Balagarn's Iron Horn",
+    "description": "Produce a deafening blast that can shatter objects and deafen creatures.",
+    "level": 3,
+    "school": "Evocation"
+  },
+  {
+    "name": "Ballant's Stonesplit",
+    "description": "Create a seismic shockwave that can split and shatter stone.",
+    "level": 4,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Ballant's Stonestrength",
+    "description": "Grant a creature the strength and durability of stone.",
+    "level": 3,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Bands of Sirellyn",
+    "description": "Summon magical bands that can bind and restrain a creature.",
+    "level": 4,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Barlen's Crabwalk",
+    "description": "Allow a creature to move sideways at increased speed, mimicking a crab's movement.",
+    "level": 2,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Belorigar's Baldric",
+    "description": "Create a magical baldric that grants enhanced defense and spell resistance.",
+    "level": 5,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Belsham's Mace",
+    "description": "Conjure a magical mace that deals additional force damage on hit.",
+    "level": 3,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Beltyn's Burning Blood",
+    "description": "Cause a creature’s blood to burn, dealing fire damage over time.",
+    "level": 4,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Berronar's Favor",
+    "description": "Bless a creature with divine protection and increased healing.",
+    "level": 3,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Bigby's Battering Gauntlet",
+    "description": "Summon a massive magical gauntlet that can strike and push enemies.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Besieging Bolt",
+    "description": "Fire a powerful bolt of force that can breach fortifications.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Bookworm Bane",
+    "description": "Create a spectral hand that can destroy books and scrolls.",
+    "level": 3,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Bigby's Clenched Fist",
+    "description": "Conjure a giant fist that can punch and grapple enemies.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Construction Crew",
+    "description": "Summon multiple hands to aid in construction and repair tasks.",
+    "level": 6,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Bigby's Crushing Hand",
+    "description": "Create a giant hand that can crush and immobilize a target.",
+    "level": 8,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Dextrous Digits",
+    "description": "Summon precise magical hands for delicate tasks and manipulations.",
+    "level": 3,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Bigby's Fantastic Fencers",
+    "description": "Create spectral swordsmen to duel and defend.",
+    "level": 5,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Bigby's Feeling Fingers",
+    "description": "Summon magical fingers that can sense hidden objects and traps.",
+    "level": 2,
+    "school": "Divination"
+  },
+  {
+    "name": "Bigby's Force Sculpture",
+    "description": "Create complex sculptures out of force energy.",
+    "level": 6,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Forceful Hand",
+    "description": "Summon a hand that can push or pull creatures and objects.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Grasping Hand",
+    "description": "Create a hand that can grapple and hold enemies.",
+    "level": 7,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Interposing Eye",
+    "description": "Summon an eye that can see and block incoming attacks.",
+    "level": 5,
+    "school": "Divination"
+  },
+  {
+    "name": "Bigby's Interposing Hand",
+    "description": "Create a hand that provides cover and protection.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Protective Pentad",
+    "description": "Summon five hands that create a defensive barrier.",
+    "level": 7,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Bigby's Pugnacious Pugilist",
+    "description": "Create a magical boxer that fights on your behalf.",
+    "level": 5,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Bigby's Silencing Hand",
+    "description": "Summon a hand that can silence and mute targets.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Strangling Grip",
+    "description": "Conjure a hand that can choke and suffocate a creature.",
+    "level": 6,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Bigby's Striking Fist",
+    "description": "Create a powerful hand that delivers forceful blows.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Superior Force Sculpture",
+    "description": "Create highly detailed and intricate sculptures from force energy.",
+    "level": 7,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bigby's Warding Hand",
+    "description": "Summon a hand that deflects attacks and projectiles.",
+    "level": 5,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Bigby's Wrenching Hand",
+    "description": "Create a hand that can twist and disarm enemies.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Blackstaff",
+    "description": "Create a powerful staff imbued with dark magic.",
+    "level": 6,
+    "school": "Evocation"
+  },
+  {
+    "name": "Blade of Disruption",
+    "description": "Summon a blade that disrupts and damages magical constructs.",
+    "level": 4,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Blizzard of Oz",
+    "description": "Conjure a fierce blizzard that disorients and damages foes.",
+    "level": 6,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bloom",
+    "description": "Cause plants to grow rapidly, entangling and hindering enemies.",
+    "level": 2,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Body Blades",
+    "description": "Transform parts of your body into sharp blades for melee attacks.",
+    "level": 3,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Bolt from the Blue",
+    "description": "Summon a sudden bolt of lightning from a clear sky.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bolts of Bedevilment",
+    "description": "Shoot multiple magical bolts that can confuse and harm targets.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Boneblade",
+    "description": "Create a sword made of bone that deals necrotic damage.",
+    "level": 3,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Bonefire",
+    "description": "Summon a fire that burns with necrotic energy.",
+    "level": 4,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Bonefiddle",
+    "description": "Create a skeletal violin that can manipulate the dead.",
+    "level": 5,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Boomerang Comet",
+    "description": "Launch a comet that returns to you after striking its target.",
+    "level": 6,
+    "school": "Evocation"
+  },
+  {
+    "name": "Bralm's Buzzing Bombardment",
+    "description": "Summon a swarm of bees to attack and distract enemies.",
+    "level": 4,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Bralm's Insect Plague",
+    "description": "Conjure a plague of insects that swarm and damage foes.",
+    "level": 5,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Brandobaris' Borrowing",
+    "description": "Temporarily borrow an object or item from another creature.",
+    "level": 2,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Brightmantle's Mind Vault",
+    "description": "Store and protect your thoughts and memories in a secure magical vault.",
+    "level": 5,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Bryce's Elemental Blast",
+    "description": "Unleash a blast of elemental energy, choosing between fire, cold, lightning, or acid.",
+    "level": 3,
+    "school": "Evocation"
+  },
+  {
+    "name": "Catapsi",
+    "description": "Create a field that dampens and weakens psychic powers.",
+    "level": 5,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Cast in Stone",
+    "description": "Turn a creature to stone, petrifying them.",
+    "level": 6,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Caustic Fount",
+    "description": "Create a geyser of acid that damages and corrodes.",
+    "level": 4,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Cavaria's Bolt",
+    "description": "Shoot a magical bolt that can pierce through multiple targets.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Celestial Flame",
+    "description": "Summon holy fire to smite evil creatures.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Chauntea's Blessing",
+    "description": "Call upon the goddess to bless crops and promote growth.",
+    "level": 2,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Chill of Borem",
+    "description": "Create an aura of extreme cold that slows and damages enemies.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Circle of Blindness",
+    "description": "Create a field that blinds all creatures within it.",
+    "level": 4,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Claws of the Umber Hulk",
+    "description": "Grow powerful claws that can burrow through earth and stone.",
+    "level": 5,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Clenched Fist",
+    "description": "Create a magical fist that can strike and crush enemies.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Clone",
+    "description": "Create a duplicate of yourself that can act independently.",
+    "level": 8,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Cloud of Daggers",
+    "description": "Summon a cloud of spinning daggers that damage creatures within it.",
+    "level": 2,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Cloudkill",
+    "description": "Create a cloud of poisonous gas that moves away from you, harming those caught within it.",
+    "level": 5,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Conjure Elemental",
+    "description": "Summon an elemental to fight on your behalf.",
+    "level": 5,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Control Weather",
+    "description": "Alter the weather conditions in a large area.",
+    "level": 8,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Corpse Explosion",
+    "description": "Cause a corpse to explode, damaging nearby creatures.",
+    "level": 5,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Creeping Doom",
+    "description": "Summon a swarm of insects that obey your commands.",
+    "level": 7,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Crown of Stars",
+    "description": "Create a crown of glowing stars that can be used as magical projectiles.",
+    "level": 7,
+    "school": "Evocation"
+  },
+  {
+    "name": "Crushing Despair",
+    "description": "Cause a wave of despair to wash over creatures, imposing penalties.",
+    "level": 4,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Cure Wounds",
+    "description": "Heal a creature you touch.",
+    "level": 1,
+    "school": "Evocation"
+  },
+  {
+    "name": "Curse of the Azure Bonds",
+    "description": "Curse a creature with magical bonds that limit their actions.",
+    "level": 6,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Cyclonic Blast",
+    "description": "Create a powerful wind that can knock back and damage creatures.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Darkstar",
+    "description": "Create a miniature black hole that pulls in and crushes enemies.",
+    "level": 9,
+    "school": "Evocation"
+  },
+  {
+    "name": "Dawn",
+    "description": "Create a beam of sunlight that damages undead and fiends.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Delayed Blast Fireball",
+    "description": "Create a powerful explosion that can be delayed for a short time.",
+    "level": 7,
+    "school": "Evocation"
+  },
+  {
+    "name": "Demi-Shadow Magic",
+    "description": "Create quasi-real illusions that can affect the physical world.",
+    "level": 8,
+    "school": "Illusion"
+  },
+  {
+    "name": "Destruction",
+    "description": "Cause a target to disintegrate into dust.",
+    "level": 7,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Detect Magic",
+    "description": "Sense the presence of magic within 30 feet.",
+    "level": 1,
+    "school": "Divination"
+  },
+  {
+    "name": "Disintegrate",
+    "description": "Reduce a creature or object to a pile of fine dust.",
+    "level": 6,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Dispel Magic",
+    "description": "End a spell or magical effect.",
+    "level": 3,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Divine Favor",
+    "description": "Empower your attacks with divine energy.",
+    "level": 1,
+    "school": "Evocation"
+  },
+  {
+    "name": "Divine Power",
+    "description": "Grant yourself divine strength and endurance.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Dominate Monster",
+    "description": "Exert control over a creature, making it obey your commands.",
+    "level": 8,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Dominate Person",
+    "description": "Exert control over a humanoid, making it obey your commands.",
+    "level": 5,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Drawmij's Instant Summons",
+    "description": "Instantly summon an object to your hand.",
+    "level": 6,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Dragon's Breath",
+    "description": "Grant a creature the ability to breathe a specific type of energy in a cone.",
+    "level": 2,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Druid Grove",
+    "description": "Create a protective grove with magical effects.",
+    "level": 6,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Earthquake",
+    "description": "Create a massive earthquake that can cause widespread destruction.",
+    "level": 8,
+    "school": "Evocation"
+  },
+  {
+    "name": "Elemental Bane",
+    "description": "Curse a creature to take extra damage from a specific elemental type.",
+    "level": 4,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Elemental Weapon",
+    "description": "Imbue a weapon with a specific elemental energy.",
+    "level": 3,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Elminster's Evasion",
+    "description": "Teleport to avoid an attack or spell.",
+    "level": 4,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Elminster's Effulgent Epuration",
+    "description": "Create a field that absorbs and nullifies magical effects.",
+    "level": 7,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Elminster's Merciless Missiles",
+    "description": "Summon multiple magical missiles that strike unerringly.",
+    "level": 3,
+    "school": "Evocation"
+  },
+  {
+    "name": "Elminster's Undying Army",
+    "description": "Summon undead minions to fight for you.",
+    "level": 8,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Elminster's Whirling Wheels",
+    "description": "Create spinning wheels of force that can block and damage enemies.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Elric's Thunderous Applause",
+    "description": "Create a deafening sound that can deafen and damage foes.",
+    "level": 3,
+    "school": "Evocation"
+  },
+  {
+    "name": "Empyreal Ecstasy",
+    "description": "Induce a state of pure bliss and euphoria in a creature.",
+    "level": 5,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Ethereal Jaunt",
+    "description": "Shift into the Ethereal Plane for a short time.",
+    "level": 7,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Evard's Black Tentacles",
+    "description": "Summon dark tentacles that grapple and crush enemies.",
+    "level": 4,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Feather Fall",
+    "description": "Slow the rate of descent for a falling creature.",
+    "level": 1,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Finger of Death",
+    "description": "Deal massive necrotic damage, potentially killing a creature.",
+    "level": 7,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Fireball",
+    "description": "Create a burst of fire that explodes, dealing damage in an area.",
+    "level": 3,
+    "school": "Evocation"
+  },
+  {
+    "name": "Flame Strike",
+    "description": "Summon a column of divine fire to smite enemies.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Floating Disc",
+    "description": "Create a floating, circular plane of force to carry loads.",
+    "level": 1,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Flesh to Stone",
+    "description": "Turn a creature into stone, petrifying them.",
+    "level": 6,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Foresight",
+    "description": "Grant yourself or a willing creature the limited ability to see into the immediate future.",
+    "level": 9,
+    "school": "Divination"
+  },
+  {
+    "name": "Freedom of Movement",
+    "description": "You or a willing creature is no longer affected by difficult terrain. Spells and other magical effects can neither reduce the target's speed nor cause the target to be paralyzed or restrained.",
+    "level": 4,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Hold Monster",
+    "description": "Paralyze a creature, preventing it from taking actions.",
+    "level": 5,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Hold Person",
+    "description": "Paralyze a humanoid, preventing it from taking actions.",
+    "level": 2,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Holy Aura",
+    "description": "Surround yourself with an aura of divine light, granting defensive benefits.",
+    "level": 8,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Holy Smite",
+    "description": "Strike a target with divine power, dealing radiant damage.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Hypnotic Pattern",
+    "description": "Create a pattern of hypnotic lights that charms creatures.",
+    "level": 3,
+    "school": "Illusion"
+  },
+  {
+    "name": "Ice Storm",
+    "description": "Summon a storm of ice that damages and hinders movement.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Identify",
+    "description": "Learn the properties of a magical item or effect.",
+    "level": 1,
+    "school": "Divination"
+  },
+  {
+    "name": "Illusory Dragon",
+    "description": "Create a phantasmal dragon that terrifies and harms enemies.",
+    "level": 8,
+    "school": "Illusion"
+  },
+  {
+    "name": "Immolation",
+    "description": "Engulf a target in magical flames that deal ongoing damage.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Incendiary Cloud",
+    "description": "Create a cloud of smoke and fire that damages creatures within it.",
+    "level": 8,
+    "school": "Evocation"
+  },
+  {
+    "name": "Invisibility",
+    "description": "Turn yourself or another creature invisible.",
+    "level": 2,
+    "school": "Illusion"
+  },
+  {
+    "name": "Invulnerability",
+    "description": "Become immune to all damage for a short duration.",
+    "level": 9,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Legend Lore",
+    "description": "Learn tales and information about a person, place, or object.",
+    "level": 5,
+    "school": "Divination"
+  },
+  {
+    "name": "Levitate",
+    "description": "Cause a creature or object to rise into the air.",
+    "level": 2,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Lightning Bolt",
+    "description": "Shoot a bolt of lightning that damages creatures in its path.",
+    "level": 3,
+    "school": "Evocation"
+  },
+  {
+    "name": "Mage Armor",
+    "description": "Create a magical force that protects you, increasing your AC.",
+    "level": 1,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Mage Hand",
+    "description": "Create a spectral hand that can manipulate objects.",
+    "level": "Cantrip",
+    "school": "Conjuration"
+  },
+  {
+    "name": "Magic Missile",
+    "description": "Shoot unerring bolts of magical force at a target.",
+    "level": 1,
+    "school": "Evocation"
+  },
+  {
+    "name": "Mass Cure Wounds",
+    "description": "Heal multiple creatures within an area.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Mass Heal",
+    "description": "Restore a massive amount of health to multiple creatures.",
+    "level": 9,
+    "school": "Evocation"
+  },
+  {
+    "name": "Mass Suggestion",
+    "description": "Make a compelling suggestion to multiple creatures.",
+    "level": 6,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Meteor Swarm",
+    "description": "Summon four meteors that explode, causing massive damage.",
+    "level": 9,
+    "school": "Evocation"
+  },
+  {
+    "name": "Mind Blank",
+    "description": "Protect a creature from all mind-affecting spells and effects.",
+    "level": 8,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Mirage Arcane",
+    "description": "Create an illusory landscape that seems completely real.",
+    "level": 7,
+    "school": "Illusion"
+  },
+  {
+    "name": "Mirror Image",
+    "description": "Create duplicates of yourself to confuse attackers.",
+    "level": 2,
+    "school": "Illusion"
+  },
+  {
+    "name": "Mislead",
+    "description": "Turn invisible while creating an illusory double.",
+    "level": 5,
+    "school": "Illusion"
+  },
+  {
+    "name": "Mordenkainen's Magnificent Mansion",
+    "description": "Create an extradimensional mansion that you can reside in.",
+    "level": 7,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Mordenkainen's Private Sanctum",
+    "description": "Create a magical barrier that prevents scrying and teleportation.",
+    "level": 4,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Mordenkainen's Sword",
+    "description": "Summon a magical sword that attacks your enemies.",
+    "level": 7,
+    "school": "Evocation"
+  },
+  {
+    "name": "Move Earth",
+    "description": "Reshape dirt, sand, and clay in a large area.",
+    "level": 6,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Power Word Kill",
+    "description": "Instantly kill a creature with 100 hit points or fewer.",
+    "level": 9,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Power Word Stun",
+    "description": "Stun a creature with 150 hit points or fewer.",
+    "level": 8,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Prismatic Spray",
+    "description": "Shoot beams of multicolored light that cause various effects.",
+    "level": 7,
+    "school": "Evocation"
+  },
+  {
+    "name": "Prismatic Wall",
+    "description": "Create a wall of shimmering colors that blocks and harms creatures.",
+    "level": 9,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Raise Dead",
+    "description": "Return a dead creature to life with a significant amount of healing.",
+    "level": 5,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Rary's Telepathic Bond",
+    "description": "Create a telepathic link between willing creatures.",
+    "level": 5,
+    "school": "Divination"
+  },
+  {
+    "name": "Regenerate",
+    "description": "Heal a creature and allow them to regrow lost body parts.",
+    "level": 7,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Resurrection",
+    "description": "Return a dead creature to life with full health.",
+    "level": 7,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Reverse Gravity",
+    "description": "Reverse gravity in an area, causing creatures and objects to fall upwards.",
+    "level": 7,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Sacred Flame",
+    "description": "Summon divine fire to damage an enemy.",
+    "level": "Cantrip",
+    "school": "Evocation"
+  },
+  {
+    "name": "Scorching Ray",
+    "description": "Shoot rays of fire that damage multiple targets.",
+    "level": 2,
+    "school": "Evocation"
+  },
+  {
+    "name": "Scrying",
+    "description": "See and hear a distant location or creature.",
+    "level": 5,
+    "school": "Divination"
+  },
+  {
+    "name": "Shapechange",
+    "description": "Transform into a different creature or object.",
+    "level": 9,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Shield",
+    "description": "Create a magical barrier that increases your AC.",
+    "level": 1,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Shocking Grasp",
+    "description": "Deliver a jolt of electricity to a creature you touch.",
+    "level": "Cantrip",
+    "school": "Evocation"
+  },
+  {
+    "name": "Silence",
+    "description": "Create a zone of silence where no sound can be made.",
+    "level": 2,
+    "school": "Illusion"
+  },
+  {
+    "name": "Simulacrum",
+    "description": "Create an illusory duplicate of a creature.",
+    "level": 7,
+    "school": "Illusion"
+  },
+  {
+    "name": "Sleep",
+    "description": "Put creatures into a magical slumber.",
+    "level": 1,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Slow",
+    "description": "Alter time for up to six creatures, slowing their movements and actions.",
+    "level": 3,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Spider Climb",
+    "description": "Grant a creature the ability to move up walls and across ceilings.",
+    "level": 2,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Spiritual Weapon",
+    "description": "Create a floating, spectral weapon that attacks enemies.",
+    "level": 2,
+    "school": "Evocation"
+  },
+  {
+    "name": "Stinking Cloud",
+    "description": "Create a cloud of nauseating gas that can incapacitate creatures.",
+    "level": 3,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Storm of Vengeance",
+    "description": "Summon a storm that deals various types of damage and impairs enemies.",
+    "level": 9,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Suggestion",
+    "description": "Compel a creature to follow a course of action.",
+    "level": 2,
+    "school": "Enchantment"
+  },
+  {
+    "name": "Sunbeam",
+    "description": "Create a beam of radiant light that damages and blinds creatures.",
+    "level": 6,
+    "school": "Evocation"
+  },
+  {
+    "name": "Sunburst",
+    "description": "Create a blinding flash of radiant light that damages and blinds creatures.",
+    "level": 8,
+    "school": "Evocation"
+  },
+  {
+    "name": "Symbol",
+    "description": "Create a magical glyph that triggers a harmful effect.",
+    "level": 7,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Telekinesis",
+    "description": "Move or manipulate objects and creatures with your mind.",
+    "level": 5,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Teleport",
+    "description": "Instantly transport yourself and up to eight willing creatures to a known location.",
+    "level": 7,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Time Stop",
+    "description": "Briefly stop time for everyone but yourself.",
+    "level": 9,
+    "school": "Transmutation"
+  },
+  {
+    "name": "Tsunami",
+    "description": "Summon a massive wave of water that damages and pushes creatures.",
+    "level": 8,
+    "school": "Conjuration"
+  },
+  {
+    "name": "True Resurrection",
+    "description": "Return a creature to life with all its hit points restored.",
+    "level": 9,
+    "school": "Necromancy"
+  },
+  {
+    "name": "True Seeing",
+    "description": "Grant a creature the ability to see things as they actually are.",
+    "level": 6,
+    "school": "Divination"
+  },
+  {
+    "name": "Vampiric Touch",
+    "description": "Deal necrotic damage to a creature and regain hit points.",
+    "level": 3,
+    "school": "Necromancy"
+  },
+  {
+    "name": "Wall of Fire",
+    "description": "Create a wall of fire that damages creatures within it.",
+    "level": 4,
+    "school": "Evocation"
+  },
+  {
+    "name": "Wall of Force",
+    "description": "Create an invisible wall of force that blocks creatures and objects.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Wall of Ice",
+    "description": "Create a wall of ice that can block movement and deal damage.",
+    "level": 6,
+    "school": "Evocation"
+  },
+  {
+    "name": "Wall of Stone",
+    "description": "Create a wall of stone that can be shaped to your desire.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Warding Bond",
+    "description": "Create a magical bond that protects a creature and shares its damage with you.",
+    "level": 2,
+    "school": "Abjuration"
+  },
+  {
+    "name": "Weird",
+    "description": "Create phantasmal images that terrify and damage creatures.",
+    "level": 9,
+    "school": "Illusion"
+  },
+  {
+    "name": "Wish",
+    "description": "Alter reality to your desire.",
+    "level": 9,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Word of Recall",
+    "description": "Teleport to a designated sanctuary with up to five willing creatures.",
+    "level": 6,
+    "school": "Conjuration"
+  },
+  {
+    "name": "Wrath of Nature",
+    "description": "Call upon the forces of nature to attack your enemies.",
+    "level": 5,
+    "school": "Evocation"
+  },
+  {
+    "name": "Zone of Truth",
+    "description": "Create a zone where creatures cannot lie.",
+    "level": 2,
+    "school": "Enchantment"
+  }
+]
