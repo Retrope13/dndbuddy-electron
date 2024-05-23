@@ -34,6 +34,8 @@ function App() {
   const [WeaponStoreList, setWeaponStoreList] = useState([]);
   const [ArmorStoreList, setArmorStoreList] = useState([]);
   const [SpellStoreList, setSpellStoreList] = useState([]);
+
+  //&The item JSONS
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
   let ArmorStoreJSON = require("./itemFiles/Armor.json");
   let SpellStoreJSON = require("./itemFiles/Spells.json");
@@ -55,18 +57,9 @@ function App() {
       ...prevInventory,
       <div key={item.id}>
         {item.name}
-        {item.damage && (
-          <>
-            {" "}
-            {item.damage} {item.damageType && item.damageType}
-          </>
-        )}
-        {item.price && (
-          <>
-            {" "}
-            {item.AC && item.AC} {item.price}
-          </>
-        )}
+        <button className="StoreButtons" onClick={() => handleInfoClick(item)}>
+          <InfoCircleFill className="infoIcons" />
+        </button>
         <button
           className="InvSellButtons"
           onClick={(event) => handleSellClick(event, item)}
@@ -139,8 +132,7 @@ function App() {
     if (WeaponStoreList.length === 0) {
       const newWeaponStoreList = WeaponFile.map((element, i) => (
         <div className="Item" key={element.name + i}>
-          {element.name} {element.damage} {element.damageType + " "}
-          {element.price}
+          {element.name}
           <button
             className="StoreButtons"
             onClick={() => handleInfoClick(element)}
@@ -163,7 +155,7 @@ function App() {
     if (ArmorStoreList.length === 0) {
       const newArmorStoreList = ArmorFile.map((element, i) => (
         <div className="Item" key={element.name + i}>
-          {element.name} {element.AC} {element.price}
+          {element.name}
           <button
             className="StoreButtons"
             onClick={() => handleInfoClick(element)}
@@ -186,7 +178,7 @@ function App() {
     if (SpellStoreList.length === 0) {
       const newSpellStoreList = SpellFile.map((element, i) => (
         <div className="Item" key={element.name + i}>
-          {element.name} {element.AC} {element.price}
+          {element.name}
           <button
             className="StoreButtons"
             onClick={() => handleInfoClick(element)}
