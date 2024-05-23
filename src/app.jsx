@@ -43,15 +43,15 @@ function App() {
   let CharJSON;
 
   const itemStates = {
-    weapon: [inventoryWeapons, setInventoryWeapons],
-    armor: [inventoryArmor, setInventoryArmor],
-    spell: [inventorySpell, setInventorySpell],
+    weapon: [setInventoryWeapons],
+    armor: [setInventoryArmor],
+    spell: [setInventorySpell],
   };
 
   function addItemToInv(item) {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
-    const [inventory, setInventory] = itemStates[itemType];
+    const [setInventory] = itemStates[itemType];
     //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
     setInventory((prevInventory) => [
       ...prevInventory,
@@ -115,22 +115,23 @@ function App() {
   //I might be able to make all of the read functions into one dynamic one
 
   const itemStoreStates = {
-    WeaponStoreJSON: [inventoryWeapons, setInventoryWeapons],
-    ArmorStoreJSON: [inventoryArmor, setInventoryArmor],
-    SpellStoreJSON: [inventorySpell, setInventorySpell],
+    WeaponStoreJSON: [WeaponStoreList, setWeaponStoreList],
+    ArmorStoreJSON: [ArmorStoreList, setArmorStoreList],
+    SpellStoreJSON: [SpellStoreList, setSpellStoreList],
   };
 
   function readItemFile(itemFile) {
-    //The below is the approach I want to have but instead of changing it so it matches the inventory tab it matches the store tab
-    // let fileType = itemFile == WepaonStoreJSON ? "weapon" : "armor";
-    // fileType = itemFile == SpellStoreJSON ? "spell" : itemType;
-    // const [store, setStore] = itemStoreStates[fileType];
-    //I'm going to check which file it is, then change the storeList that is being modified.
-  }
+    //Figures out which JSON was just passed into the function
+    let JSONFile =
+      itemFile == WeaponStoreJSON ? "WeaponStoreJSON" : "ArmorStoreJSON";
+    JSONFile = itemFile == SpellStoreJSON ? "SpellStoreJSON" : JSONFile;
 
-  function readWeapons(WeaponFile) {
-    if (WeaponStoreList.length === 0) {
-      const newWeaponStoreList = WeaponFile.map((element, i) => (
+    //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
+    const [storeList, setStoreList] = itemStoreStates[JSONFile];
+
+    //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
+    if (storeList.length === 0) {
+      const newStoreList = itemFile.map((element, i) => (
         <div className="Item" key={element.name + i}>
           {element.name}
           <button
@@ -147,59 +148,13 @@ function App() {
           </button>
         </div>
       ));
-      setWeaponStoreList(newWeaponStoreList);
+      setStoreList(newStoreList);
     }
   }
 
-  function readArmor(ArmorFile) {
-    if (ArmorStoreList.length === 0) {
-      const newArmorStoreList = ArmorFile.map((element, i) => (
-        <div className="Item" key={element.name + i}>
-          {element.name}
-          <button
-            className="infoButtons"
-            onClick={() => handleInfoClick(element)}
-          >
-            <InfoCircleFill className="infoIcons" />
-          </button>
-          <button
-            className="infoButtons"
-            onClick={() => handleBuyClick(element)}
-          >
-            Buy
-          </button>
-        </div>
-      ));
-      setArmorStoreList(newArmorStoreList);
-    }
-  }
-
-  function readSpells(SpellFile) {
-    if (SpellStoreList.length === 0) {
-      const newSpellStoreList = SpellFile.map((element, i) => (
-        <div className="Item" key={element.name + i}>
-          {element.name}
-          <button
-            className="infoButtons"
-            onClick={() => handleInfoClick(element)}
-          >
-            <InfoCircleFill className="infoIcons" />
-          </button>
-          <button
-            className="StoreButtons"
-            onClick={() => handleBuyClick(element)}
-          >
-            Buy
-          </button>
-        </div>
-      ));
-      setSpellStoreList(newSpellStoreList);
-    }
-  }
-
-  readWeapons(WeaponStoreJSON);
-  readArmor(ArmorStoreJSON);
-  readSpells(SpellStoreJSON);
+  readItemFile(WeaponStoreJSON);
+  readItemFile(ArmorStoreJSON);
+  readItemFile(SpellStoreJSON);
   return (
     <div id="wrapperDiv">
       <h1>Welcome to the DNDBuddy!</h1>
