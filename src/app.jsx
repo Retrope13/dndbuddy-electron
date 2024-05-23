@@ -52,7 +52,7 @@ function App() {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const [setInventory] = itemStates[itemType];
-    //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
+    //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
     setInventory((prevInventory) => [
       ...prevInventory,
       <div key={item.id}>
@@ -68,8 +68,7 @@ function App() {
         </button>
       </div>,
     ]);
-    setItems(itemType, item); //&I'm really trying to get the player's inventory to be updated when they buy a new weapon.
-    //&I'm not sure whether to have a function that takes the entire set of weapons and adds it to the player or a single weapon and just pushes it.
+    setItems(itemType, item);
   }
 
   function handleSellClick(event, item) {
@@ -81,13 +80,15 @@ function App() {
     setGold(PlayerGold + Number(item.price));
     //I don't think that this is removing the item from the actual inventory, just from the viewport
     parentDiv.remove();
-    removeItem(itemType, item); //^ I don't know how to make this work at the moment
+    removeItem(itemType, item);
   }
 
   function handleBuyClick(element) {
     const PlayerGold = getGold();
-    if (PlayerGold >= Number(element.price) || element.price === undefined) {
+    if (PlayerGold >= Number(element.price)) {
       setGold(PlayerGold - Number(element.price));
+      addItemToInv(element);
+    } else if (element.price == undefined) {
       addItemToInv(element);
     } else if (PlayerGold < Number(element.price)) {
       handleShowGoldModal();
