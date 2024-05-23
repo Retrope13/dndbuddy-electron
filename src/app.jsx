@@ -57,7 +57,7 @@ function App() {
       ...prevInventory,
       <div key={item.id}>
         {item.name}
-        <button className="StoreButtons" onClick={() => handleInfoClick(item)}>
+        <button className="infoButtons" onClick={() => handleInfoClick(item)}>
           <InfoCircleFill className="infoIcons" />
         </button>
         <button
@@ -134,7 +134,7 @@ function App() {
         <div className="Item" key={element.name + i}>
           {element.name}
           <button
-            className="StoreButtons"
+            className="infoButtons"
             onClick={() => handleInfoClick(element)}
           >
             <InfoCircleFill className="infoIcons" />
@@ -157,13 +157,13 @@ function App() {
         <div className="Item" key={element.name + i}>
           {element.name}
           <button
-            className="StoreButtons"
+            className="infoButtons"
             onClick={() => handleInfoClick(element)}
           >
             <InfoCircleFill className="infoIcons" />
           </button>
           <button
-            className="StoreButtons"
+            className="infoButtons"
             onClick={() => handleBuyClick(element)}
           >
             Buy
@@ -180,7 +180,7 @@ function App() {
         <div className="Item" key={element.name + i}>
           {element.name}
           <button
-            className="StoreButtons"
+            className="infoButtons"
             onClick={() => handleInfoClick(element)}
           >
             <InfoCircleFill className="infoIcons" />

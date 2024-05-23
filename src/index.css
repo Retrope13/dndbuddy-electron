@@ -129,11 +129,8 @@ label {
   width: 2em;
 }
 
-.StoreButtons {
-  margin-right: 0px;
-}
-
-.StoreButtons {
+.StoreButtons,
+.infoButtons {
   color: black;
   display: flex;
   justify-content: center;
@@ -144,7 +141,6 @@ label {
   width: 60px;
   height: 38px;
   font-size: 15px;
-  margin-bottom: 10px;
   background-color: #f7f9fb;
   border: none;
   outline: none;
@@ -153,6 +149,11 @@ label {
   &:hover {
     background-color: #dbdada;
   }
+}
+
+.infoButtons {
+  border-radius: 100%;
+  width: 10%;
 }
 
 .InvSellButtons {
