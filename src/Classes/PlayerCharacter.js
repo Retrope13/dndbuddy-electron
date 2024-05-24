@@ -6,12 +6,17 @@ export class PlayerCharacter {
     CharacterClass = "",
     Alignment = "",
     level = "1",
-    stats = [],
     ac = "0",
     weapons = [],
     armors = [],
     spells = [],
-    gold = "0"
+    gold = "0",
+    strength = 0,
+    dexterity = 0,
+    constitution = 0,
+    intelligence = 0,
+    wisdom = 0,
+    charisma = 0
   ) {
     this._PlayerName = PlayerName;
     this._CharacterName = CharacterName;
@@ -19,23 +24,26 @@ export class PlayerCharacter {
     this._CharacterClass = CharacterClass;
     this._Alignment = Alignment;
     this._Level = level;
-    this._Stats = stats;
     this._Ac = ac;
     this._Weapons = weapons;
     this._Armors = armors;
     this._Spells = spells;
     this._Gold = gold;
+    this._Strength = strength;
+    this._Dexterity = dexterity;
+    this._Constitution = constitution;
+    this._Intelligence = intelligence;
+    this._Wisdom = wisdom;
+    this._Charisma = charisma;
   }
 
   //  Player Name getter and setter
   get getPlayerName() {
     return this._PlayerName;
   }
-
   get getPlayerNameString() {
     return `${this._PlayerName}`;
   }
-
   set setPlayerName(newPlayerName) {
     this._PlayerName = newPlayerName;
   }
@@ -44,11 +52,9 @@ export class PlayerCharacter {
   get getCharName() {
     return this._CharacterName;
   }
-
   get getCharNameString() {
     return `${this._CharacterName}`;
   }
-
   set setCharName(newCharName) {
     this._CharacterName = newCharName;
   }
@@ -57,7 +63,6 @@ export class PlayerCharacter {
   get getCharRace() {
     return this._CharacterRace;
   }
-
   set setCharRace(newCharRace) {
     return (this._CharacterRace = newCharRace);
   }
@@ -66,7 +71,6 @@ export class PlayerCharacter {
   get getCharClass() {
     return this._CharacterClass;
   }
-
   set setCharClass(newClass) {
     return (this._CharacterClass = newClass);
   }
@@ -74,7 +78,6 @@ export class PlayerCharacter {
   get getCharAlignment() {
     return this._Alignment;
   }
-
   set setCharAlignment(newCharAlignment) {
     return (this._Alignment = newCharAlignment);
   }
@@ -83,25 +86,64 @@ export class PlayerCharacter {
   get getLevel() {
     return this._Level;
   }
-
   set setLevel(newLevel) {
     return (this._Level = newLevel);
   }
 
-  // stats getter and setter
-  get getStats() {
-    return this._Stats;
+  //^ Stats getters and setters
+
+  //Strength
+  get getStrength() {
+    return this._Strength;
+  }
+  set setStrength(newStrength) {
+    return (this._Strength = newStrength);
   }
 
-  set setStats(newStats) {
-    return (this._Stats = newStats);
+  //Dexterity
+  get getDexterity() {
+    return this._Dexterity;
+  }
+  set setDexterity(newDexterity) {
+    return (this._Dexterity = newDexterity);
+  }
+
+  //Constitution
+  get getConstitution() {
+    return this._Constitution;
+  }
+  set setConstitution(newConstitution) {
+    return (this._Constitution = newConstitution);
+  }
+
+  //Intelligence
+  get getIntelligence() {
+    return this._Intelligence;
+  }
+  set setIntelligence(newIntelligence) {
+    return (this._Intelligence = newIntelligence);
+  }
+
+  //Wisdom
+  get getWisdom() {
+    return this._Wisdom;
+  }
+  set setWisdom(newWisdom) {
+    return (this._Wisdom = newWisdom);
+  }
+
+  //Charisma
+  get getCharisma() {
+    return this._Charisma;
+  }
+  set setCharisma(newCharisma) {
+    return (this._Charisma = newCharisma);
   }
 
   // ac getter and setter
   get getAc() {
     return this._Ac;
   }
-
   set setAc(newAc) {
     return (this._Ac = newAc);
   }
@@ -110,7 +152,6 @@ export class PlayerCharacter {
   get getWeapons() {
     return this._Weapons;
   }
-
   set setWeapons(newWeapons) {
     return (this._Weapons = newWeapons);
   }
@@ -119,7 +160,6 @@ export class PlayerCharacter {
   get getArmors() {
     return this._Armors;
   }
-
   set setArmors(newArmors) {
     return (this._Armors = newArmors);
   }
@@ -128,7 +168,6 @@ export class PlayerCharacter {
   get getSpells() {
     return this._Spells;
   }
-
   set setSpells(newSpells) {
     return (this._Spells = newSpells);
   }
@@ -137,7 +176,6 @@ export class PlayerCharacter {
   get getGold() {
     return this._Gold;
   }
-
   set setGold(newGold) {
     return (this._Gold = newGold);
   }

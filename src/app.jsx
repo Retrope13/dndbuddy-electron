@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import CustomTabs from "./components/CustomTabs"; // Import your custom component
+import CustomTabs from "./components/CustomTabs"; // Import your custom component\
+import { StatBlock } from "./components/StatBlock";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {
@@ -162,6 +163,8 @@ function App() {
       <h1>Welcome to the DNDBuddy!</h1>
       <CharacterContainer />
       <br></br>
+      {/* I want stat block to be to the right of the CharacterContainer but we'll see */}
+      <StatBlock />
       <label>Inventory</label>
       <label>Store</label>
       <div id="CustomTabsDiv">
