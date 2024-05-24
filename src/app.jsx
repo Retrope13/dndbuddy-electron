@@ -43,16 +43,16 @@ function App() {
   let CharJSON;
 
   const itemStates = {
-    weapon: [inventoryWeapons, setInventoryWeapons],
-    armor: [inventoryArmor, setInventoryArmor],
-    spell: [inventorySpell, setInventorySpell],
+    weapon: [setInventoryWeapons],
+    armor: [setInventoryArmor],
+    spell: [setInventorySpell],
   };
 
   function addItemToInv(item) {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
-    const [inventory, setInventory] = itemStates[itemType];
-    //I need to come up with a way to caluclate the number of spaces needed to align all of the damage, prices, etc vertically
+    const [setInventory] = itemStates[itemType];
+    //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
     setInventory((prevInventory) => [
       ...prevInventory,
       <div key={item.id}>
@@ -68,8 +68,8 @@ function App() {
         </button>
       </div>,
     ]);
-    setItems(itemType, item); //&I'm really trying to get the player's inventory to be updated when they buy a new weapon.
-    //&I'm not sure whether to have a function that takes the entire set of weapons and adds it to the player or a single weapon and just pushes it.
+    setItems(itemType, item);
+    console.log(itemType);
   }
 
   function handleSellClick(event, item) {
@@ -81,13 +81,15 @@ function App() {
     setGold(PlayerGold + Number(item.price));
     //I don't think that this is removing the item from the actual inventory, just from the viewport
     parentDiv.remove();
-    removeItem(itemType, item); //^ I don't know how to make this work at the moment
+    removeItem(itemType, item);
   }
 
   function handleBuyClick(element) {
     const PlayerGold = getGold();
-    if (PlayerGold >= Number(element.price) || element.price === undefined) {
+    if (PlayerGold >= Number(element.price)) {
       setGold(PlayerGold - Number(element.price));
+      addItemToInv(element);
+    } else if (element.price == undefined) {
       addItemToInv(element);
     } else if (PlayerGold < Number(element.price)) {
       handleShowGoldModal();
@@ -115,22 +117,23 @@ function App() {
   //I might be able to make all of the read functions into one dynamic one
 
   const itemStoreStates = {
-    WeaponStoreJSON: [inventoryWeapons, setInventoryWeapons],
-    ArmorStoreJSON: [inventoryArmor, setInventoryArmor],
-    SpellStoreJSON: [inventorySpell, setInventorySpell],
+    WeaponStoreJSON: [WeaponStoreList, setWeaponStoreList],
+    ArmorStoreJSON: [ArmorStoreList, setArmorStoreList],
+    SpellStoreJSON: [SpellStoreList, setSpellStoreList],
   };
 
   function readItemFile(itemFile) {
-    //The below is the approach I want to have but instead of changing it so it matches the inventory tab it matches the store tab
-    // let fileType = itemFile == WepaonStoreJSON ? "weapon" : "armor";
-    // fileType = itemFile == SpellStoreJSON ? "spell" : itemType;
-    // const [store, setStore] = itemStoreStates[fileType];
-    //I'm going to check which file it is, then change the storeList that is being modified.
-  }
+    //Figures out which JSON was just passed into the function
+    let JSONFile =
+      itemFile == WeaponStoreJSON ? "WeaponStoreJSON" : "ArmorStoreJSON";
+    JSONFile = itemFile == SpellStoreJSON ? "SpellStoreJSON" : JSONFile;
 
-  function readWeapons(WeaponFile) {
-    if (WeaponStoreList.length === 0) {
-      const newWeaponStoreList = WeaponFile.map((element, i) => (
+    //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
+    const [storeList, setStoreList] = itemStoreStates[JSONFile];
+
+    //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
+    if (storeList.length === 0) {
+      const newStoreList = itemFile.map((element, i) => (
         <div className="Item" key={element.name + i}>
           {element.name}
           <button
@@ -147,59 +150,13 @@ function App() {
           </button>
         </div>
       ));
-      setWeaponStoreList(newWeaponStoreList);
+      setStoreList(newStoreList);
     }
   }
 
-  function readArmor(ArmorFile) {
-    if (ArmorStoreList.length === 0) {
-      const newArmorStoreList = ArmorFile.map((element, i) => (
-        <div className="Item" key={element.name + i}>
-          {element.name}
-          <button
-            className="infoButtons"
-            onClick={() => handleInfoClick(element)}
-          >
-            <InfoCircleFill className="infoIcons" />
-          </button>
-          <button
-            className="infoButtons"
-            onClick={() => handleBuyClick(element)}
-          >
-            Buy
-          </button>
-        </div>
-      ));
-      setArmorStoreList(newArmorStoreList);
-    }
-  }
-
-  function readSpells(SpellFile) {
-    if (SpellStoreList.length === 0) {
-      const newSpellStoreList = SpellFile.map((element, i) => (
-        <div className="Item" key={element.name + i}>
-          {element.name}
-          <button
-            className="infoButtons"
-            onClick={() => handleInfoClick(element)}
-          >
-            <InfoCircleFill className="infoIcons" />
-          </button>
-          <button
-            className="StoreButtons"
-            onClick={() => handleBuyClick(element)}
-          >
-            Buy
-          </button>
-        </div>
-      ));
-      setSpellStoreList(newSpellStoreList);
-    }
-  }
-
-  readWeapons(WeaponStoreJSON);
-  readArmor(ArmorStoreJSON);
-  readSpells(SpellStoreJSON);
+  readItemFile(WeaponStoreJSON);
+  readItemFile(ArmorStoreJSON);
+  readItemFile(SpellStoreJSON);
   return (
     <div id="wrapperDiv">
       <h1>Welcome to the DNDBuddy!</h1>

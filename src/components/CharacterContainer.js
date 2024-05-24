@@ -18,7 +18,6 @@ export function setGold(newGold) {
 
 //& This is the function that it meant to add items to the player's inventory on the backend.
 export function setItems(itemType, item) {
-  console.log(item);
   if (itemType == "weapon") {
     playerCharacterInstance._Weapons.push(item);
   } else if (itemType == "armor") {
