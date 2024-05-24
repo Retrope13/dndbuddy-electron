@@ -4,7 +4,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 
-const playerCharacterInstance = new PlayerCharacter();
+export const playerCharacterInstance = new PlayerCharacter();
 
 export function getGold() {
   return playerCharacterInstance._Gold;
