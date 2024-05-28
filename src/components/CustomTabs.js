@@ -1,9 +1,8 @@
-// CustomTabs.js
 import React, { useState } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
-function CustomTabs({ weapons, armor, spells }) {
+function CustomTabs({ weapons, armor, spells, equiped }) {
   const [key, setKey] = useState("home");
 
   return (
@@ -23,6 +22,11 @@ function CustomTabs({ weapons, armor, spells }) {
         <Tab id="spells-tab" eventKey="spells" title="Spells">
           <div className="tabContent">{spells}</div>
         </Tab>
+        {equiped && (
+          <Tab id="equiped-tab" eventKey="equiped" title="Equiped">
+            <div className="tabContent">{equiped}</div>
+          </Tab>
+        )}
       </Tabs>
     </div>
   );
