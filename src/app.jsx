@@ -4,6 +4,8 @@ import CustomTabs from "./components/CustomTabs"; // Import your custom componen
 import { StatBlock } from "./components/StatBlock";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import {
   CharacterContainer,
   getGold,
@@ -19,9 +21,11 @@ function App() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
   const [inventorySpell, setInventorySpell] = useState([]);
+  const [inventoryEquiped, setInventoryEquiped] = useState([]);
   //&These are the state variables for modal visibility
   const [showGoldModal, setShowGoldModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
+  const [equipChecked, setEquipChecked] = useState(false);
   //&These are the state variables for the information modal details
   const [elementName, setElementName] = useState("");
   const [elementDescription, setElementDescription] = useState("");
@@ -43,12 +47,15 @@ function App() {
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
 
+  const [isChecked, setIsChecked] = useState(false);
+
   const itemStates = {
     weapon: [setInventoryWeapons],
     armor: [setInventoryArmor],
     spell: [setInventorySpell],
   };
 
+  //Add the HTML to display the item in the correct inv
   function addItemToInv(item) {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
@@ -67,12 +74,17 @@ function App() {
         >
           Sell
         </button>
+        <Form.Check
+          aria-label="Checkbox"
+          //I'm looking for a way to make this uncheck itself when a user unequips an item
+          onChange={(event) => handleEquip(event, item)}
+        />
       </div>,
     ]);
     setItems(itemType, item);
-    console.log(itemType);
   }
 
+  //When a player sells any type of item
   function handleSellClick(event, item) {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
@@ -85,6 +97,7 @@ function App() {
     removeItem(itemType, item);
   }
 
+  //When a player buys an item from any store
   function handleBuyClick(element) {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
@@ -97,6 +110,7 @@ function App() {
     }
   }
 
+  //Handle when user clicks the info icon
   function handleInfoClick(element) {
     setElementName(element.name);
     setElementDescription(element.description);
@@ -107,6 +121,43 @@ function App() {
     setElementPrice(element.price);
     setElementAC(element.AC);
     handleShowInfoModal();
+  }
+
+  //Add item to equiped tab
+  function handleEquip(parentEvent, item) {
+    console.log(parentEvent.target.checked);
+    if (parentEvent.target.checked) {
+      setEquipChecked(true);
+      setInventoryEquiped((prevEquiped) => [
+        ...prevEquiped,
+        <div key={item.id}>
+          {item.name}
+          <button className="infoButtons" onClick={() => handleInfoClick(item)}>
+            <InfoCircleFill className="infoIcons" />
+          </button>
+          <button
+            className="InvSellButtons"
+            onClick={(event) => handleSellClick(event, item)}
+          >
+            Sell
+          </button>
+          <Form.Check
+            aria-label="Checkbox"
+            checked={event.target.checked}
+            onChange={(event) => handleUnequip(event, parentEvent)}
+          />
+        </div>,
+      ]);
+    } else {
+      handleUnequip(event);
+    }
+  }
+
+  function handleUnequip(event, parentEvent) {
+    const parentCheckbox = event.currentTarget.parentElement;
+    const grandParentEquipedItem = parentCheckbox.parentElement;
+    grandParentEquipedItem.remove();
+    console.log(parentEvent.currentTarget.checked);
   }
 
   const handleCloseGoldModal = () => setShowGoldModal(false);
@@ -174,6 +225,7 @@ function App() {
           weapons={inventoryWeapons}
           armor={inventoryArmor}
           spells={inventorySpell}
+          equiped={inventoryEquiped}
         />
 
         {/* Store */}
