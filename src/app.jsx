@@ -9,12 +9,20 @@ import Form from "react-bootstrap/Form";
 import {
   CharacterContainer,
   getGold,
+  playerCharacterInstance,
   removeItem,
   setGold,
   setItems,
 } from "./components/CharacterContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
+
+export default function addItemsFromImport() {
+  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
+    console.log(playerCharacterInstance._Weapons.length);
+    addItemToInv(playerCharacterInstance._Weapons[i], false);
+  }
+}
 
 function App() {
   //&These are the state variables for inventories
@@ -86,7 +94,7 @@ function App() {
   }
 
   //Add the HTML to display the item in the correct inv
-  function addItemToInv(item) {
+  function addItemToInv(item, bought = true) {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const [setInventory] = itemStates[itemType];
@@ -110,7 +118,9 @@ function App() {
         />
       </div>,
     ]);
-    setItems(itemType, item);
+    if (bought) {
+      setItems(itemType, item);
+    }
   }
 
   //Handle when user clicks the info icon
