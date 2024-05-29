@@ -46,18 +46,16 @@ export function removeItem(itemType, item) {
 
 export function CharacterContainer() {
   const [showFileModal, setShowFileModal] = useState(false);
-
   const handleCloseFileModal = () => setShowFileModal(false);
   const handleShowFileModal = () => setShowFileModal(true);
 
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
-    const placeholder = event.target.placeholder;
     const value = event.target.value;
+    const placeholder = event.target.placeholder;
     //Uses the placeholder variable to call setter functions to change the value of the member variable
     playerCharacterInstance[`_${placeholder}`] = value;
-    console.log(playerCharacterInstance);
   }
 
   function createJSON() {
@@ -89,12 +87,12 @@ export function CharacterContainer() {
       const type = file.type;
       if (type == "application/json") {
         var reader = new FileReader();
-        //Wait for reader to load, then parse the json object, then convert it to a string
+        //Wait for reader to load, then parse the json object, then update the attributes of the playerCharacterInstance
         reader.onload = function (event) {
           var jsonObj = JSON.parse(event.target.result);
 
           playerCharacterInstance.updateCharacterData(jsonObj);
-          console.log(playerCharacterInstance.getArmors);
+          updateFormValues();
         };
         reader.readAsText(file);
       } else {
@@ -102,6 +100,16 @@ export function CharacterContainer() {
       }
     } else {
       handleShowFileModal();
+    }
+  }
+
+  function updateFormValues() {
+    //I'm really proud of this. I didn't really look anything up - it iterates through all of the results for controlForms which are all
+    //of the sections with text and number slots and changes the value of each one depending on their placeholder value
+    const allForms = document.getElementsByClassName("controlForms");
+    for (let i = 0; i < allForms.length; i++) {
+      const placeholder = allForms[i].placeholder;
+      allForms[i].value = playerCharacterInstance[`_${placeholder}`];
     }
   }
 
