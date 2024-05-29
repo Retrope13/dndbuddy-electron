@@ -47,8 +47,6 @@ function App() {
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
 
-  const [isChecked, setIsChecked] = useState(false);
-
   const itemStates = {
     weapon: [setInventoryWeapons],
     armor: [setInventoryArmor],
@@ -76,38 +74,11 @@ function App() {
         </button>
         <Form.Check
           aria-label="Checkbox"
-          //I'm looking for a way to make this uncheck itself when a user unequips an item
           onChange={(event) => handleEquip(event, item)}
         />
       </div>,
     ]);
     setItems(itemType, item);
-  }
-
-  //When a player sells any type of item
-  function handleSellClick(event, item) {
-    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
-    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
-    const button = event.target;
-    const parentDiv = button.parentElement;
-    const PlayerGold = getGold();
-    setGold(PlayerGold + Number(item.price));
-    //I don't think that this is removing the item from the actual inventory, just from the viewport
-    parentDiv.remove();
-    removeItem(itemType, item);
-  }
-
-  //When a player buys an item from any store
-  function handleBuyClick(element) {
-    const PlayerGold = getGold();
-    if (PlayerGold >= Number(element.price)) {
-      setGold(PlayerGold - Number(element.price));
-      addItemToInv(element);
-    } else if (element.price == undefined) {
-      addItemToInv(element);
-    } else if (PlayerGold < Number(element.price)) {
-      handleShowGoldModal();
-    }
   }
 
   //Handle when user clicks the info icon
@@ -123,10 +94,21 @@ function App() {
     handleShowInfoModal();
   }
 
+  //When a player sells any type of item
+  function handleSellClick(event, item) {
+    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
+    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
+    const button = event.target;
+    const parentDiv = button.parentElement;
+    const PlayerGold = getGold();
+    setGold(PlayerGold + Number(item.price));
+    parentDiv.remove();
+    removeItem(itemType, item);
+  }
+
   //Add item to equiped tab
   function handleEquip(parentEvent, item) {
-    console.log(parentEvent.target.checked);
-    if (parentEvent.target.checked) {
+    if (parentEvent.currentTarget.checked) {
       setEquipChecked(true);
       setInventoryEquiped((prevEquiped) => [
         ...prevEquiped,
@@ -143,21 +125,48 @@ function App() {
           </button>
           <Form.Check
             aria-label="Checkbox"
-            checked={event.target.checked}
+            checked={parentEvent.target.checked}
             onChange={(event) => handleUnequip(event, parentEvent)}
           />
         </div>,
       ]);
     } else {
-      handleUnequip(event);
+      if (inventoryEquiped) {
+        setInventoryEquiped((prevEquiped) => {
+          // Check if the item exists in the array
+          const itemExists = prevEquiped.some((i) => i.id === item.id);
+          if (itemExists) {
+            console.warn(
+              `Item with id ${item.id} not found in inventoryEquiped.`
+            );
+            prevEquiped.filter((i) => i.id !== item.id);
+          }
+        });
+      }
     }
   }
 
   function handleUnequip(event, parentEvent) {
+    parentEvent.target.checked = false;
     const parentCheckbox = event.currentTarget.parentElement;
     const grandParentEquipedItem = parentCheckbox.parentElement;
-    grandParentEquipedItem.remove();
-    console.log(parentEvent.currentTarget.checked);
+    try {
+      grandParentEquipedItem.remove();
+    } catch {}
+  }
+
+  //When a player buys an item from any store
+  function handleBuyClick(element) {
+    const PlayerGold = getGold();
+    if (PlayerGold >= Number(element.price)) {
+      //&I need to check if PlayerGold is undefined. The modal isn't popping up after selecting a spell. IDK it's weird
+      setGold(PlayerGold - Number(element.price));
+      addItemToInv(element);
+    } else if (element.price == undefined) {
+      addItemToInv(element);
+    } else if (PlayerGold < Number(element.price)) {
+      handleShowGoldModal();
+    }
   }
 
   const handleCloseGoldModal = () => setShowGoldModal(false);
@@ -165,8 +174,6 @@ function App() {
 
   const handleCloseInfoModal = () => setShowInfoModal(false);
   const handleShowInfoModal = () => setShowInfoModal(true);
-
-  //I might be able to make all of the read functions into one dynamic one
 
   const itemStoreStates = {
     WeaponStoreJSON: [WeaponStoreList, setWeaponStoreList],
