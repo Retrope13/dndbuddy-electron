@@ -5,10 +5,11 @@ import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import addItemsFromImport from "../app.jsx";
 
 export const playerCharacterInstance = new PlayerCharacter();
 
-//!These need to be extended scope so I can use them in app.jsx. There's probably a better way of doing this but I don't now it
+//!These need to be extended scope so I can use them in app.jsx. There's probably a better way of doing this but I don't know it
 export function getGold() {
   return playerCharacterInstance._Gold;
 }
@@ -111,6 +112,8 @@ export function CharacterContainer() {
       const placeholder = allForms[i].placeholder;
       allForms[i].value = playerCharacterInstance[`_${placeholder}`];
     }
+    addItemsFromImport();
+    console.log(playerCharacterInstance);
   }
 
   return (
