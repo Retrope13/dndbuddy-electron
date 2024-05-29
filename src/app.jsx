@@ -109,7 +109,6 @@ function App() {
   //Add item to equiped tab
   function handleEquip(parentEvent, item) {
     if (parentEvent.currentTarget.checked) {
-      setEquipChecked(true);
       setInventoryEquiped((prevEquiped) => [
         ...prevEquiped,
         <div key={item.id}>
@@ -117,53 +116,45 @@ function App() {
           <button className="infoButtons" onClick={() => handleInfoClick(item)}>
             <InfoCircleFill className="infoIcons" />
           </button>
-          <button
-            className="InvSellButtons"
-            onClick={(event) => handleSellClick(event, item)}
-          >
-            Sell
-          </button>
           <Form.Check
             aria-label="Checkbox"
             checked={parentEvent.target.checked}
-            onChange={(event) => handleUnequip(event, parentEvent)}
+            onChange={(event) => handleUnequip(event, parentEvent, item)}
           />
         </div>,
       ]);
     } else {
-      if (inventoryEquiped) {
-        setInventoryEquiped((prevEquiped) => {
-          // Check if the item exists in the array
-          const itemExists = prevEquiped.some((i) => i.id === item.id);
-          if (itemExists) {
-            console.warn(
-              `Item with id ${item.id} not found in inventoryEquiped.`
-            );
-            prevEquiped.filter((i) => i.id !== item.id);
-          }
-        });
-      }
+      handleUnequip(event, parentEvent, item);
     }
   }
 
-  function handleUnequip(event, parentEvent) {
+  function handleUnequip(event, parentEvent, item) {
     parentEvent.target.checked = false;
-    const parentCheckbox = event.currentTarget.parentElement;
-    const grandParentEquipedItem = parentCheckbox.parentElement;
-    try {
-      grandParentEquipedItem.remove();
-    } catch {}
+    if (inventoryEquiped.length != 0) {
+      setInventoryEquiped((prevEquiped) => {
+        // Check if the item exists in the array
+        const itemExists = prevEquiped.some((i) => i.id === item.id);
+        if (itemExists) {
+          console.warn(
+            `Item with id ${item.id} not found in inventoryEquiped.`
+          );
+          prevEquiped.filter((i) => i.id !== item.id);
+        }
+      });
+    } else if (inventoryEquiped) {
+      setInventoryEquiped([]);
+    }
   }
 
   //When a player buys an item from any store
   function handleBuyClick(element) {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
-      //&I need to check if PlayerGold is undefined. The modal isn't popping up after selecting a spell. IDK it's weird
       setGold(PlayerGold - Number(element.price));
       addItemToInv(element);
     } else if (element.price == undefined) {
       addItemToInv(element);
+      setGold(PlayerGold);
     } else if (PlayerGold < Number(element.price)) {
       handleShowGoldModal();
     }
