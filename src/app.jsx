@@ -55,12 +55,6 @@ function App() {
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
 
-  const itemStates = {
-    weapon: [setInventoryWeapons],
-    armor: [setInventoryArmor],
-    spell: [setInventorySpell],
-  };
-
   function readItemFile(itemFile) {
     //Figures out which JSON was just passed into the function
     let JSONFile =
@@ -95,6 +89,11 @@ function App() {
 
   //Add the HTML to display the item in the correct inv
   function addItemToInv(item, bought = true) {
+    const itemStates = {
+      weapon: [setInventoryWeapons],
+      armor: [setInventoryArmor],
+      spell: [setInventorySpell],
+    };
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const [setInventory] = itemStates[itemType];
