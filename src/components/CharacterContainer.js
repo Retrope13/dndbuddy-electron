@@ -50,9 +50,6 @@ export function CharacterContainer() {
   const handleCloseFileModal = () => setShowFileModal(false);
   const handleShowFileModal = () => setShowFileModal(true);
 
-  const fileInput = document.getElementById("PCFileInput");
-  let selectedFile;
-
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
@@ -85,25 +82,27 @@ export function CharacterContainer() {
     URL.revokeObjectURL(url);
   }
 
-  function importJSON() {
+  async function importJSON() {
     const fileInput = document.getElementById("PCFileInput");
-    const type = fileInput.files[0].type;
-    const fileContent = "";
-    if (type === "application/json") {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const content = e.target.result;
-        fileContent = content;
-      };
-      console.log(fileContent);
+    if (fileInput.value) {
+      const file = fileInput.files[0];
+      const type = file.type;
+      if (type == "application/json") {
+        var reader = new FileReader();
+        //Wait for reader to load, then parse the json object, then convert it to a string
+        reader.onload = function (event) {
+          var jsonObj = JSON.parse(event.target.result);
+
+          playerCharacterInstance.updateCharacterData(jsonObj);
+          console.log(playerCharacterInstance.getArmors);
+        };
+        reader.readAsText(file);
+      } else {
+        handleShowFileModal();
+      }
     } else {
       handleShowFileModal();
     }
-  }
-
-  function handleFileChange(event) {
-    selectedFile = event.target.files[0];
-    console.log(selectedFile);
   }
 
   return (
@@ -204,12 +203,7 @@ export function CharacterContainer() {
           <button type="submit" className="CharBtn" onClick={createJSON}>
             Save
           </button>
-          <input
-            type="file"
-            id="PCFileInput"
-            accept="application/json"
-            onChange={handleFileChange}
-          ></input>
+          <input type="file" id="PCFileInput" accept="application/json"></input>
           <button className="CharBtn" onClick={importJSON}></button>
         </div>
       </div>
