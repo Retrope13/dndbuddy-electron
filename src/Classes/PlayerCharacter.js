@@ -197,6 +197,10 @@ export class PlayerCharacter {
       gold: this._Gold,
     };
   }
+
+  updateCharacterData(data) {
+    this._Armors = data._Armors;
+  }
 }
 
 export default PlayerCharacter;
