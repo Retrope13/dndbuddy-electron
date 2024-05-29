@@ -17,14 +17,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
-export default function addItemsFromImport() {
-  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
-    console.log(playerCharacterInstance._Weapons.length);
-    addItemToInv(playerCharacterInstance._Weapons[i], false);
-  }
-}
-
-function App() {
+function DNDBuddy() {
   //&These are the state variables for inventories
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
@@ -315,4 +308,4 @@ function App() {
 }
 
 // Render the dynamic component
-ReactDOM.render(<App />, document.body);
+ReactDOM.render(<DNDBuddy />, document.body);
