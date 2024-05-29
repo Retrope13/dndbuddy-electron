@@ -199,7 +199,23 @@ export class PlayerCharacter {
   }
 
   updateCharacterData(data) {
+    this._PlayerName = data._PlayerName;
+    this._CharacterName = data._CharacterName;
+    this._CharacterRace = data._CharacterRace;
+    this._CharacterClass = data._CharacterClass;
+    this._Alignment = data._Alignment;
+    this._Level = data._Level;
+    this._Ac = data._AC;
+    this._Weapons = data._Weapons;
     this._Armors = data._Armors;
+    this._Spells = data._Spells;
+    this._Gold = data._Gold;
+    this._Strength = data._Strength;
+    this._Dexterity = data._Dexterity;
+    this._Constitution = data._Constitution;
+    this._Intelligence = data._Intelligence;
+    this._Wisdom = data._Wisdom;
+    this._Charisma = data._Charisma;
   }
 }
 
