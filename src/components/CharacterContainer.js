@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 
 export const playerCharacterInstance = new PlayerCharacter();
 
+//!These need to be extended scope so I can use them in app.jsx. There's probably a better way of doing this but I don't now it
 export function getGold() {
   return playerCharacterInstance._Gold;
 }
@@ -42,6 +45,14 @@ export function removeItem(itemType, item) {
 }
 
 export function CharacterContainer() {
+  const [showFileModal, setShowFileModal] = useState(false);
+
+  const handleCloseFileModal = () => setShowFileModal(false);
+  const handleShowFileModal = () => setShowFileModal(true);
+
+  const fileInput = document.getElementById("PCFileInput");
+  let selectedFile;
+
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
@@ -74,9 +85,46 @@ export function CharacterContainer() {
     URL.revokeObjectURL(url);
   }
 
+  function importJSON() {
+    const fileInput = document.getElementById("PCFileInput");
+    const type = fileInput.files[0].type;
+    const fileContent = "";
+    if (type === "application/json") {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const content = e.target.result;
+        fileContent = content;
+      };
+      console.log(fileContent);
+    } else {
+      handleShowFileModal();
+    }
+  }
+
+  function handleFileChange(event) {
+    selectedFile = event.target.files[0];
+    console.log(selectedFile);
+  }
+
   return (
     <div id="wrapperDiv">
       <div id="flexContainer">
+        <Modal show={showFileModal} onHide={handleCloseFileModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Oopsies!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>
+              I can only accept JSON files! Make sure you clicked the right
+              file!
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseFileModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
         {/* These floating labels are what allow the input fields to shrink the placeholder text */}
         <FloatingLabel
           controlId="floatingInput"
@@ -156,9 +204,13 @@ export function CharacterContainer() {
           <button type="submit" className="CharBtn" onClick={createJSON}>
             Save
           </button>
-          <button type="submit" className="CharBtn">
-            Import
-          </button>
+          <input
+            type="file"
+            id="PCFileInput"
+            accept="application/json"
+            onChange={handleFileChange}
+          ></input>
+          <button className="CharBtn" onClick={importJSON}></button>
         </div>
       </div>
     </div>
