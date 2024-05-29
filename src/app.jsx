@@ -5,7 +5,7 @@ import { StatBlock } from "./components/StatBlock";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+
 import {
   CharacterContainer,
   getGold,
@@ -52,6 +52,38 @@ function App() {
     armor: [setInventoryArmor],
     spell: [setInventorySpell],
   };
+
+  function readItemFile(itemFile) {
+    //Figures out which JSON was just passed into the function
+    let JSONFile =
+      itemFile == WeaponStoreJSON ? "WeaponStoreJSON" : "ArmorStoreJSON";
+    JSONFile = itemFile == SpellStoreJSON ? "SpellStoreJSON" : JSONFile;
+
+    //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
+    const [storeList, setStoreList] = itemStoreStates[JSONFile];
+
+    //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
+    if (storeList.length === 0) {
+      const newStoreList = itemFile.map((element, i) => (
+        <div className="Item" key={element.name + i}>
+          {element.name}
+          <button
+            className="infoButtons"
+            onClick={() => handleInfoClick(element)}
+          >
+            <InfoCircleFill className="infoIcons" />
+          </button>
+          <button
+            className="StoreButtons"
+            onClick={() => handleBuyClick(element)}
+          >
+            Buy
+          </button>
+        </div>
+      ));
+      setStoreList(newStoreList);
+    }
+  }
 
   //Add the HTML to display the item in the correct inv
   function addItemToInv(item) {
@@ -171,38 +203,6 @@ function App() {
     ArmorStoreJSON: [ArmorStoreList, setArmorStoreList],
     SpellStoreJSON: [SpellStoreList, setSpellStoreList],
   };
-
-  function readItemFile(itemFile) {
-    //Figures out which JSON was just passed into the function
-    let JSONFile =
-      itemFile == WeaponStoreJSON ? "WeaponStoreJSON" : "ArmorStoreJSON";
-    JSONFile = itemFile == SpellStoreJSON ? "SpellStoreJSON" : JSONFile;
-
-    //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
-    const [storeList, setStoreList] = itemStoreStates[JSONFile];
-
-    //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
-    if (storeList.length === 0) {
-      const newStoreList = itemFile.map((element, i) => (
-        <div className="Item" key={element.name + i}>
-          {element.name}
-          <button
-            className="infoButtons"
-            onClick={() => handleInfoClick(element)}
-          >
-            <InfoCircleFill className="infoIcons" />
-          </button>
-          <button
-            className="StoreButtons"
-            onClick={() => handleBuyClick(element)}
-          >
-            Buy
-          </button>
-        </div>
-      ));
-      setStoreList(newStoreList);
-    }
-  }
 
   readItemFile(WeaponStoreJSON);
   readItemFile(ArmorStoreJSON);
