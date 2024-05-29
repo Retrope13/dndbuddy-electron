@@ -104,6 +104,19 @@ export function CharacterContainer() {
     }
   }
 
+  //&This isn't working right now because I am getting faced with some circular imports that can't really be solved
+  function addItemsFromImport() {
+    for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
+      addItemToInv(playerCharacterInstance._Weapons[i], false);
+    }
+    for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
+      addItemToInv(playerCharacterInstance._Armors[i], false);
+    }
+    for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
+      addItemToInv(playerCharacterInstance._Spells[i], false);
+    }
+  }
+
   function updateFormValues() {
     //I'm really proud of this. I didn't really look anything up - it iterates through all of the results for controlForms which are all
     //of the sections with text and number slots and changes the value of each one depending on their placeholder value
@@ -112,7 +125,8 @@ export function CharacterContainer() {
       const placeholder = allForms[i].placeholder;
       allForms[i].value = playerCharacterInstance[`_${placeholder}`];
     }
-    addItemsFromImport();
+    //I want this to add the items to the player's inventory but I keep getting issues with importing functions and hook failures
+    //addItemsFromImport()
     console.log(playerCharacterInstance);
   }
 
