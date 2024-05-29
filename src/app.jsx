@@ -4,6 +4,8 @@ import CustomTabs from "./components/CustomTabs"; // Import your custom componen
 import { StatBlock } from "./components/StatBlock";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
 import {
   CharacterContainer,
   getGold,
@@ -19,9 +21,11 @@ function App() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
   const [inventorySpell, setInventorySpell] = useState([]);
+  const [inventoryEquiped, setInventoryEquiped] = useState([]);
   //&These are the state variables for modal visibility
   const [showGoldModal, setShowGoldModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
+  const [equipChecked, setEquipChecked] = useState(false);
   //&These are the state variables for the information modal details
   const [elementName, setElementName] = useState("");
   const [elementDescription, setElementDescription] = useState("");
@@ -49,6 +53,7 @@ function App() {
     spell: [setInventorySpell],
   };
 
+  //Add the HTML to display the item in the correct inv
   function addItemToInv(item) {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
@@ -67,36 +72,16 @@ function App() {
         >
           Sell
         </button>
+        <Form.Check
+          aria-label="Checkbox"
+          onChange={(event) => handleEquip(event, item)}
+        />
       </div>,
     ]);
     setItems(itemType, item);
-    console.log(itemType);
   }
 
-  function handleSellClick(event, item) {
-    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
-    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
-    const button = event.target;
-    const parentDiv = button.parentElement;
-    const PlayerGold = getGold();
-    setGold(PlayerGold + Number(item.price));
-    //I don't think that this is removing the item from the actual inventory, just from the viewport
-    parentDiv.remove();
-    removeItem(itemType, item);
-  }
-
-  function handleBuyClick(element) {
-    const PlayerGold = getGold();
-    if (PlayerGold >= Number(element.price)) {
-      setGold(PlayerGold - Number(element.price));
-      addItemToInv(element);
-    } else if (element.price == undefined) {
-      addItemToInv(element);
-    } else if (PlayerGold < Number(element.price)) {
-      handleShowGoldModal();
-    }
-  }
-
+  //Handle when user clicks the info icon
   function handleInfoClick(element) {
     setElementName(element.name);
     setElementDescription(element.description);
@@ -109,13 +94,77 @@ function App() {
     handleShowInfoModal();
   }
 
+  //When a player sells any type of item
+  function handleSellClick(event, item) {
+    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
+    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
+    const button = event.target;
+    const parentDiv = button.parentElement;
+    const PlayerGold = getGold();
+    setGold(PlayerGold + Number(item.price));
+    parentDiv.remove();
+    removeItem(itemType, item);
+  }
+
+  //Add item to equiped tab
+  function handleEquip(parentEvent, item) {
+    if (parentEvent.currentTarget.checked) {
+      setInventoryEquiped((prevEquiped) => [
+        ...prevEquiped,
+        <div key={item.id}>
+          {item.name}
+          <button className="infoButtons" onClick={() => handleInfoClick(item)}>
+            <InfoCircleFill className="infoIcons" />
+          </button>
+          <Form.Check
+            aria-label="Checkbox"
+            checked={parentEvent.target.checked}
+            onChange={(event) => handleUnequip(event, parentEvent, item)}
+          />
+        </div>,
+      ]);
+    } else {
+      handleUnequip(event, parentEvent, item);
+    }
+  }
+
+  function handleUnequip(event, parentEvent, item) {
+    parentEvent.target.checked = false;
+    if (inventoryEquiped.length != 0) {
+      setInventoryEquiped((prevEquiped) => {
+        // Check if the item exists in the array
+        const itemExists = prevEquiped.some((i) => i.id === item.id);
+        if (itemExists) {
+          console.warn(
+            `Item with id ${item.id} not found in inventoryEquiped.`
+          );
+          prevEquiped.filter((i) => i.id !== item.id);
+        }
+      });
+    } else if (inventoryEquiped) {
+      setInventoryEquiped([]);
+    }
+  }
+
+  //When a player buys an item from any store
+  function handleBuyClick(element) {
+    const PlayerGold = getGold();
+    if (PlayerGold >= Number(element.price)) {
+      setGold(PlayerGold - Number(element.price));
+      addItemToInv(element);
+    } else if (element.price == undefined) {
+      addItemToInv(element);
+      setGold(PlayerGold);
+    } else if (PlayerGold < Number(element.price)) {
+      handleShowGoldModal();
+    }
+  }
+
   const handleCloseGoldModal = () => setShowGoldModal(false);
   const handleShowGoldModal = () => setShowGoldModal(true);
 
   const handleCloseInfoModal = () => setShowInfoModal(false);
   const handleShowInfoModal = () => setShowInfoModal(true);
-
-  //I might be able to make all of the read functions into one dynamic one
 
   const itemStoreStates = {
     WeaponStoreJSON: [WeaponStoreList, setWeaponStoreList],
@@ -174,6 +223,7 @@ function App() {
           weapons={inventoryWeapons}
           armor={inventoryArmor}
           spells={inventorySpell}
+          equiped={inventoryEquiped}
         />
 
         {/* Store */}
