@@ -91,6 +91,7 @@ export function CharacterContainer() {
         //Wait for reader to load, then parse the json object, then update the attributes of the playerCharacterInstance
         reader.onload = function (event) {
           var jsonObj = JSON.parse(event.target.result);
+          playerCharacterInstance._Weapons = [];
 
           playerCharacterInstance.updateCharacterData(jsonObj);
           updateFormValues();
@@ -112,7 +113,6 @@ export function CharacterContainer() {
       const placeholder = allForms[i].placeholder;
       allForms[i].value = playerCharacterInstance[`_${placeholder}`];
     }
-    //I want this to add the items to the player's inventory but I keep getting issues with importing functions and hook failures
     addItemsFromImport();
     console.log(playerCharacterInstance);
   }
@@ -207,6 +207,7 @@ export function CharacterContainer() {
             className="controlForms"
             type="number"
             placeholder="Gold"
+            defaultValue={0}
             id="goldInput"
             onChange={handleChange}
           />
