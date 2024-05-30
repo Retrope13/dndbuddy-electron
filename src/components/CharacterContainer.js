@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import addItemsFromImport from "../app.jsx";
+import addItemToInv from "../app";
 
 export const playerCharacterInstance = new PlayerCharacter();
 
@@ -126,7 +126,7 @@ export function CharacterContainer() {
       allForms[i].value = playerCharacterInstance[`_${placeholder}`];
     }
     //I want this to add the items to the player's inventory but I keep getting issues with importing functions and hook failures
-    //addItemsFromImport()
+    addItemsFromImport();
     console.log(playerCharacterInstance);
   }
 
