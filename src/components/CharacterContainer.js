@@ -197,7 +197,7 @@ export function CharacterContainer() {
         <FloatingLabel controlId="floatingInput" label="Level" className="mb-3">
           <Form.Control
             className="controlForms"
-            type="text"
+            type="number"
             placeholder="Level"
             onChange={handleChange}
           />
