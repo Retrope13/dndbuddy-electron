@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import PlayerCharacter from "../Classes/PlayerCharacter";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import addItemToInv from "../app";
+import { addItemsFromImport } from "../app";
 
 export const playerCharacterInstance = new PlayerCharacter();
 
@@ -101,19 +101,6 @@ export function CharacterContainer() {
       }
     } else {
       handleShowFileModal();
-    }
-  }
-
-  //&This isn't working right now because I am getting faced with some circular imports that can't really be solved
-  function addItemsFromImport() {
-    for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
-      addItemToInv(playerCharacterInstance._Weapons[i], false);
-    }
-    for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
-      addItemToInv(playerCharacterInstance._Armors[i], false);
-    }
-    for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
-      addItemToInv(playerCharacterInstance._Spells[i], false);
     }
   }
 

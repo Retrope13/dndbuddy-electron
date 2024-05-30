@@ -17,46 +17,15 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
-//Add the HTML to display the item in the correct inv
-export default function addItemToInv(
-  item,
-  bought = true,
-  setInventoryWeapons,
-  setInventoryArmor,
-  setInventorySpell,
-  handleInfoClick,
-  setItems
-) {
-  const itemStates = {
-    weapon: [setInventoryWeapons],
-    armor: [setInventoryArmor],
-    spell: [setInventorySpell],
-  };
-  let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
-  itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
-  const [setInventory] = itemStates[itemType];
-  //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
-  setInventory((prevInventory) => [
-    ...prevInventory,
-    <div key={item.id}>
-      {item.name}
-      <button className="infoButtons" onClick={() => handleInfoClick(item)}>
-        <InfoCircleFill className="infoIcons" />
-      </button>
-      <button
-        className="InvSellButtons"
-        onClick={(event) => handleSellClick(event, item)}
-      >
-        Sell
-      </button>
-      <Form.Check
-        aria-label="Checkbox"
-        onChange={(event) => handleEquip(event, item)}
-      />
-    </div>,
-  ]);
-  if (bought) {
-    setItems(itemType, item);
+export function addItemsFromImport() {
+  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
+    addItemToInv(playerCharacterInstance._Weapons[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
+    addItemToInv(playerCharacterInstance._Armors[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
+    addItemToInv(playerCharacterInstance._Spells[i], false);
   }
 }
 
@@ -188,30 +157,49 @@ function DNDBuddy() {
     }
   }
 
+  //Add the HTML to display the item in the correct inv
+  function addItemToInv(item, bought = true) {
+    const itemStates = {
+      weapon: [setInventoryWeapons],
+      armor: [setInventoryArmor],
+      spell: [setInventorySpell],
+    };
+    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
+    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
+    const [setInventory] = itemStates[itemType];
+    //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
+    setInventory((prevInventory) => [
+      ...prevInventory,
+      <div key={item.id}>
+        {item.name}
+        <button className="infoButtons" onClick={() => handleInfoClick(item)}>
+          <InfoCircleFill className="infoIcons" />
+        </button>
+        <button
+          className="InvSellButtons"
+          onClick={(event) => handleSellClick(event, item)}
+        >
+          Sell
+        </button>
+        <Form.Check
+          aria-label="Checkbox"
+          onChange={(event) => handleEquip(event, item)}
+        />
+      </div>,
+    ]);
+    if (bought) {
+      setItems(itemType, item);
+    }
+  }
+
   //When a player buys an item from any store
   function handleBuyClick(element) {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
       setGold(PlayerGold - Number(element.price));
-      addItemToInv(
-        element,
-        true,
-        setInventoryWeapons,
-        setInventoryArmor,
-        setInventorySpell,
-        handleInfoClick,
-        setItems
-      );
+      addItemToInv(element, true);
     } else if (element.price == undefined) {
-      addItemToInv(
-        element,
-        true,
-        setInventoryWeapons,
-        setInventoryArmor,
-        setInventorySpell,
-        handleInfoClick,
-        setItems
-      );
+      addItemToInv(element, true);
       setGold(PlayerGold);
     } else if (PlayerGold < Number(element.price)) {
       handleShowGoldModal();
