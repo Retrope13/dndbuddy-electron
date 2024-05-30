@@ -1,2 +1,2 @@
-import "./app.jsx";
+import "./app.js";
 import "./index.css";
