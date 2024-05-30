@@ -5,10 +5,11 @@ import { StatBlock } from "./components/StatBlock";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+
 import {
   CharacterContainer,
   getGold,
+  playerCharacterInstance,
   removeItem,
   setGold,
   setItems,
@@ -16,7 +17,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
-function App() {
+function DNDBuddy() {
   //&These are the state variables for inventories
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
@@ -47,38 +48,36 @@ function App() {
   //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
   let CharJSON;
 
-  const itemStates = {
-    weapon: [setInventoryWeapons],
-    armor: [setInventoryArmor],
-    spell: [setInventorySpell],
-  };
+  function readItemFile(itemFile) {
+    //Figures out which JSON was just passed into the function
+    let JSONFile =
+      itemFile == WeaponStoreJSON ? "WeaponStoreJSON" : "ArmorStoreJSON";
+    JSONFile = itemFile == SpellStoreJSON ? "SpellStoreJSON" : JSONFile;
 
-  //Add the HTML to display the item in the correct inv
-  function addItemToInv(item) {
-    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
-    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
-    const [setInventory] = itemStates[itemType];
-    //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
-    setInventory((prevInventory) => [
-      ...prevInventory,
-      <div key={item.id}>
-        {item.name}
-        <button className="infoButtons" onClick={() => handleInfoClick(item)}>
-          <InfoCircleFill className="infoIcons" />
-        </button>
-        <button
-          className="InvSellButtons"
-          onClick={(event) => handleSellClick(event, item)}
-        >
-          Sell
-        </button>
-        <Form.Check
-          aria-label="Checkbox"
-          onChange={(event) => handleEquip(event, item)}
-        />
-      </div>,
-    ]);
-    setItems(itemType, item);
+    //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
+    const [storeList, setStoreList] = itemStoreStates[JSONFile];
+
+    //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
+    if (storeList.length === 0) {
+      const newStoreList = itemFile.map((element, i) => (
+        <div className="Item" key={element.name + i}>
+          {element.name}
+          <button
+            className="infoButtons"
+            onClick={() => handleInfoClick(element)}
+          >
+            <InfoCircleFill className="infoIcons" />
+          </button>
+          <button
+            className="StoreButtons"
+            onClick={() => handleBuyClick(element)}
+          >
+            Buy
+          </button>
+        </div>
+      ));
+      setStoreList(newStoreList);
+    }
   }
 
   //Handle when user clicks the info icon
@@ -146,14 +145,49 @@ function App() {
     }
   }
 
+  //Add the HTML to display the item in the correct inv
+  function addItemToInv(item, bought = true) {
+    const itemStates = {
+      weapon: [setInventoryWeapons],
+      armor: [setInventoryArmor],
+      spell: [setInventorySpell],
+    };
+    let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
+    itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
+    const [setInventory] = itemStates[itemType];
+    //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
+    setInventory((prevInventory) => [
+      ...prevInventory,
+      <div key={item.id}>
+        {item.name}
+        <button className="infoButtons" onClick={() => handleInfoClick(item)}>
+          <InfoCircleFill className="infoIcons" />
+        </button>
+        <button
+          className="InvSellButtons"
+          onClick={(event) => handleSellClick(event, item)}
+        >
+          Sell
+        </button>
+        <Form.Check
+          aria-label="Checkbox"
+          onChange={(event) => handleEquip(event, item)}
+        />
+      </div>,
+    ]);
+    if (bought) {
+      setItems(itemType, item);
+    }
+  }
+
   //When a player buys an item from any store
   function handleBuyClick(element) {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
       setGold(PlayerGold - Number(element.price));
-      addItemToInv(element);
+      addItemToInv(element, true);
     } else if (element.price == undefined) {
-      addItemToInv(element);
+      addItemToInv(element, true);
       setGold(PlayerGold);
     } else if (PlayerGold < Number(element.price)) {
       handleShowGoldModal();
@@ -172,41 +206,10 @@ function App() {
     SpellStoreJSON: [SpellStoreList, setSpellStoreList],
   };
 
-  function readItemFile(itemFile) {
-    //Figures out which JSON was just passed into the function
-    let JSONFile =
-      itemFile == WeaponStoreJSON ? "WeaponStoreJSON" : "ArmorStoreJSON";
-    JSONFile = itemFile == SpellStoreJSON ? "SpellStoreJSON" : JSONFile;
-
-    //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
-    const [storeList, setStoreList] = itemStoreStates[JSONFile];
-
-    //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
-    if (storeList.length === 0) {
-      const newStoreList = itemFile.map((element, i) => (
-        <div className="Item" key={element.name + i}>
-          {element.name}
-          <button
-            className="infoButtons"
-            onClick={() => handleInfoClick(element)}
-          >
-            <InfoCircleFill className="infoIcons" />
-          </button>
-          <button
-            className="StoreButtons"
-            onClick={() => handleBuyClick(element)}
-          >
-            Buy
-          </button>
-        </div>
-      ));
-      setStoreList(newStoreList);
-    }
-  }
-
   readItemFile(WeaponStoreJSON);
   readItemFile(ArmorStoreJSON);
   readItemFile(SpellStoreJSON);
+  DNDBuddy.addItemToInv = addItemToInv;
   return (
     <div id="wrapperDiv">
       <h1>Welcome to the DNDBuddy!</h1>
@@ -305,5 +308,17 @@ function App() {
   );
 }
 
+export function addItemsFromImport() {
+  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Weapons[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Armors[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Spells[i], false);
+  }
+}
+
 // Render the dynamic component
-ReactDOM.render(<App />, document.body);
+ReactDOM.render(<DNDBuddy />, document.body);
