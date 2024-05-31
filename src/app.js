@@ -30,6 +30,11 @@ export function addItemsFromImport() {
   for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
     DNDBuddy.addItemToInv(playerCharacterInstance._Spells[i], false);
   }
+  for (let i = 0; i < playerCharacterInstance._Equiped.length; i++) {
+    //^ Here is where i'm having issues - It won't populate the equip section. I realized that to properly update the equiped
+    //^and unequiped stuff I'll have to save the items that are equiped and the items that are checked in the rest of their inventory at the moment of a save
+    //DNDBuddy.handleEquip(playerCharacterInstance._Equiped[i], false);
+  }
 }
 
 function DNDBuddy() {
@@ -195,6 +200,8 @@ function DNDBuddy() {
     ]);
     if (bought) {
       setItems(itemType, item);
+    } else {
+      setItems(itemType, item, false);
     }
   }
 
@@ -228,6 +235,7 @@ function DNDBuddy() {
   readItemFile(ArmorStoreJSON);
   readItemFile(SpellStoreJSON);
   DNDBuddy.addItemToInv = addItemToInv;
+  DNDBuddy.handleEquip = handleEquip;
   DNDBuddy.setInventoryArmor = setInventoryArmor;
   DNDBuddy.setInventoryWeapons = setInventoryWeapons;
   DNDBuddy.setInventorySpell = setInventorySpell;

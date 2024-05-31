@@ -21,15 +21,17 @@ export function setGold(newGold) {
 }
 
 //& The function that adds items to the playerCharacterInstance inventory
-export function setItems(itemType, item) {
-  if (itemType == "weapon") {
+export function setItems(itemType, item, bought = true) {
+  if (itemType == "weapon" && bought) {
     playerCharacterInstance._Weapons.push(item);
-  } else if (itemType == "armor") {
+  } else if (itemType == "armor" && bought) {
     playerCharacterInstance._Armors.push(item);
-  } else if (itemType == "spell") {
+  } else if (itemType == "spell" && bought) {
     playerCharacterInstance._Spells.push(item);
+  } else if (!bought) {
+    playerCharacterInstance._Equiped.push(item);
+    console.log(playerCharacterInstance._Equiped);
   }
-  console.log(playerCharacterInstance);
 }
 
 //^ Function that removes an item from the playerCharacterInstance inventory without iteration
