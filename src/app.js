@@ -114,8 +114,11 @@ function DNDBuddy() {
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const button = event.target;
     const parentDiv = button.parentElement;
-    const PlayerGold = getGold();
-    setGold(PlayerGold + Number(item.price));
+    if (itemType != "spell") {
+      //If it's a spell don't even touch the money
+      const PlayerGold = getGold();
+      setGold(PlayerGold + Number(item.price));
+    }
     parentDiv.remove();
     removeItem(itemType, item);
   }
