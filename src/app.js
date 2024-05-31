@@ -17,6 +17,21 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
+export function addItemsFromImport() {
+  DNDBuddy.setInventoryWeapons([]);
+  DNDBuddy.setInventoryArmor([]);
+  DNDBuddy.setInventorySpell([]);
+  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Weapons[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Armors[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Spells[i], false);
+  }
+}
+
 function DNDBuddy() {
   //&These are the state variables for inventories
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
@@ -210,6 +225,10 @@ function DNDBuddy() {
   readItemFile(ArmorStoreJSON);
   readItemFile(SpellStoreJSON);
   DNDBuddy.addItemToInv = addItemToInv;
+  DNDBuddy.setInventoryArmor = setInventoryArmor;
+  DNDBuddy.setInventoryWeapons = setInventoryWeapons;
+  DNDBuddy.setInventorySpell = setInventorySpell;
+  DNDBuddy.setInventoryEquiped = setInventoryEquiped;
   return (
     <div id="wrapperDiv">
       <h1>Welcome to the DNDBuddy!</h1>
@@ -306,18 +325,6 @@ function DNDBuddy() {
       </Modal>
     </div>
   );
-}
-
-export function addItemsFromImport() {
-  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
-    DNDBuddy.addItemToInv(playerCharacterInstance._Weapons[i], false);
-  }
-  for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
-    DNDBuddy.addItemToInv(playerCharacterInstance._Armors[i], false);
-  }
-  for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
-    DNDBuddy.addItemToInv(playerCharacterInstance._Spells[i], false);
-  }
 }
 
 // Render the dynamic component
