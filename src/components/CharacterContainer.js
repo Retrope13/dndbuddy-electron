@@ -21,15 +21,17 @@ export function setGold(newGold) {
 }
 
 //& The function that adds items to the playerCharacterInstance inventory
-export function setItems(itemType, item) {
-  if (itemType == "weapon") {
+export function setItems(itemType, item, bought = true) {
+  if (itemType == "weapon" && bought) {
     playerCharacterInstance._Weapons.push(item);
-  } else if (itemType == "armor") {
+  } else if (itemType == "armor" && bought) {
     playerCharacterInstance._Armors.push(item);
-  } else if (itemType == "spell") {
+  } else if (itemType == "spell" && bought) {
     playerCharacterInstance._Spells.push(item);
+  } else if (!bought) {
+    playerCharacterInstance._Equiped.push(item);
+    console.log(playerCharacterInstance._Equiped);
   }
-  console.log(playerCharacterInstance);
 }
 
 //^ Function that removes an item from the playerCharacterInstance inventory without iteration
@@ -91,6 +93,7 @@ export function CharacterContainer() {
         //Wait for reader to load, then parse the json object, then update the attributes of the playerCharacterInstance
         reader.onload = function (event) {
           var jsonObj = JSON.parse(event.target.result);
+          playerCharacterInstance._Weapons = [];
 
           playerCharacterInstance.updateCharacterData(jsonObj);
           updateFormValues();
@@ -112,7 +115,6 @@ export function CharacterContainer() {
       const placeholder = allForms[i].placeholder;
       allForms[i].value = playerCharacterInstance[`_${placeholder}`];
     }
-    //I want this to add the items to the player's inventory but I keep getting issues with importing functions and hook failures
     addItemsFromImport();
     console.log(playerCharacterInstance);
   }
@@ -197,7 +199,7 @@ export function CharacterContainer() {
         <FloatingLabel controlId="floatingInput" label="Level" className="mb-3">
           <Form.Control
             className="controlForms"
-            type="text"
+            type="number"
             placeholder="Level"
             onChange={handleChange}
           />
@@ -207,6 +209,7 @@ export function CharacterContainer() {
             className="controlForms"
             type="number"
             placeholder="Gold"
+            defaultValue={0}
             id="goldInput"
             onChange={handleChange}
           />

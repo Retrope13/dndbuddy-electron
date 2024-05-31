@@ -5,12 +5,13 @@ export class PlayerCharacter {
     CharacterRace = "",
     CharacterClass = "",
     Alignment = "",
-    level = "1",
+    level = 0,
     ac = "0",
     weapons = [],
     armors = [],
     spells = [],
-    gold = "0",
+    equiped = [],
+    gold = 0,
     strength = 0,
     dexterity = 0,
     constitution = 0,
@@ -28,6 +29,7 @@ export class PlayerCharacter {
     this._Weapons = weapons;
     this._Armors = armors;
     this._Spells = spells;
+    this._Equiped = equiped;
     this._Gold = gold;
     this._Strength = strength;
     this._Dexterity = dexterity;
@@ -87,7 +89,7 @@ export class PlayerCharacter {
     return this._Level;
   }
   set setLevel(newLevel) {
-    return (this._Level = newLevel);
+    return (this._Level = Number(newLevel));
   }
 
   //^ Stats getters and setters
@@ -97,7 +99,7 @@ export class PlayerCharacter {
     return this._Strength;
   }
   set setStrength(newStrength) {
-    return (this._Strength = newStrength);
+    return (this._Strength = Number(newStrength));
   }
 
   //Dexterity
@@ -105,7 +107,7 @@ export class PlayerCharacter {
     return this._Dexterity;
   }
   set setDexterity(newDexterity) {
-    return (this._Dexterity = newDexterity);
+    return (this._Dexterity = Number(newDexterity));
   }
 
   //Constitution
@@ -113,7 +115,7 @@ export class PlayerCharacter {
     return this._Constitution;
   }
   set setConstitution(newConstitution) {
-    return (this._Constitution = newConstitution);
+    return (this._Constitution = Number(newConstitution));
   }
 
   //Intelligence
@@ -121,7 +123,7 @@ export class PlayerCharacter {
     return this._Intelligence;
   }
   set setIntelligence(newIntelligence) {
-    return (this._Intelligence = newIntelligence);
+    return (this._Intelligence = Number(newIntelligence));
   }
 
   //Wisdom
@@ -129,7 +131,7 @@ export class PlayerCharacter {
     return this._Wisdom;
   }
   set setWisdom(newWisdom) {
-    return (this._Wisdom = newWisdom);
+    return (this._Wisdom = Number(newWisdom));
   }
 
   //Charisma
@@ -137,7 +139,7 @@ export class PlayerCharacter {
     return this._Charisma;
   }
   set setCharisma(newCharisma) {
-    return (this._Charisma = newCharisma);
+    return (this._Charisma = Number(newCharisma));
   }
 
   // ac getter and setter
@@ -145,7 +147,7 @@ export class PlayerCharacter {
     return this._Ac;
   }
   set setAc(newAc) {
-    return (this._Ac = newAc);
+    return (this._Ac = Number(newAc));
   }
 
   // weapons getter and setter
@@ -172,12 +174,20 @@ export class PlayerCharacter {
     return (this._Spells = newSpells);
   }
 
+  get getEquiped() {
+    return this._Equiped;
+  }
+
+  set setEquiped(newEquiped) {
+    return (this._Equiped = newEquiped);
+  }
+
   // gold getter and setter
   get getGold() {
     return this._Gold;
   }
   set setGold(newGold) {
-    return (this._Gold = newGold);
+    return (this._Gold = Number(newGold));
   }
 
   // PC printer
@@ -209,6 +219,7 @@ export class PlayerCharacter {
     this._Weapons = data._Weapons;
     this._Armors = data._Armors;
     this._Spells = data._Spells;
+    this._Equiped = data._Equiped;
     this._Gold = data._Gold;
     this._Strength = data._Strength;
     this._Dexterity = data._Dexterity;

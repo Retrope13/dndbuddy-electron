@@ -17,6 +17,26 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
+export function addItemsFromImport() {
+  DNDBuddy.setInventoryWeapons([]);
+  DNDBuddy.setInventoryArmor([]);
+  DNDBuddy.setInventorySpell([]);
+  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Weapons[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Armors[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
+    DNDBuddy.addItemToInv(playerCharacterInstance._Spells[i], false);
+  }
+  for (let i = 0; i < playerCharacterInstance._Equiped.length; i++) {
+    //^ Here is where i'm having issues - It won't populate the equip section. I realized that to properly update the equiped
+    //^and unequiped stuff I'll have to save the items that are equiped and the items that are checked in the rest of their inventory at the moment of a save
+    //DNDBuddy.handleEquip(playerCharacterInstance._Equiped[i], false);
+  }
+}
+
 function DNDBuddy() {
   //&These are the state variables for inventories
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
@@ -99,8 +119,11 @@ function DNDBuddy() {
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const button = event.target;
     const parentDiv = button.parentElement;
-    const PlayerGold = getGold();
-    setGold(PlayerGold + Number(item.price));
+    if (itemType != "spell") {
+      //If it's a spell don't even touch the money
+      const PlayerGold = getGold();
+      setGold(PlayerGold + Number(item.price));
+    }
     parentDiv.remove();
     removeItem(itemType, item);
   }
@@ -177,6 +200,8 @@ function DNDBuddy() {
     ]);
     if (bought) {
       setItems(itemType, item);
+    } else {
+      setItems(itemType, item, false);
     }
   }
 
@@ -210,6 +235,11 @@ function DNDBuddy() {
   readItemFile(ArmorStoreJSON);
   readItemFile(SpellStoreJSON);
   DNDBuddy.addItemToInv = addItemToInv;
+  DNDBuddy.handleEquip = handleEquip;
+  DNDBuddy.setInventoryArmor = setInventoryArmor;
+  DNDBuddy.setInventoryWeapons = setInventoryWeapons;
+  DNDBuddy.setInventorySpell = setInventorySpell;
+  DNDBuddy.setInventoryEquiped = setInventoryEquiped;
   return (
     <div id="wrapperDiv">
       <h1>Welcome to the DNDBuddy!</h1>
@@ -306,18 +336,6 @@ function DNDBuddy() {
       </Modal>
     </div>
   );
-}
-
-export function addItemsFromImport() {
-  for (let i = 0; i < playerCharacterInstance._Weapons.length; i++) {
-    DNDBuddy.addItemToInv(playerCharacterInstance._Weapons[i], false);
-  }
-  for (let i = 0; i < playerCharacterInstance._Armors.length; i++) {
-    DNDBuddy.addItemToInv(playerCharacterInstance._Armors[i], false);
-  }
-  for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
-    DNDBuddy.addItemToInv(playerCharacterInstance._Spells[i], false);
-  }
 }
 
 // Render the dynamic component
