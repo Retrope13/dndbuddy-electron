@@ -10,6 +10,7 @@ export class PlayerCharacter {
     weapons = [],
     armors = [],
     spells = [],
+    equiped = [],
     gold = 0,
     strength = 0,
     dexterity = 0,
@@ -28,6 +29,7 @@ export class PlayerCharacter {
     this._Weapons = weapons;
     this._Armors = armors;
     this._Spells = spells;
+    this._Equiped = equiped;
     this._Gold = gold;
     this._Strength = strength;
     this._Dexterity = dexterity;
@@ -172,6 +174,14 @@ export class PlayerCharacter {
     return (this._Spells = newSpells);
   }
 
+  get getEquiped() {
+    return this._Equiped;
+  }
+
+  set setEquiped(newEquiped) {
+    return (this._Equiped = newEquiped);
+  }
+
   // gold getter and setter
   get getGold() {
     return this._Gold;
@@ -209,6 +219,7 @@ export class PlayerCharacter {
     this._Weapons = data._Weapons;
     this._Armors = data._Armors;
     this._Spells = data._Spells;
+    this._Equiped = data._Equiped;
     this._Gold = data._Gold;
     this._Strength = data._Strength;
     this._Dexterity = data._Dexterity;
