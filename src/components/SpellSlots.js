@@ -28,21 +28,22 @@ export function SpellSlots() {
     { id: "inline-checkbox-3", disabled: false },
   ];
 
+  //This is SpellSlot modal not Schutzstaffel modal
   const handleCloseSSModal = () => setShowSSModal(false);
   const handleShowSSModal = () => setShowSSModal(true);
 
   function handleSSModal() {
-    setShowSSModal(true);
+    handleShowSSModal();
   }
   return (
     <div id="wrapperDiv">
       <div id="flexContainer">
         <h3>Spell Slots:</h3>
-        <button id="spellSlotInfoButton" onClick={handleSSModal()}>
+        <button id="spellSlotInfoButton" onClick={handleSSModal}>
           <InfoCircleFill className="infoIcons" />
         </button>
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">1st level</label>
+          <label class="FirstLevelSpellSlotLabel">1st level</label>
           {FirstLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -58,7 +59,7 @@ export function SpellSlots() {
         </Form>
 
         <Form className="SpellSlotForm">
-          <label class="SpellSlotLabel">2nd level</label>
+          <label class="SecondLevelSpellSlotLabel">2nd level</label>
           {SecondtoFifthLevelCheckboxes.map((checkbox) => (
             <div key={`inline-checkbox`} className="cb-3">
               <Form.Check
@@ -184,21 +185,25 @@ export function SpellSlots() {
             </div>
           ))}
         </Form>
-
-        <Modal show={showSSModal} onHide={handleCloseSSModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Oopsies!</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>You don't have enough gold to buy this item!</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseSSModal}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </div>
+
+      <Modal show={showSSModal} onHide={handleCloseSSModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>What the heck are Spell Slots??</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            "Spell slots" refers to how many spells you can cast, sort of like
+            the number of arrows in a quiver. Once you're out of spell slots you
+            cannot cast spells from that spell level until you take a long rest.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseSSModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
