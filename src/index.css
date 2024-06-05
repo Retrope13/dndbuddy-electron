@@ -2,13 +2,17 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
-  max-width: 70rem;
-  padding: 2rem;
+  max-width: 85rem;
+  padding: 1rem;
   background-color: #f7f9fb;
 }
 
 #wrapperDiv {
   width: 700px;
+}
+
+h1 {
+  font-size: 40px;
 }
 
 #tabs-container {
@@ -131,7 +135,9 @@ label {
 }
 
 .StoreButtons,
-.infoButtons {
+.infoButtons,
+#spellSlotInfoButton,
+.InvSellButtons {
   color: black;
   display: flex;
   justify-content: center;
@@ -157,32 +163,48 @@ label {
   width: 10%;
 }
 
-.InvSellButtons {
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #f7f9fb;
-  border-radius: 5px;
-  line-height: 1px;
-  width: 60px;
-  height: 38px;
-  font-size: 15px;
-  margin-bottom: 10px;
-  background-color: #f7f9fb;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s ease;
-  &:hover {
-    background-color: #dbdada;
-  }
-}
-
 .sb-1 {
   width: 15%;
 }
 
 #statFlexContainer {
   width: 80%;
+}
+
+/* Check box in SpellSlots */
+.spellSlotsDiv {
+  display: inline-block;
+  text-wrap: wrap;
+  white-space: pre-wrap;
+  min-width: 417px;
+  max-width: 417px;
+  max-height: 600px;
+  min-height: 600px;
+  overflow: scroll;
+}
+
+#spellSlotInfoButton {
+  width: 40px;
+  border-radius: 100%;
+}
+
+.cb-3 {
+  display: inline;
+}
+
+.SpellSlotLabel {
+  margin-right: 16px;
+}
+
+.SecondLevelSpellSlotLabel {
+  margin-right: 12px;
+}
+
+.FirstLevelSpellSlotLabel {
+  margin-right: 19px;
+}
+
+.SpellSlotForm {
+  display: block;
+  width: 100%;
 }
