@@ -124,8 +124,10 @@ function DNDBuddy() {
       const PlayerGold = getGold();
       setGold(PlayerGold + Number(item.price));
     }
-    parentDiv.remove();
-    removeItem(itemType, item);
+    if (item) {
+      parentDiv.remove();
+      removeItem(itemType, item);
+    }
   }
 
   //Add item to equiped tab
