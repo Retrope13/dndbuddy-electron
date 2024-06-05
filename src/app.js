@@ -14,6 +14,7 @@ import {
   setGold,
   setItems,
 } from "./components/CharacterContainer";
+import { SpellSlots } from "./components/SpellSlots";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
@@ -258,6 +259,7 @@ function DNDBuddy() {
           spells={inventorySpell}
           equiped={inventoryEquiped}
         />
+        <SpellSlots />
 
         {/* Store */}
         <CustomTabs
