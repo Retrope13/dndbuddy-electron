@@ -193,7 +193,15 @@ label {
 }
 
 .SpellSlotLabel {
-  margin-right: 10px;
+  margin-right: 16px;
+}
+
+.SecondLevelSpellSlotLabel {
+  margin-right: 12px;
+}
+
+.FirstLevelSpellSlotLabel {
+  margin-right: 19px;
 }
 
 .SpellSlotForm {
