@@ -29,8 +29,8 @@ export function setItems(itemType, item, bought = true) {
   } else if (itemType == "spell" && bought) {
     playerCharacterInstance._Spells.push(item);
   } else if (!bought) {
-    playerCharacterInstance._Equiped.push(item);
-    console.log(playerCharacterInstance._Equiped);
+    playerCharacterInstance._equipped.push(item);
+    console.log(playerCharacterInstance._equipped);
   }
 }
 
