@@ -77,6 +77,10 @@ function DNDBuddy() {
 
     //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
     const [storeList, setStoreList] = itemStoreStates[JSONFile];
+    if (JSONFile == "SpellStoreJSON") {
+      console.log("fjdsaklfd");
+      itemFile.sort((a, b) => a.level - b.level);
+    }
 
     //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
     if (storeList.length === 0) {
