@@ -17,6 +17,7 @@ import {
 import { SpellSlots } from "./components/SpellSlots";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InfoCircleFill } from "react-bootstrap-icons";
+import { DiceRoller } from "./components/DiceRoller";
 
 export function addItemsFromImport() {
   DNDBuddy.setInventoryWeapons([]);
@@ -256,6 +257,7 @@ function DNDBuddy() {
       <br></br>
       {/* I want stat block to be to the right of the CharacterContainer but we'll see */}
       <StatBlock />
+      <DiceRoller />
       <label>Inventory</label>
       <label>Store</label>
       <div id="CustomTabsDiv">
