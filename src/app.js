@@ -186,21 +186,25 @@ function DNDBuddy() {
     //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
     setInventory((prevInventory) => [
       ...prevInventory,
-      <div key={item.id}>
+      <div key={item.id} className="invItemDiv">
         {item.name}
-        <button className="infoButtons" onClick={() => handleInfoClick(item)}>
+        <button
+          className="InvInfoButtons"
+          onClick={() => handleInfoClick(item)}
+        >
           <InfoCircleFill className="infoIcons" />
         </button>
+        <Form.Check
+          className="equip-checkbox"
+          aria-label="Checkbox"
+          onChange={(event) => handleEquip(event, item)}
+        />
         <button
           className="InvSellButtons"
           onClick={(event) => handleSellClick(event, item)}
         >
           Sell
         </button>
-        <Form.Check
-          aria-label="Checkbox"
-          onChange={(event) => handleEquip(event, item)}
-        />
       </div>,
     ]);
     if (bought) {
@@ -302,7 +306,7 @@ function DNDBuddy() {
               <p>Description: {elementDescription}</p>
             </>
           )}
-          {elementLevel && (
+          {elementLevel != null && (
             <>
               <p>Level: {elementLevel}</p>
             </>
