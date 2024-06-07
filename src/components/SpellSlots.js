@@ -8,6 +8,7 @@ import { addItemsFromImport } from "../app";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
 export function SpellSlots() {
+  //I might want to make this gray out checkboxes depending on the character's level. This also comes at the risk of restricting homebrew though.
   const [showSSModal, setShowSSModal] = useState(false);
   const FirstLevelCheckboxes = [
     { id: "inline-checkbox-1", disabled: false },

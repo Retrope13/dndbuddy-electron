@@ -31,10 +31,10 @@ export function addItemsFromImport() {
   for (let i = 0; i < playerCharacterInstance._Spells.length; i++) {
     DNDBuddy.addItemToInv(playerCharacterInstance._Spells[i], false);
   }
-  for (let i = 0; i < playerCharacterInstance._Equiped.length; i++) {
-    //^ Here is where i'm having issues - It won't populate the equip section. I realized that to properly update the equiped
-    //^and unequiped stuff I'll have to save the items that are equiped and the items that are checked in the rest of their inventory at the moment of a save
-    //DNDBuddy.handleEquip(playerCharacterInstance._Equiped[i], false);
+  for (let i = 0; i < playerCharacterInstance._equipped.length; i++) {
+    //^ Here is where i'm having issues - It won't populate the equip section. I realized that to properly update the equipped
+    //^and unequipped stuff I'll have to save the items that are equipped and the items that are checked in the rest of their inventory at the moment of a save
+    //DNDBuddy.handleEquip(playerCharacterInstance._equipped[i], false);
   }
 }
 
@@ -43,7 +43,7 @@ function DNDBuddy() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
   const [inventorySpell, setInventorySpell] = useState([]);
-  const [inventoryEquiped, setInventoryEquiped] = useState([]);
+  const [inventoryequipped, setInventoryequipped] = useState([]);
   //&These are the state variables for modal visibility
   const [showGoldModal, setShowGoldModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
@@ -77,6 +77,10 @@ function DNDBuddy() {
 
     //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
     const [storeList, setStoreList] = itemStoreStates[JSONFile];
+    if (JSONFile == "SpellStoreJSON") {
+      console.log("fjdsaklfd");
+      itemFile.sort((a, b) => a.level - b.level);
+    }
 
     //maps each element of the item file to a new storeList and then sets the original store list to the modified, populated one
     if (storeList.length === 0) {
@@ -129,11 +133,11 @@ function DNDBuddy() {
     removeItem(itemType, item);
   }
 
-  //Add item to equiped tab
+  //Add item to equipped tab
   function handleEquip(parentEvent, item) {
     if (parentEvent.currentTarget.checked) {
-      setInventoryEquiped((prevEquiped) => [
-        ...prevEquiped,
+      setInventoryequipped((prevequipped) => [
+        ...prevequipped,
         <div key={item.id}>
           {item.name}
           <button className="infoButtons" onClick={() => handleInfoClick(item)}>
@@ -153,19 +157,19 @@ function DNDBuddy() {
 
   function handleUnequip(event, parentEvent, item) {
     parentEvent.target.checked = false;
-    if (inventoryEquiped.length != 0) {
-      setInventoryEquiped((prevEquiped) => {
+    if (inventoryequipped.length != 0) {
+      setInventoryequipped((prevequipped) => {
         // Check if the item exists in the array
-        const itemExists = prevEquiped.some((i) => i.id === item.id);
+        const itemExists = prevequipped.some((i) => i.id === item.id);
         if (itemExists) {
           console.warn(
-            `Item with id ${item.id} not found in inventoryEquiped.`
+            `Item with id ${item.id} not found in inventoryequipped.`
           );
-          prevEquiped.filter((i) => i.id !== item.id);
+          prevequipped.filter((i) => i.id !== item.id);
         }
       });
-    } else if (inventoryEquiped) {
-      setInventoryEquiped([]);
+    } else if (inventoryequipped) {
+      setInventoryequipped([]);
     }
   }
 
@@ -182,21 +186,25 @@ function DNDBuddy() {
     //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
     setInventory((prevInventory) => [
       ...prevInventory,
-      <div key={item.id}>
+      <div key={item.id} className="invItemDiv">
         {item.name}
-        <button className="infoButtons" onClick={() => handleInfoClick(item)}>
+        <button
+          className="InvInfoButtons"
+          onClick={() => handleInfoClick(item)}
+        >
           <InfoCircleFill className="infoIcons" />
         </button>
+        <Form.Check
+          className="equip-checkbox"
+          aria-label="Checkbox"
+          onChange={(event) => handleEquip(event, item)}
+        />
         <button
           className="InvSellButtons"
           onClick={(event) => handleSellClick(event, item)}
         >
           Sell
         </button>
-        <Form.Check
-          aria-label="Checkbox"
-          onChange={(event) => handleEquip(event, item)}
-        />
       </div>,
     ]);
     if (bought) {
@@ -240,7 +248,7 @@ function DNDBuddy() {
   DNDBuddy.setInventoryArmor = setInventoryArmor;
   DNDBuddy.setInventoryWeapons = setInventoryWeapons;
   DNDBuddy.setInventorySpell = setInventorySpell;
-  DNDBuddy.setInventoryEquiped = setInventoryEquiped;
+  DNDBuddy.setInventoryequipped = setInventoryequipped;
   return (
     <div id="wrapperDiv">
       <h1>Welcome to the DNDBuddy!</h1>
@@ -257,7 +265,7 @@ function DNDBuddy() {
           weapons={inventoryWeapons}
           armor={inventoryArmor}
           spells={inventorySpell}
-          equiped={inventoryEquiped}
+          equipped={inventoryequipped}
         />
         <SpellSlots />
 
@@ -298,7 +306,7 @@ function DNDBuddy() {
               <p>Description: {elementDescription}</p>
             </>
           )}
-          {elementLevel && (
+          {elementLevel != null && (
             <>
               <p>Level: {elementLevel}</p>
             </>
