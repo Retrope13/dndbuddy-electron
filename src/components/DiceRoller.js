@@ -4,7 +4,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { playerCharacterInstance } from "./CharacterContainer";
 
-export function StatBlock() {
+export function DiceRoller() {
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
@@ -16,8 +16,8 @@ export function StatBlock() {
   }
 
   return (
-    <div id="wrapperDivStatBlock">
-      <div id="statFlexContainer">
+    <div id="wrapperDivDiceRoller">
+      <div id="diceFlexContainer">
         {/* These floating labels are what allow the input fields to shrink the placeholder text */}
         <FloatingLabel controlId="floatingInput" label="Str" className="sb-1">
           {/* This is what allows the form to be submitted */}

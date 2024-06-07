@@ -120,7 +120,7 @@ export function CharacterContainer() {
   }
 
   return (
-    <div id="wrapperDiv">
+    <div id="wrapperDivCharContainer">
       <div id="flexContainer">
         <Modal show={showFileModal} onHide={handleCloseFileModal}>
           <Modal.Header closeButton>
