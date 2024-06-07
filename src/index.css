@@ -51,6 +51,7 @@ li {
   color: black;
   background-color: #8fc1e3;
   border-radius: 5px;
+  display: inline;
 }
 
 #flexContainer,
@@ -129,17 +130,30 @@ label {
   margin-bottom: 10px;
 }
 
+.invItemDiv {
+  display: block;
+  width: 100%;
+}
+
 .infoIcons {
   color: #31708e;
   width: 2em;
+  justify-content: center;
+  align-items: center;
+}
+
+.equip-checkbox {
+  display: inline;
+  margin-left: 80px;
 }
 
 .StoreButtons,
 .infoButtons,
 #spellSlotInfoButton,
-.InvSellButtons {
+.InvSellButtons,
+.InvInfoButtons {
   color: black;
-  display: flex;
+  display: inline;
   justify-content: center;
   align-items: center;
   border: 1px solid #f7f9fb;
@@ -158,7 +172,13 @@ label {
   }
 }
 
-.infoButtons {
+.InvSellButtons,
+.InvInfoButtons {
+  margin-left: 80px;
+}
+
+.infoButtons,
+.InvInfoButtons {
   border-radius: 100%;
   width: 10%;
 }
