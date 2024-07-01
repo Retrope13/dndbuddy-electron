@@ -49,8 +49,13 @@ export function removeItem(itemType, item) {
 
 export function CharacterContainer() {
   const [showFileModal, setShowFileModal] = useState(false);
+  const [showJSONModal, setShowJSONModal] = useState(false);
+  const [enabledBool, setEnabledBool] = useState(false);
   const handleCloseFileModal = () => setShowFileModal(false);
   const handleShowFileModal = () => setShowFileModal(true);
+  const setImportButtonVisibility = () => setEnabledBool(true);
+  const handleShowJSONModal = () => setShowJSONModal(true);
+  const handleCloseJSONModal = () => setShowJSONModal(false);
 
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
@@ -89,16 +94,22 @@ export function CharacterContainer() {
       const file = fileInput.files[0];
       const type = file.type;
       if (type == "application/json") {
+        try {
         var reader = new FileReader();
         //Wait for reader to load, then parse the json object, then update the attributes of the playerCharacterInstance
+
         reader.onload = function (event) {
           var jsonObj = JSON.parse(event.target.result);
           playerCharacterInstance._Weapons = [];
-
+          
           playerCharacterInstance.updateCharacterData(jsonObj);
           updateFormValues();
         };
         reader.readAsText(file);
+      }catch (error) {
+        handleShowJSONModal();
+        console.log(error);
+      }
       } else {
         handleShowFileModal();
       }
@@ -106,6 +117,8 @@ export function CharacterContainer() {
       handleShowFileModal();
     }
   }
+
+
 
   function updateFormValues() {
     //I'm really proud of this. I didn't really look anything up - it iterates through all of the results for controlForms which are all
@@ -218,8 +231,28 @@ export function CharacterContainer() {
           <button type="submit" className="CharBtn" onClick={createJSON}>
             Save
           </button>
-          <input type="file" id="PCFileInput" accept="application/json"></input>
-          <button className="CharBtn" onClick={importJSON}></button>
+          <input type="file" id="PCFileInput" accept="application/json" onChange={setImportButtonVisibility}></input>
+          {enabledBool &&
+          (
+            <button className="CharBtn" onClick={importJSON}>Import</button>
+          )
+          }
+
+        <Modal show={showJSONModal} onHide={handleCloseJSONModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>Oopsies!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>
+              It looks like I can't read this content... Maybe try a different file?
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseJSONModal}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
         </div>
       </div>
     </div>
