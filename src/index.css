@@ -7,6 +7,10 @@ body {
   background-color: #f7f9fb;
 }
 
+iframe {
+  display: none;
+}
+
 #wrapperDiv {
   width: 700px;
 }

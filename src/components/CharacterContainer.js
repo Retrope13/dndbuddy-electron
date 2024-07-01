@@ -57,6 +57,7 @@ export function CharacterContainer() {
   const handleShowJSONModal = () => setShowJSONModal(true);
   const handleCloseJSONModal = () => setShowJSONModal(false);
 
+
   //Handle change when modifying any of the text boxes for character info.
   function handleChange(event) {
     event.preventDefault();
@@ -100,8 +101,12 @@ export function CharacterContainer() {
 
         reader.onload = function (event) {
           var jsonObj = JSON.parse(event.target.result);
+
           playerCharacterInstance._Weapons = [];
-          
+          playerCharacterInstance._Armors = [];
+          playerCharacterInstance._Spells = [];
+          console.log(jsonObj); //There is something going on here. I want to validate the content of the JSON to make sure that a characterPlayer can be created from it. I was thinking of checking that the first variable is "playerName"
+
           playerCharacterInstance.updateCharacterData(jsonObj);
           updateFormValues();
         };
