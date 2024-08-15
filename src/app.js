@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import CustomTabs from "./components/CustomTabs"; // Import your custom component\
+import CustomTabs from "./components/CustomTabs";
 import { StatBlock } from "./components/StatBlock";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -66,19 +66,14 @@ function DNDBuddy() {
   let WeaponStoreJSON = require("./itemFiles/Weapons.json");
   let ArmorStoreJSON = require("./itemFiles/Armor.json");
   let SpellStoreJSON = require("./itemFiles/Spells.json");
-  //this will be for later when I import characters. I'm hoping I can use all of the same functions for the store and character
-  let CharJSON;
 
   function readItemFile(itemFile) {
-    //Figures out which JSON was just passed into the function
     let JSONFile =
       itemFile == WeaponStoreJSON ? "WeaponStoreJSON" : "ArmorStoreJSON";
     JSONFile = itemFile == SpellStoreJSON ? "SpellStoreJSON" : JSONFile;
 
-    //Sets the "storeList" arr and "setStoreList" function to the appropriate StoreList
     const [storeList, setStoreList] = itemStoreStates[JSONFile];
     if (JSONFile == "SpellStoreJSON") {
-      console.log("fjdsaklfd");
       itemFile.sort((a, b) => a.level - b.level);
     }
 
@@ -105,7 +100,6 @@ function DNDBuddy() {
     }
   }
 
-  //Handle when user clicks the info icon
   function handleInfoClick(element) {
     setElementName(element.name);
     setElementDescription(element.description);
@@ -118,14 +112,12 @@ function DNDBuddy() {
     handleShowInfoModal();
   }
 
-  //When a player sells any type of item
   function handleSellClick(event, item) {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const button = event.target;
     const parentDiv = button.parentElement;
     if (itemType != "spell") {
-      //If it's a spell don't even touch the money
       const PlayerGold = getGold();
       setGold(PlayerGold + Number(item.price));
     }
@@ -133,7 +125,6 @@ function DNDBuddy() {
     removeItem(itemType, item);
   }
 
-  //Add item to equipped tab
   function handleEquip(parentEvent, item) {
     if (parentEvent.currentTarget.checked) {
       setinventoryEquipped((prevequipped) => [
@@ -160,7 +151,6 @@ function DNDBuddy() {
   }
 
 
-  //Add the HTML to display the item in the correct inv
   function addItemToInv(item, bought = true) {
     const itemStates = {
       weapon: [setInventoryWeapons],
@@ -170,7 +160,7 @@ function DNDBuddy() {
     let itemType = item.damage ? "weapon" : "armor"; // if it has damage it might be a weapon
     itemType = item.school ? "spell" : itemType; // if it has a school then it's a spell
     const [setInventory] = itemStates[itemType];
-    //I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
+    //&I need to come up with a way to caluclate the number of spaces needed to align the info buttons?
     setInventory((prevInventory) => [
       ...prevInventory,
       <div key={item.id} className="invItemDiv">
@@ -201,7 +191,6 @@ function DNDBuddy() {
     }
   }
 
-  //When a player buys an item from any store
   function handleBuyClick(element) {
     const PlayerGold = getGold();
     if (PlayerGold >= Number(element.price)) {
@@ -241,12 +230,10 @@ function DNDBuddy() {
       <h1>Welcome to the DNDBuddy!</h1>
       <CharacterContainer />
       <br></br>
-      {/* I want stat block to be to the right of the CharacterContainer but we'll see */}
       <StatBlock />
       <label>Inventory</label>
       <label>Store</label>
       <div id="CustomTabsDiv">
-        {/* Inventory */}
         <CustomTabs
           id="invTabs"
           weapons={inventoryWeapons}
@@ -256,7 +243,6 @@ function DNDBuddy() {
         />
         <SpellSlots />
 
-        {/* Store */}
         <CustomTabs
           id="storeTabs"
           weapons={WeaponStoreList}
@@ -265,7 +251,6 @@ function DNDBuddy() {
         />
       </div>
 
-      {/* Gold modal */}
       <Modal show={showGoldModal} onHide={handleCloseGoldModal}>
         <Modal.Header closeButton>
           <Modal.Title>Oopsies!</Modal.Title>
@@ -280,14 +265,12 @@ function DNDBuddy() {
         </Modal.Footer>
       </Modal>
 
-      {/*Information modal */}
       <Modal show={showInfoModal} onHide={handleCloseInfoModal}>
         <Modal.Header closeButton>
           <Modal.Title>Information:</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Name: {elementName}</p>
-          {/* Below are the conditions for rendering the information text */}
           {elementDescription && (
             <>
               <p>Description: {elementDescription}</p>
@@ -323,7 +306,6 @@ function DNDBuddy() {
               <p>AC: {elementAC}</p>
             </>
           )}
-          {/* Make these conditionally render^^ */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseInfoModal}>
@@ -335,5 +317,4 @@ function DNDBuddy() {
   );
 }
 
-// Render the dynamic component
 ReactDOM.render(<DNDBuddy />, document.body);
