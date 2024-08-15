@@ -43,7 +43,7 @@ function DNDBuddy() {
   const [inventoryWeapons, setInventoryWeapons] = useState([]);
   const [inventoryArmor, setInventoryArmor] = useState([]);
   const [inventorySpell, setInventorySpell] = useState([]);
-  const [inventoryequipped, setInventoryequipped] = useState([]);
+  const [inventoryEquipped, setinventoryEquipped] = useState([]);
   //&These are the state variables for modal visibility
   const [showGoldModal, setShowGoldModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
@@ -136,7 +136,7 @@ function DNDBuddy() {
   //Add item to equipped tab
   function handleEquip(parentEvent, item) {
     if (parentEvent.currentTarget.checked) {
-      setInventoryequipped((prevequipped) => [
+      setinventoryEquipped((prevequipped) => [
         ...prevequipped,
         <div key={item.id}>
           {item.name}
@@ -146,6 +146,7 @@ function DNDBuddy() {
         </div>,
         
       ]);
+      console.log(inventoryEquipped);
     } else {
       handleUnequip(parentEvent, item);
     }
@@ -153,22 +154,11 @@ function DNDBuddy() {
 
   function handleUnequip(parentEvent, item) {
     parentEvent.target.checked = false;
-    console.error(item.id);
-    if (inventoryequipped.length != 0) {
-      setInventoryequipped((prevequipped) => {
-        // Check if the item exists in the array
-        const itemExists = prevequipped.some((i) => i.id === item.id);
-        if (itemExists) {
-          console.warn(
-            `Item with id ${item.id} not found in inventoryequipped.`
-          );
-          prevequipped.filter((i) => i.id !== item.id);
-        }
-      });
-    } else if (inventoryequipped) {
-      setInventoryequipped([]);
+    if (inventoryEquipped) {
+      console.log(inventoryEquipped);
     }
   }
+
 
   //Add the HTML to display the item in the correct inv
   function addItemToInv(item, bought = true) {
@@ -245,7 +235,7 @@ function DNDBuddy() {
   DNDBuddy.setInventoryArmor = setInventoryArmor;
   DNDBuddy.setInventoryWeapons = setInventoryWeapons;
   DNDBuddy.setInventorySpell = setInventorySpell;
-  DNDBuddy.setInventoryequipped = setInventoryequipped;
+  DNDBuddy.setinventoryEquipped = setinventoryEquipped;
   return (
     <div id="wrapperDiv">
       <h1>Welcome to the DNDBuddy!</h1>
@@ -262,7 +252,7 @@ function DNDBuddy() {
           weapons={inventoryWeapons}
           armor={inventoryArmor}
           spells={inventorySpell}
-          equipped={inventoryequipped}
+          equipped={inventoryEquipped}
         />
         <SpellSlots />
 
