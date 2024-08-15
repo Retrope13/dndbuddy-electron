@@ -137,16 +137,36 @@ function DNDBuddy() {
         </div>,
         
       ]);
-      console.log(inventoryEquipped);
     } else {
       handleUnequip(parentEvent, item);
     }
   }
 
   function handleUnequip(parentEvent, item) {
+    setinventoryEquipped((prevequipped) => [
+      filterEquiped(prevequipped, item)
+    ]);
+
     parentEvent.target.checked = false;
-    if (inventoryEquipped) {
-      console.log(inventoryEquipped);
+
+  }
+
+
+  function filterEquiped(prevequipped, item) {
+    let removed = false;
+    try {
+      return prevequipped.filter((currentItem) => {
+        console.log(currentItem);
+        const currentItemName = currentItem.props.children[0];
+        if (currentItemName === item.name && !removed) {
+          removed = true;
+          return false;
+        }
+        return true;
+      });
+
+    } catch {
+      console.error("Attempted to remove item that does not exist... Now in broken state.");
     }
   }
 
