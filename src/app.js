@@ -34,7 +34,7 @@ export function addItemsFromImport() {
   for (let i = 0; i < playerCharacterInstance._Equipped.length; i++) {
     //^ Here is where i'm having issues - It won't populate the equip section. I realized that to properly update the equipped
     //^and unequipped stuff I'll have to save the items that are equipped and the items that are checked in the rest of their inventory at the moment of a save
-    //DNDBuddy.handleEquip(playerCharacterInstance._equipped[i], false);
+    DNDBuddy.handleEquip(playerCharacterInstance._equipped[i], false);
   }
 }
 
@@ -143,20 +143,17 @@ function DNDBuddy() {
           <button className="infoButtons" onClick={() => handleInfoClick(item)}>
             <InfoCircleFill className="infoIcons" />
           </button>
-          <Form.Check
-            aria-label="Checkbox"
-            checked={parentEvent.target.checked}
-            onChange={(event) => handleUnequip(event, parentEvent, item)}
-          />
         </div>,
+        
       ]);
     } else {
-      handleUnequip(event, parentEvent, item);
+      handleUnequip(parentEvent, item);
     }
   }
 
-  function handleUnequip(event, parentEvent, item) {
+  function handleUnequip(parentEvent, item) {
     parentEvent.target.checked = false;
+    console.error(item.id);
     if (inventoryequipped.length != 0) {
       setInventoryequipped((prevequipped) => {
         // Check if the item exists in the array
@@ -300,7 +297,7 @@ function DNDBuddy() {
         </Modal.Header>
         <Modal.Body>
           <p>Name: {elementName}</p>
-          {/* Below are the conditions for rendering the infromation text */}
+          {/* Below are the conditions for rendering the information text */}
           {elementDescription && (
             <>
               <p>Description: {elementDescription}</p>
