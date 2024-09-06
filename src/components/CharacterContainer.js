@@ -204,29 +204,27 @@ export function CharacterContainer() {
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingDiv" label="Health" className="mb-3" id="HealthInputDivLabel">
-
         <div id="HealthInputDiv">
-        <FloatingLabel controlId="floatingInput" label="Current" className="mb-3" id="HealthInputLabel">
+        <FloatingLabel controlId="floatingInput" label="Current Health" className="FloatingHealthLabel" id="CurrentHealthInputLabel">
           <Form.Control
             className="controlForms"
             type="number"
-            placeholder="CurrHealth"
-            id="HealthInput"
+            placeholder="CurrentHealth"
+            id="CurrentHealthInput"
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingInput" label="Max" className="mb-3" id="HealthInputLabel">
+          <p id="Slash">/</p>
+        <FloatingLabel controlId="floatingInput" label="Max Health" className="floatingHealthLabel" id="MaxHealthInputLabel">
           <Form.Control
             className="controlForms"
             type="number"
             placeholder="MaxHealth"
-            id="HealthInput"
+            id="MaxHealthInput"
             onChange={handleChange}
           />
         </FloatingLabel>
         </div>
-        </FloatingLabel>
         <FloatingLabel controlId="floatingInput" label="Gold" className="mb-3">
           <Form.Control
             className="controlForms"
