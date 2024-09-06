@@ -6,6 +6,8 @@ export class PlayerCharacter {
     CharacterClass = "",
     Alignment = "",
     level = 0,
+    currentHealth = 0,
+    maxHealth = 0,
     ac = "0",
     weapons = [],
     armors = [],
@@ -25,6 +27,8 @@ export class PlayerCharacter {
     this._CharacterClass = CharacterClass;
     this._Alignment = Alignment;
     this._Level = level;
+    this._CurrentHealth = currentHealth;
+    this._MaxHealth = maxHealth;
     this._Ac = ac;
     this._Weapons = weapons;
     this._Armors = armors;
@@ -90,6 +94,22 @@ export class PlayerCharacter {
   }
   set setLevel(newLevel) {
     return (this._Level = Number(newLevel));
+  }
+
+  get getCurrentHealth() {
+    return this._CurrentHealth;
+  }
+
+  set setCurrentHealth(newCurrentHealth) {
+    return (this._CurrentHealth = Number(newCurrentHealth));
+  }
+
+  get getMaxHealth() {
+    return this._MaxHealth;
+  }
+
+  set setMaxHealth(newMaxHealth) {
+    return (this._MaxHealth = Number(newMaxHealth));
   }
 
   //^ Stats getters and setters
