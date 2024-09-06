@@ -152,7 +152,7 @@ export function CharacterContainer() {
             onChange={handleChange}
           />
         </FloatingLabel>
-        <FloatingLabel controlId="CharacterName" label="Character Name">
+        <FloatingLabel controlId="CharacterName" label="Character Name" className="mb-3">
           <Form.Control
             className="controlForms"
             type="CharName"
