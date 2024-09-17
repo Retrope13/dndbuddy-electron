@@ -224,7 +224,13 @@ export function CharacterContainer() {
             onChange={handleChange}
           />
         </FloatingLabel>
-        </div>
+        <button type="submit" className="CharBtn" id="shortRestButton" onClick={print("short")}>
+           Short 
+          </button>
+        <button type="submit" className="CharBtn" id="longRestButton" onClick={print("long")}>
+          Long 
+          </button>
+          </div>
         <FloatingLabel controlId="floatingInput" label="Gold" className="mb-3">
           <Form.Control
             className="controlForms"
