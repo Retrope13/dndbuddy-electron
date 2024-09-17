@@ -84,12 +84,19 @@ li {
 
 }
 
+#shortRestButton, #longRestButton {
+  margin-right: 5%;
+  width: 15%; 
+  display: flex;
+  align-items: center;
+}
+
 .FloatingHealthLabel {
   &.form-floating {
     max-width: fit-content;
   }
 }
-
+ 
 #Slash {
   font-size: xx-large;
   color: white;
