@@ -91,7 +91,7 @@ li {
   align-items: center;
 }
 
-.FloatingHealthLabel {
+.FloatingHealthLabel { 
   &.form-floating {
     max-width: fit-content;
   }
