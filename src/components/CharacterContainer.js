@@ -61,6 +61,13 @@ export function CharacterContainer() {
     playerCharacterInstance[`_${placeholder}`] = value;
   }
 
+  function longRest() {
+    const MaxHealthInput = document.getElementById("MaxHealthInput");
+    const CurrentHealthInput = document.getElementById("CurrentHealthInput");
+
+    CurrentHealthInput.value = MaxHealthInput.value;
+  }
+
   function createJSON() {
     //Turn the playercharacter instance to a JSON string
     const jsonData = JSON.stringify(playerCharacterInstance);
@@ -81,6 +88,7 @@ export function CharacterContainer() {
 
     // Clean up by revoking the URL object
     URL.revokeObjectURL(url);
+
   }
 
   async function importJSON() {
@@ -224,10 +232,10 @@ export function CharacterContainer() {
             onChange={handleChange}
           />
         </FloatingLabel>
-        <button type="submit" className="CharBtn" id="shortRestButton" onClick={print("short")}>
+        <button type="submit" className="CharBtn" id="shortRestButton" onClick={longRest}>
            Short 
           </button>
-        <button type="submit" className="CharBtn" id="longRestButton" onClick={print("long")}>
+        <button className="CharBtn" onClick={longRest}>
           Long 
           </button>
           </div>
