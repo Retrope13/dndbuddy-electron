@@ -66,6 +66,7 @@ export function CharacterContainer() {
     const CurrentHealthInput = document.getElementById("CurrentHealthInput");
 
     CurrentHealthInput.value = MaxHealthInput.value;
+    
   }
 
   function createJSON() {

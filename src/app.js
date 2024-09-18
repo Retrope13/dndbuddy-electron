@@ -261,7 +261,7 @@ function DNDBuddy() {
           spells={inventorySpell}
           equipped={inventoryEquipped}
         />
-        <SpellSlots />
+        <SpellSlots id="SpellSlotsComponent"/>
 
         <CustomTabs
           id="storeTabs"
