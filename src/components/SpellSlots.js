@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import PlayerCharacter from "../Classes/PlayerCharacter";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { addItemsFromImport } from "../app";
 import { InfoCircleFill } from "react-bootstrap-icons";
 
 export function SpellSlots() {
